@@ -1,0 +1,284 @@
+// Charset ===============================================================================
+@charset "UTF-8";
+
+// Normalize =============================================================================
+@import "partials/normalize";
+@import "partials/reset";
+@import "partials/extensions";
+@import "partials/functions";
+@import "partials/palette";
+
+// Variables =============================================================================
+$white: #ffffff;
+$black: #16161d;
+
+$mobile: 22em;
+$tablet: 44em;
+$desktop: 66em;
+
+$discovery: $blue;
+$care: $green;
+$education: $red;
+
+:root {
+	--root-size: 90%;
+
+	--extra-large: 1.5rem;
+	--large: 0.75rem;
+	--medium: 0.5rem;
+	--small: 0.25rem;
+
+	--transition: 0.25s;
+	--transition-hover: 0s;
+	--transition-decorative: 1s;
+
+	--radius: 0.25rem;
+
+	--sidebar-width: 20rem;
+
+	@media (min-width: $tablet) {
+		--root-size: 100%;
+
+		--extra-large: 2rem;
+		--large: 1rem;
+		--medium: 0.75rem;
+		--small: 0.35rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		--transition-decorative: 0s;
+		--transition: 0s;
+		--transition-hover: 0s;
+	}
+}
+
+// Base Styles ===========================================================================
+body {
+	font-size: var(--root-size);
+	font-family: Catamaran, Helvetica Neue, Helvetica, sans-serif;
+	line-height: 1.5;
+	background: $white;
+	color: $blue-grey-900;
+}
+
+.main {
+	background: $white;
+}
+
+.container {
+	padding: var(--large);
+	max-width: 50em;
+	margin: 0 auto;
+}
+
+// Typography ============================================================================
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	position: relative;
+	font-size: 3em;
+}
+
+p {
+	font-size: 1em;
+	margin-top: var(--medium);
+}
+
+hr {
+	width: 100%;
+	max-width: 50em;
+	height: 4px;
+	margin: -3px auto 0;
+	background: mix($black, $white);
+	border-radius: 0 1rem 1rem 0;
+	border-radius: 1rem;
+	border: 0;
+}
+
+// Header ================================================================================
+.header {
+	border-bottom: 1px solid $grey-300;
+}
+
+// Intro =================================================================================
+.intro {
+	padding: var(--extra-large) 0;
+	line-height: 1.25;
+
+	h2 {
+		font-size: 2em;
+	}
+
+	em {
+		font-style: normal;
+	}
+}
+
+.discovery-em {
+	color: $discovery;
+}
+
+.care-em {
+	color: $care;
+}
+
+.education-em {
+	color: $education;
+}
+
+// Sections ==============================================================================
+section {
+	border-bottom: 1px solid $grey-300;
+}
+
+.discovery,
+.care,
+.education {
+	background-repeat: no-repeat;
+}
+
+@mixin section($color) {
+	hr {
+		background: $color;
+	}
+
+	.section-heading {
+		color: $color;
+	}
+}
+
+.discovery {
+	@include section($discovery);
+}
+
+.care {
+	@include section($care);
+}
+
+.education {
+	@include section($education);
+}
+
+.videos {
+	background: $black;
+	color: $white;
+}
+
+// Link Block ============================================================================
+.links {
+	margin: var(--medium) 0;
+}
+
+.link {
+	display: inline-block;
+	width: 50%;
+	padding: var(--small);
+
+	@media (min-width: $tablet) {
+		width: 33.333%;
+	}
+
+	&.featured {
+		width: 100%;
+	}
+}
+
+.link-block {
+	display: block;
+	cursor: pointer;
+	color: $black;
+
+	.featured & {
+		@media (min-width: $tablet) {
+			display: flex;
+		}
+	}
+}
+
+.link-image-wrapper {
+	.featured & {
+		flex: 1;
+	}
+}
+
+.link-image {
+	background-size: cover;
+	width: 100%;
+	padding-bottom: 75%;
+	background-color: $grey-200;
+	border-radius: var(--radius);
+}
+
+.link-content {
+	padding: var(--medium) 0;
+
+	@media (min-width: $tablet) {
+		padding: var(--medium) 0 0;
+	}
+
+	.featured & {
+		flex: 1;
+
+		@media (min-width: $tablet) {
+			padding: var(--medium) 0 var(--medium) var(--extra-large);
+		}
+	}
+}
+
+// Videos ================================================================================
+.videos {
+	padding: var(--large) 0;
+
+	@media (min-width: $tablet) {
+		.section-heading {
+			margin: 0 var(--large) 0 0;
+		}
+	}
+}
+
+.video-wrapper {
+	background: $grey-800;
+	width: 100%;
+	padding-bottom: 70%;
+
+	@media (min-width: $tablet) {
+		width: 80%;
+		padding-bottom: 50%;
+	}
+}
+
+// Contact ===============================================================================
+.subscribe {
+	display: flex;
+	margin: var(--large) 0;
+}
+
+.subscribe-input,
+.subscribe-button {
+	font: inherit;
+	font-size: 1.5em;
+	padding: var(--large);
+}
+
+.subscribe-input {
+	flex: 1;
+	border: 1px solid $grey-300;
+}
+
+.subscribe-button {
+	border: 0;
+	margin-left: var(--large);
+	background: $black;
+	color: $white;
+}
+
+// Footer ===============================================================================
+footer {
+	text-align: right;
+
+	p {
+		font-size: 1em;
+	}
+}
