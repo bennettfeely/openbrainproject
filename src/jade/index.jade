@@ -11,98 +11,86 @@ body
 	.main
 		section.intro
 			.container
-				h2 The Open Brain Project lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod through <em class="discovery-em">Discovery</em>, <em class="care-em">Care</em>, and <em class="education-em">Education</em>.
-		section.discovery
-			hr
+				h3 The Open Brain Project is a collaborative effort among scientists and clinicians to advance understanding of normal and pathological brain function. Our mission is support basic discoveries of brain function that advance patient care and provide a platform for community education and outreach.
+		section.education
 			.container
-				h2.section-heading Discovery
-				ul.links
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h3 Lorem Ipsum
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h3 Lorem Ipsum
-		section.care
-			hr
-			.container
-				h2.section-heading Care
+				h2 Education
 				ul.links
 					li.link.featured
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
+						a.link-block(href="https://brainsurvey.org")
+							.link-video-wrapper
+								video(width="320", height="240", loop, muted, autoplay)
+									source(src="img/brain_1232_720.mp4", type="video/mp4")
 							.link-content
-								h3 Program for Translational Brain Mapping
-								p The program for translational brain mapping brings together clinicians and scientists at the University of Rochester committed to the vision of advancing patient care through personalized brain mapping. 
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h3 Lorem Ipsum
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h3 Lorem Ipsum
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h3 Lorem Ipsum
-
-		section.education
-			hr
+								h4 Brain Survey
+								p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+		section.discovery
 			.container
-				h2.section-heading Education
+				h2 Discovery
 				ul.links
 					li.link
 						a.link-block
 							.link-image-wrapper
 								.link-image(style="background-image: url()")
 							.link-content
-								h3 Brain Survey
+								h4 Brain Tumor
 					li.link
 						a.link-block
 							.link-image-wrapper
 								.link-image(style="background-image: url()")
 							.link-content
-								h3 Lorem Ipsum
+								h4 Stroke
 					li.link
 						a.link-block
 							.link-image-wrapper
 								.link-image(style="background-image: url()")
 							.link-content
-								h3 Lorem Ipsum
+								h4 TBI
+		section.care
+			.container
+				h2 Care
+				ul.links
+					li.link.featured.reversed
+						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx")
+							.link-image-wrapper
+								.link-image(style="background-image: linear-gradient(transparent, rgba(0,0,0,.1)), url(img/urmc_1200_900.png)")
+							.link-content
+								h4 Program for Translational Brain Mapping
+								p The program for translational brain mapping brings together clinicians and scientists at the University of Rochester, Carnegie Mellon University and the University of Pittsburgh Medical Center who are committed to the vision of advancing patient care through personalized brain mapping. The Program for Translational Brain Mapping is based in the Department of Neurosurgery at the University of Rochester Medical Center. 
+				ul.links
 					li.link
-						a.link-block
+						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/our-team.aspx")
 							.link-image-wrapper
 								.link-image(style="background-image: url()")
 							.link-content
-								h3 Lorem Ipsum
+								h4 Our Team
 					li.link
-						a.link-block
+						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/our-facilities.aspx")
 							.link-image-wrapper
-								.link-image(style="background-image: url()")
+								.link-image(style="background-image: url(img/facilities_1200_900.jpg)")
 							.link-content
-								h3 Lorem Ipsum
+								h4 Our Facilities
+					li.link
+						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/resources-for-patients.aspx")
+							.link-image-wrapper
+								.link-image(style="background-image: url(img/book_1200_900.jpg)")
+							.link-content
+								h4 Resources for Patients
 	.secondary
 		section.videos
 			.container
-				h2.section-heading Featured Video
+				h2 Featured Video
 				.video-wrapper
+					.main-carousel
+						.carousel-cell
+						.carousel-cell
+						.carousel-cell
+						.carousel-cell
+						.carousel-cell
+						.carousel-cell
 		section.contact
 			.container
-				h2.section-heading Newsletter
+				h2 Newsletter
 				p Subscribe to our monthly newsletter
 				.subscribe
 					input.subscribe-input(type="email", placeholder="Your email...")
@@ -110,4 +98,5 @@ body
 
 		footer.footer
 			.container
-				p The Open Brain Project &copy; 2018 Brad Mahon
+				p &copy; 2019 Brad Mahon of Brain Survey, LLC
+		script(src="js/flickity.min.js")

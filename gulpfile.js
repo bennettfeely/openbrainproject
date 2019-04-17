@@ -15,34 +15,13 @@ path = require("path");
 fs = require("fs");
 del = require("del");
 
-// Import data
-teams = require("./src/js/_team.js");
-regions = require("./src/js/_regions.js");
-settings = require("./src/js/_settings.js");
-
-// Transform regions object to an array to add to regions filter =========================
-regions_arr = [];
-
-Object.keys(regions_obj).forEach(function(name) {
-  regions_arr.push({
-    name: name,
-    full_name: regions_obj[name].full_name,
-    path: regions_obj[name].path
-  });
-});
-
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
   return gulp
     .src("src/jade/index.jade")
     .pipe(
       jade({
-        pretty: true,
-        data: {
-          regions: regions_arr,
-          settings: settings,
-          teams: team_arr
-        }
+        pretty: true
       })
     )
     .pipe(
@@ -66,12 +45,7 @@ gulp.task("jade-subfolder", function() {
     .src("src/jade/team/index.jade")
     .pipe(
       jade({
-        pretty: true,
-        data: {
-          regions: regions_arr,
-          settings: settings,
-          teams: team_arr
-        }
+        pretty: true
       })
     )
     .pipe(
