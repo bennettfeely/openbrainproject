@@ -15,13 +15,19 @@ path = require("path");
 fs = require("fs");
 del = require("del");
 
+// Import data
+videos = require("./src/js/_videos.js");
+
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
   return gulp
     .src("src/jade/index.jade")
     .pipe(
       jade({
-        pretty: true
+        pretty: true,
+        data: {
+          videos: video_arr
+        }
       })
     )
     .pipe(

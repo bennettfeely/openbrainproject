@@ -58,10 +58,18 @@ body {
 	color: $black;
 }
 
-.container {
-	padding: var(--large);
+.container,
+.wrapper {
 	max-width: $desktop;
 	margin: 0 auto;
+}
+
+.container {
+	padding: var(--large);
+}
+
+.wrapper {
+	padding: 0 var(--large);
 }
 
 // Typography ============================================================================
@@ -144,8 +152,9 @@ section {
 }
 
 .videos {
-	background: $black;
+	background: linear-gradient(tint($black, 10%), $black);
 	color: $white;
+	padding: var(--extra-large) 0;
 }
 
 // Link Block ============================================================================
@@ -244,18 +253,69 @@ section {
 
 // Videos ================================================================================
 .videos {
-	padding: var(--large) 0;
+	// padding: var(--large) 0;
 }
 
 .video-wrapper {
-	background: rgba($white, 0.9);
 	width: 100%;
-	padding-bottom: 70%;
+}
+
+.carousel-cell {
+	width: 100%;
+	height: auto;
+	padding: var(--large);
 
 	@media (min-width: $tablet) {
-		width: 80%;
-		padding-bottom: 50%;
+		width: 22em;
 	}
+}
+
+.carousel-cell-link {
+	display: block;
+
+	h4 {
+		line-height: 1.2;
+		color: $white;
+	}
+	p {
+		color: rgba($white, 0.8);
+	}
+}
+
+.carousel-cell-img-wrapper {
+	position: relative;
+}
+
+.carousel-cell-img {
+	border-radius: var(--radius);
+	width: 100%;
+	height: auto;
+}
+
+.carousel-cell-play {
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	bottom: 10%;
+	top: 10%;
+	background: url(../img/yt_icon.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 65px 45px;
+	z-index: 1;
+
+	@media (min-width: $tablet) {
+		opacity: 0;
+		transition: opacity var(--transition);
+	}
+
+	.carousel-cell-link:hover & {
+		opacity: 1;
+	}
+}
+
+.carousel-cell-content {
+	margin: var(--medium) 0 0;
 }
 
 .flickity-enabled {
@@ -332,28 +392,19 @@ section {
 }
 
 .flickity-prev-next-button {
-	top: 50%;
-	width: 44px;
-	height: 44px;
+	top: calc(50% - 2.5em);
+	width: 2.5em;
+	height: 5em;
 	border-radius: 50%;
-	/* vertically center */
-	transform: translateY(-50%);
 }
 
 .flickity-prev-next-button.previous {
-	left: 10px;
+	left: 0;
+	border-radius: 0 100% 100% 0;
 }
 .flickity-prev-next-button.next {
-	right: 10px;
-}
-/* right to left */
-.flickity-rtl .flickity-prev-next-button.previous {
-	left: auto;
-	right: 10px;
-}
-.flickity-rtl .flickity-prev-next-button.next {
-	right: auto;
-	left: 10px;
+	right: 0;
+	border-radius: 100% 0 0 100%;
 }
 
 .flickity-prev-next-button .flickity-button-icon {
@@ -365,10 +416,8 @@ section {
 }
 
 .flickity-page-dots {
-	position: absolute;
 	width: 100%;
-	bottom: -25px;
-	padding: 0;
+	padding: var(--large) 0 0;
 	margin: 0;
 	list-style: none;
 	text-align: center;
@@ -381,17 +430,20 @@ section {
 
 .flickity-page-dots .dot {
 	display: inline-block;
-	width: 10px;
-	height: 10px;
-	margin: 0 8px;
-	background: #333;
+	width: var(--large);
+	height: var(--large);
+	margin: 0 var(--small);
+	background: rgba($white, 0.75);
 	border-radius: 50%;
 	opacity: 0.25;
 	cursor: pointer;
+	transform: scale(0.75);
+	transition: transform var(--transition), opacity var(--transition);
 }
 
 .flickity-page-dots .dot.is-selected {
 	opacity: 1;
+	transform: scale(1);
 }
 
 // Contact ===============================================================================

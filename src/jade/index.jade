@@ -78,16 +78,60 @@ body
 								h4 Resources for Patients
 	.secondary
 		section.videos
-			.container
-				h2 Featured Video
-				.video-wrapper
-					.main-carousel
-						.carousel-cell
-						.carousel-cell
-						.carousel-cell
-						.carousel-cell
-						.carousel-cell
-						.carousel-cell
+			.wrapper
+				h2 Featured Videos
+				.flickity-controls
+					button.previous Previous
+					button.next Next
+			.video-wrapper(data-flickity='{ "pageDots": false, "autoPlay": true, "wrapAround": true, "lazyLoad": 2 }')
+				for video in videos
+					.carousel-cell
+						a.carousel-cell-link(href="https://www.youtube.com/watch?v=" + video.id)
+							.carousel-cell-img-wrapper
+								img.carousel-cell-img(data-flickity-lazyload="https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg", width=480 height="360")
+								.carousel-cell-play
+							.carousel-cell-content
+								h4= video.title
+								// p= video.description
+
+				//- .video-wrapper(data-flickity='{ "autoPlay": true, "wrapAround": true, "lazyLoad": 2 }')
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="https://www.youtube.com/watch?v=95NMmqaFAKE")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Saxophone Serenades Surgeons 8/21/17
+				//- 				p Music is not only a major part of Dan Fabbio’s life, as a music teacher it is his livelihood. So when doctors... 
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="XXXXXX")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Video_name
+				//- 				p XXXXXX
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="XXXXXX")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Video_name
+				//- 				p XXXXXX
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="XXXXXX")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Video_name
+				//- 				p XXXXXX
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="XXXXXX")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Video_name
+				//- 				p XXXXXX
+				//- 	.carousel-cell
+				//- 		a.carousel-cell-link(href="XXXXXX")
+				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
+				//- 			.carousel-cell-content
+				//- 				h3 Video_name
+				//- 				p XXXXXX
+
 		section.contact
 			.container
 				h2 Newsletter
