@@ -1,0 +1,104 @@
+// Charset ===============================================================================
+@charset "UTF-8";
+
+// Normalize =============================================================================
+@import "partials/normalize";
+@import "partials/reset";
+@import "partials/extensions";
+@import "partials/functions";
+
+// Variables =============================================================================
+$white: #ffffff;
+$black: #16161d;
+
+$mobile: 20em;
+$tablet: 40em;
+$desktop: 60em;
+
+$blue: #1976d2;
+$red: red;
+
+:root {
+	--root-size: 90%;
+
+	--extra-large: 1.5rem;
+	--large: 0.75rem;
+	--medium: 0.5rem;
+	--small: 0.25rem;
+
+	--transition: 0.25s;
+	--transition-hover: 0s;
+	--transition-decorative: 1s;
+
+	--radius: 0.25rem;
+
+	--sidebar-width: 20rem;
+
+	@media (min-width: $tablet) {
+		--root-size: 100%;
+
+		--extra-large: 2rem;
+		--large: 1rem;
+		--medium: 0.75rem;
+		--small: 0.35rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		--transition-decorative: 0s;
+		--transition: 0s;
+		--transition-hover: 0s;
+	}
+}
+
+// Base Styles ===========================================================================
+body {
+	font-size: var(--root-size);
+	font-family: Source Sans Pro, Helvetica Neue, Helvetica, sans-serif;
+	line-height: 1.5;
+	background: $white;
+	color: $black;
+	background: $black;
+}
+
+.container,
+.wrapper {
+	max-width: $desktop;
+	margin: 0 auto;
+}
+
+.container {
+	padding: var(--large);
+}
+
+// Canvas ================================================================================
+.canvas-wrapper {
+	position: relative;
+	padding-bottom: 100%;
+	background: linear-gradient(tint($black, 10%), $black);
+
+	@media (min-width: $tablet) {
+		padding-bottom: 60%;
+		border-radius: var(--radius);
+	}
+
+	@media (min-width: $desktop) {
+		padding-bottom: 0;
+		height: 70vh;
+	}
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+canvas {
+}
+
+
+
+
+
