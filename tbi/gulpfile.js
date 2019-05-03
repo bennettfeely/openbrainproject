@@ -15,13 +15,19 @@ path = require("path");
 fs = require("fs");
 del = require("del");
 
+// Import data
+teams = require("./src/js/_datasets.js");
+
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
   return gulp
     .src("src/jade/index.jade")
     .pipe(
       jade({
-        pretty: true
+        pretty: true,
+        data: {
+          datasets: datasets_obj
+        }
       })
     )
     .pipe(
@@ -70,8 +76,9 @@ gulp.task("scss", function() {
 // Compile JS ============================================================================
 gulp.task("js", function() {
   return gulp
-    .src(["src/js/tbi.js"])
-    .pipe(gulp.dest("js"))
+    .src(["src/js/_datasets.js", "src/js/tbi.js"])
+    .pipe(concat("tbi.js"))
+    .pipe(gulp.dest("./js"))
     .pipe(
       browserSync.reload({
         stream: true

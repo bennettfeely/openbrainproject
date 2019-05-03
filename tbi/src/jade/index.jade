@@ -5,11 +5,31 @@ include ./partials/_footer
 
 +head()
 body
-	h1 hello!
-	.wrapper
-		.canvas-wrapper
-
-
+	header
+		.container
+			h1 Traumatic Brain Injury Explorer
+	main
+		.wrapper
+			.canvas-wrapper
+				canvas#impact
+				.intensity-container.container
+					.intensity-bar
+					.intensity-label
+						span Min
+						span Max
+				.spinner-wrapper
+					.spinner
+		.container
+			.wrapper
+				h2 Data Sets
+			ul.data-sets
+				for dataset in datasets
+					li.data-set.container(class=dataset.class_name)
+						h3.data-set-title= dataset.name
+						button.data-set-run(type="button", onclick=dataset.key) Run
+	footer.copyright
+		.container
+			small &copy; 2019 Brad Mahon of BrainSurvey, LLC
 
 script(src="js/three.min.js")
 script(src="js/OrbitControls.min.js")
