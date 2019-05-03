@@ -140,7 +140,7 @@ function loadHelmet() {
 
     // Load a glTF resource
     loader.load(
-        "../models/helmet/scene.gltf",
+        "models/helmet/scene.gltf",
         function(gltf) {
             // Adjust helmet y position
             gltf.scene.position.set(0, -17, 0);
