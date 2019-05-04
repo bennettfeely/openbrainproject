@@ -38,6 +38,7 @@ $rainbow-array: #6e40aa, #be3caf, #fe4b83, #ff7747, #e3b62f, #b0ef5a, #53f666,
 	--transition-decorative: 1s;
 
 	--radius: 0.25rem;
+	--radius-large: 1rem;
 
 	--sidebar-width: 20rem;
 
@@ -90,6 +91,15 @@ h3 {
 	font-size: 1em;
 }
 
+// Header ================================================================================
+header {
+	text-align: center;
+
+	@media (min-width: $tablet) {
+		text-align: left;
+	}
+}
+
 // Canvas ================================================================================
 .canvas-wrapper {
 	position: relative;
@@ -104,7 +114,7 @@ h3 {
 
 	@media (min-width: $tablet) {
 		padding-bottom: 50%;
-		border-radius: var(--radius);
+		border-radius: var(--radius-large) var(--radius-large) 0 0;
 	}
 
 	@media (min-width: $desktop) {
