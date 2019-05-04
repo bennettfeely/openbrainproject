@@ -224,7 +224,7 @@ h3 {
 	transition: background-color var(--transition);
 
 	&:hover {
-		background: nth($inferno-array, 9);
+		background: tint(nth($inferno-array, 10), 50%);
 		transition-duration: var(--transition-hover);
 	}
 
