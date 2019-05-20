@@ -6,6 +6,9 @@ body
 		.container
 			h1 Traumatic Brain Injury Explorer
 	main
+		.container
+			p.citation Hirad and colleagues (2019) used MRI to measure the structural changes that occur in an athlete’s brain from a single season of football. The critical finding is that there are stereotyped patterns of brain injury that are asymptomiatic—meaning no signs or symptoms of concussion. The tools below provide a visalization of how force loading during football affects brain structure.
+			p.citation Hirad, Bazarian, Merchant-Borna, Garcea, Heilbronner, Paul, Hintz, van Wijngaarden, Schifitto, Wright, Espinoza, and Mahon. (2019). A common neural signature of brain injury in concussion and sub-concussion. Science Advances.
 		.wrapper
 			.canvas-wrapper
 				canvas#impact
@@ -24,6 +27,9 @@ body
 					li.data-set.container(class=dataset.class_name)
 						h3.data-set-title= dataset.name
 						button.data-set-run(type="button", onclick=dataset.key) Run
+
+		.container
+			p If you have data from a helmet worn accelerometer that you would like to contribute to the Open Brain Project, please sign up below for instructions on how to upload your data.
 	footer.copyright
 		.container
 			small &copy; 2019 Brad Mahon of BrainSurvey, LLC

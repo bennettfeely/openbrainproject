@@ -72,7 +72,7 @@ function createScene() {
     window.addEventListener("resize", setCanvasSize, false);
 
     // Turn on the lights
-    var light = new THREE.AmbientLight(0xffffff); // soft white light
+    var light = new THREE.AmbientLight(0xffffff);
     scene.add(light);
     var directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
     directionalLight.position.set(0, 100, 0);
@@ -171,30 +171,33 @@ function main() {
             var group_a = new THREE.Group();
             var group_b = new THREE.Group();
 
-            var height = force * 30 + 0.5;
-            var geometry = new THREE.CylinderGeometry(0.5, 0.5, height, 16);
+            if (force > 0.001) {
+                var height = force * 30 + 0.5;
 
-            var color_index = Math.round(force * gradient_array.length);
-            var hex = "#" + gradient_array[color_index];
-            var color = new THREE.Color(hex);
+                var geometry = new THREE.CylinderGeometry(0.5, 0.5, height, 16);
 
-            var material = new THREE.MeshLambertMaterial({
-                color: color
-            });
+                var color_index = Math.round(force * gradient_array.length);
+                var hex = "#" + gradient_array[color_index];
+                var color = new THREE.Color(hex);
 
-            var root = new THREE.Mesh(geometry, material);
-            root.rotation.x = Math.PI / 2;
-            root.position.z = 25 + height / 2;
+                var material = new THREE.MeshLambertMaterial({
+                    color: color
+                });
 
-            scene.add(group_a);
-            scene.add(group_b);
+                var root = new THREE.Mesh(geometry, material);
+                root.rotation.x = Math.PI / 2;
+                root.position.z = 25 + height / 2;
 
-            scene.add(root);
-            group_b.add(root);
+                scene.add(group_a);
+                scene.add(group_b);
 
-            group_a.add(group_b);
+                scene.add(root);
+                group_b.add(root);
 
-            arrows.push(group_a);
+                group_a.add(group_b);
+
+                arrows.push(group_a);
+            }
 
             var azMod = 0;
             var elMod = 0;
@@ -227,8 +230,12 @@ function main() {
 }
 
 function reset() {
-    // Scroll to top of page
-    window.scrollTo(0, 0);
+    // Scroll to top of element
+    document.querySelector(".canvas-wrapper").scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "center"
+    });
 
     // Iterate through arrows in array
     arrows.forEach(function(arrow, index) {

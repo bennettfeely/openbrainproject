@@ -16,12 +16,8 @@ $mobile: 20em;
 $tablet: 40em;
 $desktop: 60em;
 
-$blue: #1976d2;
-$red: red;
-
 $inferno-array: #000004, #160b39, #420a68, #6a176e, #932667, #ba3655, #dd513a,
 	#f3761b, #fca50a, #f6d746, #f6d746;
-
 $rainbow-array: #6e40aa, #be3caf, #fe4b83, #ff7747, #e3b62f, #b0ef5a, #53f666,
 	#1edfa2, #23acd8, #4c6fdc, #4c6fdc;
 
@@ -74,7 +70,7 @@ body {
 }
 
 .container {
-	padding: var(--large);
+	padding: var(--large) var(--extra-large);
 }
 
 // Typography ============================================================================
@@ -91,14 +87,14 @@ h3 {
 	font-size: 1em;
 }
 
-// Header ================================================================================
-header {
-	text-align: center;
-
-	@media (min-width: $tablet) {
-		text-align: left;
-	}
+p {
+	margin-bottom: 1em;
+	max-width: 50em;
 }
+
+// Header ================================================================================
+
+// Citations =============================================================================
 
 // Canvas ================================================================================
 .canvas-wrapper {
