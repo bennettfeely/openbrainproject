@@ -9,14 +9,13 @@ rename = require("gulp-rename");
 jsImport = require("gulp-js-import");
 uglify = require("gulp-uglify");
 concat = require("gulp-concat");
-
 pump = require("pump");
 path = require("path");
 fs = require("fs");
 del = require("del");
 
 // Import data
-videos = require("./src/js/_videos.js");
+datasets = require("./src/js/_datasets.js");
 
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
@@ -24,10 +23,7 @@ gulp.task("jade", function() {
     .src("src/jade/index.jade")
     .pipe(
       jade({
-        pretty: true,
-        data: {
-          videos: video_arr
-        }
+        pretty: true
       })
     )
     .pipe(
@@ -46,7 +42,7 @@ gulp.task("jade", function() {
     );
 });
 
-gulp.task("jade-subfolder", function() {
+gulp.task("jade-team-subfolder", function() {
   return gulp
     .src("src/jade/team/index.jade")
     .pipe(
@@ -70,33 +66,32 @@ gulp.task("jade-subfolder", function() {
     );
 });
 
-// gulp.task("jade-subfolder", function() {
-//   return gulp
-//     .src(["src/jade/**/*.jade"])
-//     .pipe(
-//       jade({
-//         pretty: true,
-//         data: {
-//           regions: regions_arr,
-//           teams: team_arr
-//         }
-//       })
-//     )
-//     .pipe(
-//       htmlmin({
-//         collapseWhitespace: true,
-//         removeComments: true,
-//         minifyCSS: true,
-//         minifyJS: true
-//       })
-//     )
-//     .pipe(gulp.dest("./dist"))
-//     .pipe(
-//       browserSync.reload({
-//         stream: true
-//       })
-//     );
-// });
+gulp.task("jade-tbi-subfolder", function() {
+  return gulp
+    .src("src/jade/tbi/index.jade")
+    .pipe(
+      jade({
+        pretty: true,
+        data: {
+          datasets: datasets_obj
+        }
+      })
+    )
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true
+      })
+    )
+    .pipe(gulp.dest("./dist/tbi"))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
+});
 
 // Compile CSS ===========================================================================
 gulp.task("scss", function() {
@@ -126,31 +121,10 @@ gulp.task("scss", function() {
 });
 
 // Compile JS ============================================================================
-// gulp.task("js", function() {
-//   return (
-//     gulp
-//       .src("src/js/brain.js")
-//       .pipe(gulp.dest("./dist/js"))
-//       .pipe(
-//         rename(function(path) {
-//           path.basename += ".min";
-//           path.extname = ".js";
-//         })
-//       )
-//       // .pipe(uglify())
-//       // .pipe(gulp.dest("./dist/js"))
-//       // .pipe(
-//       //   browserSync.reload({
-//       //     stream: true
-//       //   })
-//       // )
-//   );
-// });
-
 gulp.task("js", function() {
   return gulp
-    .src(["src/js/_settings.js", "src/js/_regions.js", "src/js/brain.js"])
-    .pipe(concat("brain.js"))
+    .src(["src/js/_datasets.js", "src/js/tbi.js"])
+    .pipe(concat("tbi.js"))
     .pipe(gulp.dest("./dist/js"))
     .pipe(
       browserSync.reload({
@@ -182,28 +156,30 @@ gulp.task("sync", function() {
 gulp.task("default", function() {
   gulp.run("sync");
 
-  gulp.watch(
-    ["src/jade/*.jade", "src/jade/team/*.jade", "src/jade/partials/*.jade"],
-    function() {
-      return gulp.run("jade", "jade-subfolder");
-    }
-  );
+  // Home
+  gulp.watch(["src/jade/*.jade", "src/jade/partials/*.jade"], function() {
+    return gulp.run("jade");
+  });
 
-  // gulp.watch("src/jade/team/index.jade", function() {
-  //   return gulp.run("jade-subfolder");
-  // });
+  // Partials
+  gulp.watch(["src/jade/partials/*.jade"], function() {
+    return gulp.run("jade", "jade-team-subfolder", "jade-tbi-subfolder");
+  });
 
+  // TBI
+  gulp.watch(["src/jade/tbi/*.jade"], function() {
+    return gulp.run("jade", "jade-tbi-subfolder");
+  });
+  gulp.watch(["src/js/_datasets.js", "src/js/tbi.js"], function() {
+    return gulp.run("js", "jade-tbi-subfolder");
+  });
+
+  // CSS
   gulp.watch("src/scss/*.scss", function() {
     return gulp.run("scss");
   });
 
-  gulp.watch(
-    ["src/js/_regions.js", "src/js/_settings.js", "src/js/brain.js"],
-    function() {
-      return gulp.run("js");
-    }
-  );
-
+  // Redirects
   gulp.watch("src/_redirects", function() {
     return gulp.run("redirects");
   });

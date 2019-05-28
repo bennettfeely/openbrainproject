@@ -1,146 +1,75 @@
 include ./partials/_head
 include ./partials/_header
-include ./partials/_toggle
+include ./partials/_icon
 include ./partials/_footer
 
-+head()
-body
-	header.header
++head("The Open Brain Project | Discover, Educate, Translate", "The Open Brain Project is a collaborative effort among scientists and clinicians to advance understanding of normal and pathological brain function.")
+body.home
+	+header("")
+	main
 		.container
-			h1 The Open Brain Project
-	.main
-		section.intro
+			.link-blocks.main-area-blocks
+				a.link-block.discover-block(href="/discover")
+					.container
+						h1 Discover
+						p Integrating knowledge from the cognitive and brain sciences to open new frontiers in understanding human brain structure and function.
+						.button
+							| Learn More
+							+icon("rarr-icon")
+				a.link-block.educate-block(href="/educate")
+					.container
+						h1 Educate
+						p Connecting patients who have questions about a recent diagnosis to answers, students to educational resources, and scientists and clinicians to the latest tools for advancing knowledge and patient care.
+						.button
+							| Learn More
+							+icon("rarr-icon")
+				a.link-block.translate-block(href="/translate")
+					.container
+						h1 Translate
+						p The Program for Translational Brain Mapping is focused on translating the latest discoveries about human brain function into opportunities to improve patient care.
+						.button
+							| Learn More
+							+icon("rarr-icon")
+		section.mission-section
 			.container
-				h3 The Open Brain Project is a collaborative effort among scientists and clinicians to advance understanding of normal and pathological brain function. Our mission is support basic discoveries of brain function that advance patient care and provide a platform for community education and outreach.
-		section.education
-			.container
-				h2 Education
-				ul.links
-					li.link.featured
-						a.link-block(href="https://brainsurvey.org")
-							.link-video-wrapper
-								video(width="320", height="240", loop, muted, autoplay)
-									source(src="img/brain_1232_720.mp4", type="video/mp4")
-							.link-content
-								h4 Brain Survey
-								p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		section.discovery
-			.container
-				h2 Discovery
-				ul.links
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h4 Brain Tumor
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h4 Stroke
-					li.link
-						a.link-block
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h4 TBI
-		section.care
-			.container
-				h2 Care
-				ul.links
-					li.link.featured.reversed
-						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx")
-							.link-image-wrapper
-								.link-image(style="background-image: linear-gradient(transparent, rgba(0,0,0,.1)), url(img/urmc_1200_900.png)")
-							.link-content
-								h4 Program for Translational Brain Mapping
-								p The program for translational brain mapping brings together clinicians and scientists at the University of Rochester, Carnegie Mellon University and the University of Pittsburgh Medical Center who are committed to the vision of advancing patient care through personalized brain mapping. The Program for Translational Brain Mapping is based in the Department of Neurosurgery at the University of Rochester Medical Center. 
-				ul.links
-					li.link
-						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/our-team.aspx")
-							.link-image-wrapper
-								.link-image(style="background-image: url()")
-							.link-content
-								h4 Our Team
-					li.link
-						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/our-facilities.aspx")
-							.link-image-wrapper
-								.link-image(style="background-image: url(img/facilities_1200_900.jpg)")
-							.link-content
-								h4 Our Facilities
-					li.link
-						a.link-block(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping/resources-for-patients.aspx")
-							.link-image-wrapper
-								.link-image(style="background-image: url(img/book_1200_900.jpg)")
-							.link-content
-								h4 Resources for Patients
-	.secondary
-		section.videos
-			.wrapper
-				h2 Featured Videos
-				.flickity-controls
-					button.previous Previous
-					button.next Next
-			.video-wrapper(data-flickity='{ "pageDots": false, "autoPlay": true, "wrapAround": true, "lazyLoad": 2 }')
-				for video in videos
-					.carousel-cell
-						a.carousel-cell-link(href="https://www.youtube.com/watch?v=" + video.id)
-							.carousel-cell-img-wrapper
-								img.carousel-cell-img(data-flickity-lazyload="https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg", width=480 height="360")
-								.carousel-cell-play
-							.carousel-cell-content
-								h4= video.title
-								// p= video.description
+				h1 The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care and provide a platform for community education and outreach.
 
-				//- .video-wrapper(data-flickity='{ "autoPlay": true, "wrapAround": true, "lazyLoad": 2 }')
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="https://www.youtube.com/watch?v=95NMmqaFAKE")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Saxophone Serenades Surgeons 8/21/17
-				//- 				p Music is not only a major part of Dan Fabbio’s life, as a music teacher it is his livelihood. So when doctors... 
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="XXXXXX")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Video_name
-				//- 				p XXXXXX
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="XXXXXX")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Video_name
-				//- 				p XXXXXX
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="XXXXXX")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Video_name
-				//- 				p XXXXXX
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="XXXXXX")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Video_name
-				//- 				p XXXXXX
-				//- 	.carousel-cell
-				//- 		a.carousel-cell-link(href="XXXXXX")
-				//- 			img.carousel-cell-img(data-flickity-lazyload="img/book_1200_900.jpg")
-				//- 			.carousel-cell-content
-				//- 				h3 Video_name
-				//- 				p XXXXXX
-
-		section.contact
+		section.focus-area-section
 			.container
-				h2 Newsletter
-				p Subscribe to our monthly newsletter
-				.subscribe
-					input.subscribe-input(type="email", placeholder="Your email...")
-					button.subscribe-button Subscribe
-
-		footer.footer
+				h1 Our Focus Areas
 			.container
-				p &copy; 2019 Brad Mahon of Brain Survey, LLC
-		script(src="js/flickity.min.js")
+				.link-blocks.focus-area-blocks
+					a.link-block.stroke-block(href="/stroke")
+						.container
+							h1 
+								| Stroke
+								+icon("rarr-icon")
+					a.link-block.stroke-block(href="/brain-tumors")
+						.container
+							h1 
+								| Brain Tumors
+								+icon("rarr-icon")
+					a.link-block.stroke-block(href="/tbi")
+						.container
+							h1 
+								| Traumatic Brain Injury
+								+icon("rarr-icon")
+		section.partners-section
+			.container
+				h1 Partnering Institutions and Programs
+			.container
+				.partners-grid
+					a.partner-link(href="https://www.cmu.edu/dietrich/psychology/caoslab/")
+						img.partner-img(src="img/partners/cmu_color.png", width="500", height="490", alt="Carnegie Mellon University")
+					a.partner-link(href="http://tbm.urmc.edu")
+						img.partner-img(src="img/partners/urmc_color.png", width="500", height="490", alt="University of Rochester Medical School")
+					a.partner-link(href="http://proactionlab.fpce.uc.pt/")
+						img.partner-img(src="img/partners/uc_color.png", width="500", height="490", alt="University of Coimbra")
+					a.partner-link(href="")
+						img.partner-img(src="img/partners/beijing_color.png", width="500", height="490", alt="Beijing Normal University")
+					a.partner-link(href="https://cogneuro.psychology.fas.harvard.edu/")
+						img.partner-img(src="img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
+	+footer()
+			
+
+
