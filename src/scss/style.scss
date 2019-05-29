@@ -14,6 +14,9 @@ $light_black: tint($black, 10%);
 $light_gray: rgba(mix($black, $white), 0.2);
 $light_white: rgba($white, 0.1);
 
+$blue: #147ace;
+$purple: #9d13c1;
+
 $mobile: 20em;
 $tablet: 40em;
 $desktop: 60em;
@@ -63,6 +66,8 @@ $color-array: $spectral-array;
 
 // Base Styles ===========================================================================
 body {
+	min-height: 100vh;
+
 	font-size: var(--root-size);
 	font-family: Source Sans Pro, Helvetica Neue, Helvetica, sans-serif;
 	line-height: 1.5;
@@ -72,7 +77,7 @@ body {
 			circle at top left,
 			transparent 0,
 			transparent 40%,
-			rgba($light_gray, 0.04) 0,
+			rgba($light_gray, 0.06) 0,
 			transparent 50%,
 			transparent 0
 		),
@@ -80,14 +85,22 @@ body {
 			circle at bottom right,
 			transparent 0,
 			transparent 40%,
-			rgba($light_gray, 0.04) 0,
+			rgba($light_gray, 0.06) 0,
 			transparent 50%,
 			transparent 0
 		);
 
-	&.tbi {
-		background: $black;
+	&.dark {
+		background-color: $black;
 		color: $white;
+	}
+}
+
+section {
+	border-bottom: thin solid $light_gray;
+
+	&:last-of-type {
+		border-bottom: 0;
 	}
 }
 
@@ -103,19 +116,39 @@ body {
 
 // Typography ============================================================================
 h1 {
-	font-size: 1.4em;
+	font-size: 1.5em;
 }
 
 h2 {
-	font-size: 1.2em;
+	font-size: 1.8em;
+	margin-bottom: var(--medium);
 }
 
 h3 {
-	font-size: 1em;
+	font-size: 1.2em;
+	margin-bottom: var(--small);
 }
 
 p {
-	margin-bottom: 1em;
+	margin-bottom: var(--medium);
+}
+
+a {
+	color: $blue;
+
+	&:visited {
+		color: $purple;
+	}
+}
+
+ul,
+li {
+	margin-left: var(--large);
+	list-style-type: square;
+}
+
+ul {
+	margin-bottom: var(--large);
 }
 
 .button {
@@ -130,38 +163,47 @@ p {
 .icon {
 	display: inline-block;
 	vertical-align: baseline;
-	width: 0.6em;
-	height: 0.6em;
+	width: 0.7em;
+	height: 0.7em;
 }
 
 // Header ================================================================================
 header {
 	border-bottom: thin solid $light_gray;
-	margin-bottom: var(--large);
+}
+
+.site-logo,
+.nav-toggle {
+	@media (min-width: $tablet) {
+		font-size: 1.25em;
+	}
+}
+
+// Logo ===========================================================================
+.site-logo {
+	@extend %no-select;
+
+	display: inline-block;
+	font-weight: bold;
 
 	a {
-		color: currentColor;
+		color: $black;
 		text-decoration: none;
 
 		&:hover {
 			text-decoration: underline;
 		}
 	}
-}
-
-.site-logo {
-	@extend %no-select;
-
-	font-size: 1.25em;
 
 	.icon {
-		width: 1.75em;
-		height: 1.75em;
+		width: 2em;
+		height: 2em;
 		vertical-align: middle;
 		margin-right: var(--small);
 	}
 
 	.slug {
+		font-weight: normal;
 		opacity: 0.5;
 
 		&:not(:empty):before {
@@ -171,7 +213,99 @@ header {
 	}
 }
 
+// Navigation ===========================================================================
+.nav-toggle {
+	@extend %no-select;
+
+	display: inline-block;
+	font-weight: bold;
+	padding: 0 var(--small);
+	line-height: 2em;
+	vertical-align: top;
+	float: right;
+	cursor: pointer;
+
+	&:hover {
+		background: $white;
+		border-radius: var(--radius);
+
+		span {
+			text-decoration: underline;
+		}
+	}
+
+	.icon {
+		width: 1.5em;
+		height: 1.5em;
+		margin-left: var(--small);
+		vertical-align: middle;
+	}
+}
+
+nav {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	width: 80%;
+	max-width: 20em;
+	right: 0;
+	bottom: 0;
+	background: $black;
+	color: $white;
+	box-shadow: 0 0 2em $black;
+	z-index: 100;
+
+	ul {
+		list-style: none;
+	}
+
+	li ul li {
+		padding-left: var(--extra-large);
+	}
+}
+
 // Home page =============================================================================
+.page-hero,
+.link-block {
+	display: block;
+	border-radius: var(--radius-large);
+
+	&,
+	&:visited {
+		color: $white;
+	}
+
+	h1 {
+		font-size: 2em;
+		line-height: 1;
+		margin: var(--large) 0 var(--extra-large);
+	}
+
+	p {
+		font-weight: normal;
+	}
+}
+
+.page-hero {
+	p {
+		font-size: 1.2em;
+	}
+
+	@media (min-width: $tablet) {
+		.container {
+			display: flex;
+			align-items: center;
+			padding: var(--extra-large);
+		}
+
+		p {
+			font-size: 1.4em;
+			margin: 0 0 0 var(--extra-large);
+		}
+	}
+}
+
 .link-blocks {
 	position: relative;
 	z-index: 10;
@@ -182,20 +316,15 @@ header {
 }
 
 .link-block {
-	display: block;
-	margin-bottom: var(--small);
-	background: dodgerblue;
-	color: $white;
+	margin: 0 0 var(--medium);
 	text-decoration: none;
-	border-radius: var(--radius-large);
 	flex: 1;
-	box-shadow: 0 0 0 $light_gray;
 	transition: box-shadow var(--transition), transform var(--transition),
 		background-color var(--transition);
 
 	@media (min-width: $desktop) {
 		transform: scale(1);
-		margin-right: var(--medium);
+		margin: 0 var(--medium) 0 0;
 
 		&:last-child {
 			margin-right: 0;
@@ -214,15 +343,6 @@ header {
 		justify-content: space-between;
 	}
 
-	h1 {
-		line-height: 1;
-		font-size: 2.25em;
-	}
-
-	p {
-		font-weight: normal;
-	}
-
 	.button {
 		align-self: flex-start;
 		background: rgba($white, 0.1);
@@ -238,46 +358,52 @@ header {
 	}
 }
 
-@mixin link-block($start, $end) {
+// Gradients =================================================================================
+@mixin gradient($start, $end) {
 	background-color: $start;
 	background-image: linear-gradient(to top left, transparent, $end);
+	box-shadow: 0 0.5rem 2rem rgba($start, 0.3);
 
-	&:hover {
+	&.link-block:hover {
 		background-color: shade($start, 25%);
-		box-shadow: 0 0.5rem 2rem rgba($start, 0.4);
-	}
+		box-shadow: 0 0.5rem 2rem rgba($start, 0.6);
 
-	.button:hover {
-		color: shade($start, 25%);
+		.button:hover {
+			color: shade($start, 25%);
+		}
 	}
 }
 
-.main-area-blocks {
-	h1 {
-		margin: var(--large) 0 var(--extra-large);
-	}
-	.link-block {
-		&:nth-child(1) {
-			// orange
-			@include link-block(#d84315, #fb8c00);
-		}
-		&:nth-child(2) {
-			// green
-			@include link-block(#43a047, #8bc34a);
-		}
-		&:nth-child(3) {
-			// blue
-			@include link-block(#1976d2, #00acc1);
-		}
-	}
+.orange-gradient {
+	@include gradient(#d84315, #fb8c00);
+}
+
+.green-gradient {
+	@include gradient(#43a047, #8bc34a);
+}
+
+.blue-gradient {
+	@include gradient(#1976d2, #00acc1);
+}
+
+.pink-gradient {
+	@include gradient(#d84315, #ec407a);
+}
+.yellow-gradient {
+	@include gradient(#f57c00, #ffc107);
+}
+.purple-gradient {
+	@include gradient(#5e35b1, #ab47bc);
 }
 
 // Mission =================================================================================
 .mission-section {
-	border: thin solid $light_gray;
-	border-width: thin 0;
-	padding: var(--extra-large) 0;
-	margin: var(--large) 0;
+	padding: var(--large) 0;
+
+	.home & {
+		padding: var(--extra-large) 0;
+		margin: var(--large) 0;
+	}
 
 	h1 {
 		font-weight: normal;
@@ -286,7 +412,6 @@ header {
 
 // Focus Areas =================================================================================
 .focus-area-section {
-	border-bottom: thin solid $light_gray;
 	padding-bottom: var(--large);
 	margin-bottom: var(--large);
 }
@@ -307,17 +432,8 @@ header {
 			text-align: center;
 		}
 
-		&:nth-child(1) {
-			// pink
-			@include link-block(#d84315, #ec407a);
-		}
-		&:nth-child(2) {
-			// yellow
-			@include link-block(#f57c00, #ffc107);
-		}
-		&:nth-child(3) {
-			// purple
-			@include link-block(#5e35b1, #ab47bc);
+		h1 {
+			margin: 0;
 		}
 	}
 }
@@ -362,12 +478,12 @@ header {
 
 	@media (min-width: $tablet) {
 		padding-bottom: 50%;
-		border-radius: var(--radius-large) var(--radius-large) 0 0;
 	}
 
 	@media (min-width: $desktop) {
 		padding-bottom: 0;
 		height: 70vh;
+		border-radius: var(--radius-large);
 	}
 
 	canvas {
@@ -434,25 +550,22 @@ header {
 // Data sets =============================================================================
 .data-sets {
 	list-style: none;
-	margin-top: var(--large);
-
-	@media (min-width: $tablet) {
-		margin-top: 0;
-	}
+	margin: 0;
 }
 
 .data-set {
 	display: flex;
 	align-items: center;
-	border-top: thin solid $light_black;
+	border-top: thin solid $light_gray;
+	background: $white;
 	overflow: hidden;
 
 	&.is-running {
-		background: $light_black;
+		background: $light_gray;
 	}
 
 	&:last-child {
-		border-bottom: thin solid $light_black;
+		border-bottom: thin solid $light_gray;
 	}
 
 	@media (min-width: $tablet) {
@@ -461,7 +574,7 @@ header {
 		width: 15em;
 		margin: var(--large) var(--large) 0 0;
 		padding: var(--large);
-		border: thin solid $light_black;
+		border: thin solid $light_gray;
 		border-radius: var(--radius);
 	}
 }
@@ -495,8 +608,8 @@ header {
 		&,
 		&:hover {
 			pointer-events: none;
-			background: $black;
-			color: mix($black, $white);
+			background: mix($black, $white);
+			color: $white;
 		}
 
 		&:after {
