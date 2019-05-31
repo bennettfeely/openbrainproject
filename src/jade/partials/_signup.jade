@@ -1,0 +1,11 @@
+include ./_icon
+
+mixin signup()
+	.signup-modal
+		.container
+			h1 Sign Up for Updates
+			p Stay up to date with the latest news from The Open Brain Project
+			label.email-signup
+				input(type="email", placeholder="Your email")
+				button.button.email-subscribe Subscribe
+			+icon("close")

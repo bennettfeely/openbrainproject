@@ -97,6 +97,7 @@ body {
 }
 
 section {
+	padding: var(--large) 0;
 	border-bottom: thin solid $light_gray;
 
 	&:last-of-type {
@@ -106,6 +107,7 @@ section {
 
 .container,
 .wrapper {
+	position: relative;
 	max-width: $desktop;
 	margin: 0 auto;
 }
@@ -151,12 +153,39 @@ ul {
 	margin-bottom: var(--large);
 }
 
+input {
+	display: block;
+	font: inherit;
+	padding: var(--small) var(--medium);
+	border-radius: var(--radius);
+	border: 0;
+	transition: color var(--transition), background-color var(--transition);
+}
+
 .button {
 	display: inline-block;
 	padding: var(--small) var(--large);
 	font-weight: bold;
 	border-radius: 2em;
-	transition: background-color var(--transition);
+	transition: color var(--transition), background-color var(--transition);
+	cursor: pointer;
+}
+
+.split {
+	@media (min-width: $tablet) {
+		display: flex;
+		align-items: flex-start;
+
+		.stretch {
+			flex: 1;
+			padding-left: var(--extra-large);
+		}
+	}
+}
+
+button {
+	font: inherit;
+	border: 0;
 }
 
 // Icons =================================================================================
@@ -203,12 +232,17 @@ header {
 	}
 
 	.slug {
-		font-weight: normal;
-		opacity: 0.5;
+		display: none;
 
-		&:not(:empty):before {
-			content: "/";
-			margin-left: var(--small);
+		@media (min-width: $tablet) {
+			display: inline-block;
+			font-weight: normal;
+			opacity: 0.5;
+
+			&:not(:empty):before {
+				content: "/";
+				margin-left: var(--small);
+			}
 		}
 	}
 }
@@ -244,7 +278,6 @@ header {
 
 nav {
 	display: none;
-
 	position: fixed;
 	top: 0;
 	width: 80%;
@@ -265,21 +298,24 @@ nav {
 	}
 }
 
-// Home page =============================================================================
+// Elements =============================================================================
 .page-hero,
 .link-block {
 	display: block;
-	border-radius: var(--radius-large);
 
 	&,
 	&:visited {
 		color: $white;
 	}
 
+	.split {
+		align-items: center;
+	}
+
 	h1 {
 		font-size: 2em;
 		line-height: 1;
-		margin: var(--large) 0 var(--extra-large);
+		margin: var(--large) 0;
 	}
 
 	p {
@@ -294,8 +330,6 @@ nav {
 
 	@media (min-width: $tablet) {
 		.container {
-			display: flex;
-			align-items: center;
 			padding: var(--extra-large);
 		}
 
@@ -316,6 +350,7 @@ nav {
 }
 
 .link-block {
+	border-radius: var(--radius-large);
 	margin: 0 0 var(--medium);
 	text-decoration: none;
 	flex: 1;
@@ -374,6 +409,11 @@ nav {
 	}
 }
 
+.black-gradient {
+	@include gradient(#555, #222);
+	color: $white;
+}
+
 .orange-gradient {
 	@include gradient(#d84315, #fb8c00);
 }
@@ -398,22 +438,71 @@ nav {
 
 // Mission =================================================================================
 .mission-section {
-	padding: var(--large) 0;
-
-	.home & {
-		padding: var(--extra-large) 0;
-		margin: var(--large) 0;
-	}
-
 	h1 {
 		font-weight: normal;
 	}
 }
 
+// Email signup =============================================================================
+.signup-modal {
+	position: fixed;
+	left: var(--large);
+	right: var(--large);
+	bottom: 0;
+	border-radius: var(--radius-large) var(--radius-large) 0 0;
+	z-index: 200;
+
+	$background: mix($white, $black, 90%);
+	background: rgba($background, 0.95);
+	background-image: linear-gradient($background, transparent);
+	box-shadow: 0 0 2em $light_gray;
+	color: $black;
+
+	@media (min-width: $tablet) {
+		left: initial;
+		max-width: 22em;
+	}
+
+	.icon-close {
+		position: absolute;
+		top: var(--large);
+		right: var(--large);
+		width: 1em;
+		height: 1em;
+		color: $black;
+	}
+}
+
+.email-signup {
+	display: flex;
+	align-items: center;
+	padding-bottom: var(--small);
+
+	input,
+	button {
+		background: $white;
+		color: $black;
+		border-radius: var(--radius);
+	}
+
+	&:hover {
+		input,
+		button {
+			background: $white;
+			color: $black;
+		}
+	}
+
+	input {
+		flex: 1;
+		margin: 0 var(--small) 0 0;
+	}
+}
+
 // Focus Areas =================================================================================
 .focus-area-section {
-	padding-bottom: var(--large);
-	margin-bottom: var(--large);
+	// padding-bottom: var(--large);
+	// margin-bottom: var(--large);
 }
 
 .focus-area-blocks {
@@ -422,15 +511,7 @@ nav {
 	.link-block {
 		flex: auto;
 		white-space: nowrap;
-		border-radius: var(--radius-large);
 		padding: var(--small) 0;
-
-		@media (min-width: $desktop) {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-		}
 
 		h1 {
 			margin: 0;
@@ -636,7 +717,10 @@ footer {
 	}
 
 	a {
-		color: currentColor;
+		&,
+		&:visited {
+			color: $black;
+		}
 	}
 
 	.social-link {

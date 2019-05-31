@@ -2,6 +2,7 @@ include ./partials/_head
 include ./partials/_header
 include ./partials/_icon
 include ./partials/_footer
+include ./partials/_signup
 
 +head("The Open Brain Project | Discover, Educate, Translate", "The Open Brain Project is a collaborative effort among scientists and clinicians to advance understanding of normal and pathological brain function.")
 body.home
@@ -17,25 +18,24 @@ body.home
 							p Integrating knowledge from the cognitive and brain sciences to open new frontiers in understanding human brain structure and function.
 							.button
 								| Learn More
-								+icon("rarr-icon")
+								+icon("rarr")
 					a.link-block.educate-block.green-gradient(href="/educate")
 						.container
 							h1 Educate
 							p Connecting patients who have questions about a recent diagnosis to answers, students to educational resources, and scientists and clinicians to the latest tools for advancing knowledge and patient care.
 							.button
 								| Learn More
-								+icon("rarr-icon")
+								+icon("rarr")
 					a.link-block.translate-block.blue-gradient(href="/translate")
 						.container
 							h1 Translate
 							p The Program for Translational Brain Mapping is focused on translating the latest discoveries about human brain function into opportunities to improve patient care.
 							.button
 								| Learn More
-								+icon("rarr-icon")
+								+icon("rarr")
 		section.mission-section
 			.container
-				h1 The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care and provide a platform for community education and outreach.
-
+				h1 The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care and provide a platform for community education and outreach.			
 		section.focus-area-section
 			.container
 				h1 Our Focus Areas
@@ -45,17 +45,17 @@ body.home
 						.container
 							h1 
 								| Stroke
-								+icon("rarr-icon")
+								+icon("rarr")
 					a.link-block.stroke-block.yellow-gradient(href="/brain-tumors")
 						.container
 							h1 
 								| Brain Tumors
-								+icon("rarr-icon")
+								+icon("rarr")
 					a.link-block.stroke-block.purple-gradient(href="/tbi")
 						.container
 							h1 
 								| Traumatic Brain Injury
-								+icon("rarr-icon")
+								+icon("rarr")
 		section.partners-section
 			.container
 				h1 Partnering Institutions and Programs
@@ -72,6 +72,4 @@ body.home
 					a.partner-link(href="https://cogneuro.psychology.fas.harvard.edu/")
 						img.partner-img(src="img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
 	+footer()
-			
-
-
+	+signup()
