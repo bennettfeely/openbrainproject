@@ -7,6 +7,26 @@
 @import "partials/extensions";
 @import "partials/functions";
 
+// Mixins ================================================================================
+@mixin shadow($color, $size) {
+	box-shadow: 0 $size/4 $size $color;
+}
+
+@mixin gradient($start, $end) {
+	@include shadow(rgba($start, 0.3), 2rem);
+	background-color: $start;
+	background-image: linear-gradient(to top left, transparent, $end);
+
+	&.link-block:hover {
+		@include shadow(rgba($start, 0.6), 2rem);
+		background-color: shade($start, 25%);
+
+		.button:hover {
+			color: shade($start, 25%);
+		}
+	}
+}
+
 // Variables =============================================================================
 $white: #ffffff;
 $black: #16161d;
@@ -131,6 +151,12 @@ h3 {
 	margin-bottom: var(--small);
 }
 
+h4 {
+	font-weight: bold;
+	font-size: 0.875em;
+	line-height: 1rem;
+}
+
 p {
 	margin-bottom: var(--medium);
 }
@@ -162,6 +188,11 @@ input {
 	transition: color var(--transition), background-color var(--transition);
 }
 
+button {
+	font: inherit;
+	border: 0;
+}
+
 .button {
 	display: inline-block;
 	padding: var(--small) var(--large);
@@ -181,11 +212,6 @@ input {
 			padding-left: var(--extra-large);
 		}
 	}
-}
-
-button {
-	font: inherit;
-	border: 0;
 }
 
 // Icons =================================================================================
@@ -208,7 +234,7 @@ header {
 	}
 }
 
-// Logo ===========================================================================
+// Logo ==================================================================================
 .site-logo {
 	@extend %no-select;
 
@@ -247,7 +273,7 @@ header {
 	}
 }
 
-// Navigation ===========================================================================
+// Navigation ============================================================================
 .nav-toggle {
 	@extend %no-select;
 
@@ -277,16 +303,17 @@ header {
 }
 
 nav {
+	@include shadow($black, 2rem);
+
 	display: none;
 	position: fixed;
 	top: 0;
 	width: 80%;
-	max-width: 20em;
+	max-width: 23em;
 	right: 0;
 	bottom: 0;
 	background: $black;
 	color: $white;
-	box-shadow: 0 0 2em $black;
 	z-index: 100;
 
 	ul {
@@ -298,7 +325,7 @@ nav {
 	}
 }
 
-// Elements =============================================================================
+// Elements ==============================================================================
 .page-hero,
 .link-block {
 	display: block;
@@ -359,7 +386,7 @@ nav {
 
 	@media (min-width: $desktop) {
 		transform: scale(1);
-		margin: 0 var(--medium) 0 0;
+		margin: 0 var(--large) 0 0;
 
 		&:last-child {
 			margin-right: 0;
@@ -393,22 +420,7 @@ nav {
 	}
 }
 
-// Gradients =================================================================================
-@mixin gradient($start, $end) {
-	background-color: $start;
-	background-image: linear-gradient(to top left, transparent, $end);
-	box-shadow: 0 0.5rem 2rem rgba($start, 0.3);
-
-	&.link-block:hover {
-		background-color: shade($start, 25%);
-		box-shadow: 0 0.5rem 2rem rgba($start, 0.6);
-
-		.button:hover {
-			color: shade($start, 25%);
-		}
-	}
-}
-
+// Gradients =============================================================================
 .black-gradient {
 	@include gradient(#555, #222);
 	color: $white;
@@ -436,75 +448,14 @@ nav {
 	@include gradient(#5e35b1, #ab47bc);
 }
 
-// Mission =================================================================================
+// Mission ===============================================================================
 .mission-section {
 	h1 {
 		font-weight: normal;
 	}
 }
 
-// Email signup =============================================================================
-.signup-modal {
-	position: fixed;
-	left: var(--large);
-	right: var(--large);
-	bottom: 0;
-	border-radius: var(--radius-large) var(--radius-large) 0 0;
-	z-index: 200;
-
-	$background: mix($white, $black, 90%);
-	background: rgba($background, 0.95);
-	background-image: linear-gradient($background, transparent);
-	box-shadow: 0 0 2em $light_gray;
-	color: $black;
-
-	@media (min-width: $tablet) {
-		left: initial;
-		max-width: 22em;
-	}
-
-	.icon-close {
-		position: absolute;
-		top: var(--large);
-		right: var(--large);
-		width: 1em;
-		height: 1em;
-		color: $black;
-	}
-}
-
-.email-signup {
-	display: flex;
-	align-items: center;
-	padding-bottom: var(--small);
-
-	input,
-	button {
-		background: $white;
-		color: $black;
-		border-radius: var(--radius);
-	}
-
-	&:hover {
-		input,
-		button {
-			background: $white;
-			color: $black;
-		}
-	}
-
-	input {
-		flex: 1;
-		margin: 0 var(--small) 0 0;
-	}
-}
-
-// Focus Areas =================================================================================
-.focus-area-section {
-	// padding-bottom: var(--large);
-	// margin-bottom: var(--large);
-}
-
+// Focus Areas ===========================================================================
 .focus-area-blocks {
 	font-size: 0.8em;
 
@@ -519,7 +470,7 @@ nav {
 	}
 }
 
-// Partners =================================================================================
+// Partners ==============================================================================
 .partners-grid {
 	text-align: center;
 }
@@ -545,163 +496,160 @@ nav {
 	height: auto;
 }
 
-// Canvas ================================================================================
-.canvas-wrapper {
-	position: relative;
-	padding-bottom: 100%;
-	background: linear-gradient($light_black, $black);
-	cursor: move;
-	cursor: grab;
+// Email signup ==========================================================================
+.signup-modal {
+	@include shadow($light_gray, 2rem);
 
-	&:active {
-		cursor: grabbing;
+	$background: mix($white, $black, 90%);
+	background: rgba($background, 0.95);
+	background-image: linear-gradient($background, transparent);
+	position: fixed;
+	left: var(--large);
+	right: var(--large);
+	bottom: 0;
+	border-radius: var(--radius-large) var(--radius-large) 0 0;
+	z-index: 200;
+	color: $black;
+
+	&.is-hidden {
+		display: none;
+	}
+
+	p {
+		font-size: 0.9em;
 	}
 
 	@media (min-width: $tablet) {
-		padding-bottom: 50%;
-	}
-
-	@media (min-width: $desktop) {
-		padding-bottom: 0;
-		height: 70vh;
+		bottom: var(--large);
 		border-radius: var(--radius-large);
+		left: initial;
+		max-width: 25em;
 	}
 
-	canvas {
+	.icon-close {
+		position: absolute;
+		top: var(--large);
+		right: var(--large);
+		width: 1em;
+		height: 1em;
+		color: $black;
+		cursor: pointer;
+
+		&:hover {
+			color: red;
+		}
+	}
+}
+
+.email-signup {
+	display: flex;
+	align-items: center;
+	padding-bottom: var(--small);
+
+	input,
+	button {
+		@include shadow($light_gray, 1rem);
+		background: $white;
+		color: $black;
+		border-radius: var(--radius);
+	}
+
+	&:hover {
+		input,
+		button {
+			background: $white;
+			color: $black;
+		}
+	}
+
+	input {
+		flex: 1;
+		margin: 0 var(--small) 0 0;
+	}
+}
+
+// Videos ================================================================================
+.videos-section {
+	// background: $black;
+	// background-image: radial-gradient(
+	// 		circle at top left,
+	// 		transparent 0,
+	// 		transparent 40%,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 50%,
+	// 		transparent 0
+	// 	),
+	// 	radial-gradient(
+	// 		circle at bottom right,
+	// 		transparent 0,
+	// 		transparent 40%,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 50%,
+	// 		transparent 0
+	// 	);
+	// color: $white;
+}
+
+.videos-list {
+	padding: 0 var(--large) var(--large);
+}
+
+.video-block {
+	display: inline-block;
+	width: 33.33%;
+	padding: var(--large);
+	vertical-align: top;
+	text-decoration: none;
+
+	@media (min-width: ($tablet + $desktop)/2) {
+		width: 20%;
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		.icon-youtube {
+			opacity: 1;
+		}
+	}
+}
+
+.video-thumbnail {
+	@include shadow($light_gray, 1em);
+	position: relative;
+	padding-bottom: 56%;
+	background-color: $black;
+	background-size: cover;
+	background-position: center center;
+	border-radius: var(--radius);
+	margin: 0 0 var(--small);
+
+	.icon-youtube-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
+		right: 0;
+		bottom: 0;
+	}
+
+	.icon-youtube {
+		width: 40%;
+		height: auto;
+		opacity: 0;
+		transition: opacity var(--transition);
 	}
 }
 
-// Spinner ===============================================================================
-.spinner-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
+.video-title {
+	color: $black;
+	hyphens: auto;
+	transition: color var(--transition);
 
-.spinner {
-	width: 50px;
-	height: 50px;
-	border: 2px solid;
-	border-color: $white $white transparent transparent;
-	border-radius: 50%;
-	animation: spin 0.6s linear infinite;
-
-	@keyframes spin {
-		to {
-			transform: rotate(1turn);
-		}
-	}
-}
-
-// Scale =================================================================================
-.intensity-container {
-	@extend %no-select;
-
-	display: inline-block;
-	font-size: 0.8em;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	text-align: right;
-	color: $white;
-}
-
-.intensity-bar {
-	height: 0.25em;
-	width: 7em;
-	background: red;
-	background-image: linear-gradient(90deg, $inferno-array);
-}
-
-.intensity-label {
-	display: flex;
-	justify-content: space-between;
-}
-
-// Data sets =============================================================================
-.data-sets {
-	list-style: none;
-	margin: 0;
-}
-
-.data-set {
-	display: flex;
-	align-items: center;
-	border-top: thin solid $light_gray;
-	background: $white;
-	overflow: hidden;
-
-	&.is-running {
-		background: $light_gray;
-	}
-
-	&:last-child {
-		border-bottom: thin solid $light_gray;
-	}
-
-	@media (min-width: $tablet) {
-		display: inline-block;
-		vertical-align: top;
-		width: 15em;
-		margin: var(--large) var(--large) 0 0;
-		padding: var(--large);
-		border: thin solid $light_gray;
-		border-radius: var(--radius);
-	}
-}
-
-.data-set-title {
-	flex: 1;
-	font-weight: 400;
-}
-
-.data-set-run {
-	@extend %no-select;
-	padding: var(--medium) var(--large);
-	background: nth($inferno-array, 10);
-	border: 0;
-	border-radius: var(--radius);
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color var(--transition);
-
-	&:hover {
-		background: tint(nth($inferno-array, 10), 50%);
-		transition-duration: var(--transition-hover);
-	}
-
-	&:active {
-		background: nth($inferno-array, 8);
-		transition-duration: 0s;
-	}
-
-	.is-running & {
-		&,
-		&:hover {
-			pointer-events: none;
-			background: mix($black, $white);
-			color: $white;
-		}
-
-		&:after {
-			content: "ning";
-		}
-	}
-
-	@media (min-width: $tablet) {
-		padding: var(--small) var(--medium);
-		margin-top: var(--medium);
-		float: right;
+	.video-block:hover & {
+		color: $blue;
 	}
 }
 
@@ -734,3 +682,6 @@ footer {
 		}
 	}
 }
+
+// TBI ===================================================================================
+@import "partials/tbi";

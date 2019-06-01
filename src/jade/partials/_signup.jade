@@ -9,3 +9,7 @@ mixin signup()
 				input(type="email", placeholder="Your email")
 				button.button.email-subscribe Subscribe
 			+icon("close")
+	script
+		| document.querySelector(".icon-close").addEventListener("click", function() {
+		| document.querySelector(".signup-modal").classList.add("is-hidden");
+		| });

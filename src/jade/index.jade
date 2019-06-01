@@ -71,5 +71,15 @@ body.home
 						img.partner-img(src="img/partners/beijing_color.png", width="500", height="490", alt="Beijing Normal University")
 					a.partner-link(href="https://cogneuro.psychology.fas.harvard.edu/")
 						img.partner-img(src="img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
+		section.videos-section
+			.container
+				h1 Featured Videos
+			.wrapper.videos-list
+				for video in videos
+					a.video-block(href="https://www.youtube.com/watch?v=" + video.id)
+						.video-thumbnail(style="background-image: url(https://i.ytimg.com/vi/" + video.id + "/sddefault.jpg)")
+							.icon-youtube-wrapper
+								+icon("youtube")
+						h4.video-title= video.title
 	+footer()
 	+signup()

@@ -15,6 +15,7 @@ fs = require("fs");
 del = require("del");
 
 // Import data
+videos = require("./src/js/_videos.js");
 datasets = require("./src/js/_datasets.js");
 
 // Compile Jade to HTML ==================================================================
@@ -23,7 +24,10 @@ gulp.task("jade", function() {
     .src("src/jade/index.jade")
     .pipe(
       jade({
-        pretty: true
+        pretty: true,
+        data: {
+          videos: videos_arr
+        }
       })
     )
     .pipe(
@@ -167,6 +171,11 @@ gulp.task("default", function() {
   // Subfolders and Partials
   gulp.watch(["src/jade/*/index.jade", "src/jade/partials/*.jade"], function() {
     return gulp.run("jade", "jade-subfolder");
+  });
+
+  // Videos
+  gulp.watch(["src/js/_videos.js"], function() {
+    return gulp.run("js", "jade");
   });
 
   // TBI

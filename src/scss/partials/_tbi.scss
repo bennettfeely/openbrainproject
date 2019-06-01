@@ -1,0 +1,159 @@
+// Canvas ================================================================================
+.canvas-wrapper {
+	position: relative;
+	padding-bottom: 100%;
+	background: linear-gradient($light_black, $black);
+	cursor: move;
+	cursor: grab;
+
+	&:active {
+		cursor: grabbing;
+	}
+
+	@media (min-width: $tablet) {
+		padding-bottom: 50%;
+	}
+
+	@media (min-width: $desktop) {
+		padding-bottom: 0;
+		height: 70vh;
+		border-radius: var(--radius-large);
+	}
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Spinner ===============================================================================
+.spinner-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.spinner {
+	width: 50px;
+	height: 50px;
+	border: 2px solid;
+	border-color: $white $white transparent transparent;
+	border-radius: 50%;
+	animation: spin 0.6s linear infinite;
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+}
+
+// Scale =================================================================================
+.intensity-container {
+	@extend %no-select;
+
+	display: inline-block;
+	font-size: 0.8em;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+	color: $white;
+}
+
+.intensity-bar {
+	height: 0.25em;
+	width: 7em;
+	background: red;
+	background-image: linear-gradient(90deg, $inferno-array);
+}
+
+.intensity-label {
+	display: flex;
+	justify-content: space-between;
+}
+
+// Data sets =============================================================================
+.data-sets {
+	list-style: none;
+	margin: 0;
+}
+
+.data-set {
+	display: flex;
+	align-items: center;
+	border-top: thin solid $light_gray;
+	background: $white;
+	overflow: hidden;
+
+	&.is-running {
+		background: $light_gray;
+	}
+
+	&:last-child {
+		border-bottom: thin solid $light_gray;
+	}
+
+	@media (min-width: $tablet) {
+		display: inline-block;
+		vertical-align: top;
+		width: 15em;
+		margin: var(--large) var(--large) 0 0;
+		padding: var(--large);
+		border: thin solid $light_gray;
+		border-radius: var(--radius);
+	}
+}
+
+.data-set-title {
+	flex: 1;
+	font-weight: 400;
+}
+
+.data-set-run {
+	@extend %no-select;
+	padding: var(--medium) var(--large);
+	background: nth($inferno-array, 10);
+	border: 0;
+	border-radius: var(--radius);
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color var(--transition);
+
+	&:hover {
+		background: tint(nth($inferno-array, 10), 50%);
+		transition-duration: var(--transition-hover);
+	}
+
+	&:active {
+		background: nth($inferno-array, 8);
+		transition-duration: 0s;
+	}
+
+	.is-running & {
+		&,
+		&:hover {
+			pointer-events: none;
+			background: mix($black, $white);
+			color: $white;
+		}
+
+		&:after {
+			content: "ning";
+		}
+	}
+
+	@media (min-width: $tablet) {
+		padding: var(--small) var(--medium);
+		margin-top: var(--medium);
+		float: right;
+	}
+}
