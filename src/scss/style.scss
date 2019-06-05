@@ -12,6 +12,25 @@
 	box-shadow: 0 $size/4 $size $color;
 }
 
+@mixin circles-background() {
+	background-image: radial-gradient(
+			circle at top left,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		),
+		radial-gradient(
+			circle at bottom right,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		);
+}
+
 @mixin gradient($start, $end) {
 	@include shadow(rgba($start, 0.3), 2rem);
 	background-color: $start;
@@ -93,22 +112,7 @@ body {
 	line-height: 1.5;
 	color: $black;
 	background: $white;
-	background-image: radial-gradient(
-			circle at top left,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		),
-		radial-gradient(
-			circle at bottom right,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		);
+	@include circles-background();
 
 	&.dark {
 		background-color: $black;
@@ -152,7 +156,7 @@ h3 {
 }
 
 h4 {
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 0.875em;
 	line-height: 1rem;
 }
@@ -240,6 +244,7 @@ header {
 
 	display: inline-block;
 	font-weight: bold;
+	line-height: 2.5em;
 
 	a {
 		color: $black;
@@ -274,21 +279,22 @@ header {
 }
 
 // Navigation ============================================================================
+.nav {
+}
+
 .nav-toggle {
 	@extend %no-select;
 
 	display: inline-block;
+	position: relative;
 	font-weight: bold;
-	padding: 0 var(--small);
-	line-height: 2em;
-	vertical-align: top;
-	float: right;
+	padding: 0 var(--large);
+	line-height: 2.5em;
 	cursor: pointer;
+	float: right;
+	vertical-align: top;
 
 	&:hover {
-		background: $white;
-		border-radius: var(--radius);
-
 		span {
 			text-decoration: underline;
 		}
@@ -297,31 +303,141 @@ header {
 	.icon {
 		width: 1.5em;
 		height: 1.5em;
-		margin-left: var(--small);
 		vertical-align: middle;
+		margin: 0 0 0 var(--small);
+	}
+
+	.icon-close {
+		display: none;
+	}
+
+	.has-nav & {
+		background: $light_gray;
+
+		.icon-menu {
+			display: none;
+		}
+		.icon-close {
+			display: inline-block;
+		}
 	}
 }
 
-nav {
-	@include shadow($black, 2rem);
-
-	display: none;
-	position: fixed;
-	top: 0;
-	width: 80%;
-	max-width: 23em;
-	right: 0;
-	bottom: 0;
-	background: $black;
+.nav-menu {
+	@include circles-background();
+	background-color: $black;
 	color: $white;
-	z-index: 100;
 
-	ul {
-		list-style: none;
+	color: $black;
+	display: none;
+
+	.has-nav & {
+		display: block;
 	}
 
-	li ul li {
-		padding-left: var(--extra-large);
+	.container {
+		padding: var(--large);
+	}
+
+	ul,
+	li {
+		margin: 0;
+	}
+
+	li {
+		list-style: none;
+
+		ul {
+			a {
+				font-weight: normal;
+				padding-left: var(--extra-large);
+			}
+		}
+	}
+
+	a {
+		display: block;
+		font-weight: bold;
+		color: $white;
+		padding: var(--small) var(--large);
+		text-decoration: none;
+		cursor: pointer;
+		border-radius: var(--radius);
+
+		&[href="/discover"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#d84315,
+					#fb8c00
+				);
+			}
+		}
+
+		&[href="/educate"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#43a047,
+					#8bc34a
+				);
+			}
+		}
+		&[href="/translate"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#1976d2,
+					#00acc1
+				);
+			}
+		}
+
+		&[href="/stroke"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#d84315,
+					#ec407a
+				);
+			}
+		}
+		&[href="/brain-tumors"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#f57c00,
+					#ffc107
+				);
+			}
+		}
+		&[href="/tbi"] {
+			& + ul a:hover,
+			& + ul a:focus,
+			&:hover,
+			&:focus {
+				background-image: linear-gradient(
+					to top right,
+					#5e35b1,
+					#ab47bc
+				);
+			}
+		}
 	}
 }
 
@@ -477,7 +593,7 @@ nav {
 
 .partner-link {
 	display: inline-block;
-	width: 33%;
+	width: 33.33%;
 	filter: grayscale(1);
 	padding: var(--medium);
 	transition: filter var(--transition);
@@ -522,7 +638,7 @@ nav {
 	@media (min-width: $tablet) {
 		bottom: var(--large);
 		border-radius: var(--radius-large);
-		left: initial;
+		right: initial;
 		max-width: 25em;
 	}
 
@@ -569,27 +685,6 @@ nav {
 }
 
 // Videos ================================================================================
-.videos-section {
-	// background: $black;
-	// background-image: radial-gradient(
-	// 		circle at top left,
-	// 		transparent 0,
-	// 		transparent 40%,
-	// 		rgba($light_gray, 0.06) 0,
-	// 		transparent 50%,
-	// 		transparent 0
-	// 	),
-	// 	radial-gradient(
-	// 		circle at bottom right,
-	// 		transparent 0,
-	// 		transparent 40%,
-	// 		rgba($light_gray, 0.06) 0,
-	// 		transparent 50%,
-	// 		transparent 0
-	// 	);
-	// color: $white;
-}
-
 .videos-list {
 	padding: 0 var(--large) var(--large);
 }
@@ -600,6 +695,10 @@ nav {
 	padding: var(--large);
 	vertical-align: top;
 	text-decoration: none;
+
+	@media (min-width: $tablet) {
+		width: 25%;
+	}
 
 	@media (min-width: ($tablet + $desktop)/2) {
 		width: 20%;
@@ -648,7 +747,9 @@ nav {
 	hyphens: auto;
 	transition: color var(--transition);
 
-	.video-block:hover & {
+	.video-block:hover &,
+	.video-block:active &,
+	.video-block:focus & {
 		color: $blue;
 	}
 }

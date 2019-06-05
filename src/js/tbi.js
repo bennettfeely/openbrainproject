@@ -118,13 +118,14 @@ function loadHelmet() {
     loader.load(
         "../models/helmet/scene.gltf",
         function(gltf) {
+            console.log(gltf);
             // Adjust helmet y position
             gltf.scene.position.set(0, -17, 0);
 
             scene.add(gltf.scene);
         },
         function(xhr) {
-            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+            // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
         },
         function(error) {
             console.log(error);

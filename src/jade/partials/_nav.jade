@@ -1,19 +1,28 @@
 include ./_icon
 
 mixin nav()
-	nav
+	nav.nav-menu
 		.container
 			ul
-				li Discover
+				li 
+					a(href="/discover") Discover
 					ul
-						li News
-						li Scientific Products
-						li Resources for Scientists
-						li Data Sets
-				li Educate
-				li Translate
+						li
+							a(href="/discover#news") News
+						li
+							a(href="/discover#scientific-products") Scientific Products
+						li
+							a(href="/discover#resources-for-scientists") Resources for Scientists
+						li
+							a(href="/discover#data-sets") Data Sets
+				li
+					a(href="/educate") Educate
+				li
+					a(href="/translate") Translate
 			ul
-				li Stroke
-				li Brain Tumors
-				li Traumatic Brain Injury
-			
+				li
+					a(href="/stroke") Stroke
+				li
+					a(href="/brain-tumors") Brain Tumors
+				li
+					a(href="/tbi") Traumatic Brain Injury
