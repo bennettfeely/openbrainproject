@@ -9,10 +9,15 @@ mixin header(pageHeaderTitle)
 					+icon("brain")
 					| The Open Brain Project
 				span.slug= pageHeaderTitle
-			button.nav-toggle(onClick="toggleNav()")
-				span Menu
-				+icon("menu")
-				+icon("close")
+			.right-header-content
+				a(href="https://twitter.com").social-link
+					+icon("twitter")
+				a(href="https://facebook.com").social-link
+					+icon("facebook")
+				button.nav-toggle(onClick="toggleNav()")
+					span Menu
+					+icon("menu")
+					+icon("close")
 	+nav()
 	script
 		| var html = document.querySelector("html");
