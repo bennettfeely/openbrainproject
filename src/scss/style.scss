@@ -627,10 +627,6 @@ header {
 	z-index: 200;
 	color: $black;
 
-	&.is-hidden {
-		display: none;
-	}
-
 	p {
 		font-size: 0.9em;
 	}
@@ -642,18 +638,27 @@ header {
 		max-width: 25em;
 	}
 
-	.icon-close {
+	.close-signup-modal {
 		position: absolute;
-		top: var(--large);
-		right: var(--large);
-		width: 1em;
-		height: 1em;
 		color: $black;
 		cursor: pointer;
+		top: var(--large);
+		right: var(--large);
+		width: 1.5em;
+		height: 1.5em;
 
 		&:hover {
 			color: red;
 		}
+	}
+
+	.icon-close {
+		width: 1.5em;
+		height: 1.5em;
+	}
+
+	&.is-hidden {
+		display: none;
 	}
 }
 
@@ -681,6 +686,10 @@ header {
 	input {
 		flex: 1;
 		margin: 0 var(--small) 0 0;
+	}
+
+	button {
+		@extend %no-select;
 	}
 }
 

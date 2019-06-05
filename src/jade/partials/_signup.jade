@@ -8,8 +8,9 @@ mixin signup()
 			label.email-signup
 				input(type="email", placeholder="Your email")
 				button.button.email-subscribe Subscribe
-			+icon("close")
+			.close-signup-modal
+				+icon("close")
 	script
-		| document.querySelector(".icon-close").addEventListener("click", function() {
-		| document.querySelector(".signup-modal").classList.add("is-hidden");
+		| document.querySelector(".close-signup-modal").addEventListener("click", function() {
+		| document.querySelector(".signup-modal").style.display = "none";
 		| });
