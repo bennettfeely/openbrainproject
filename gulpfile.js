@@ -21,7 +21,7 @@ datasets = require("./src/js/_datasets.js");
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
   return gulp
-    .src("src/jade/index.jade")
+    .src("src/jade/*.jade")
     .pipe(
       jade({
         pretty: true,

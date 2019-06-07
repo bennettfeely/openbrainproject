@@ -1,0 +1,16 @@
+include ../partials/_head
+include ../partials/_header
+include ../partials/_svg
+include ../partials/_icon
+include ../partials/_footer
+
+
++head("Brain Survey | The Open Brain Project", "Where personalized medicine meets translational human brain mapping")
+body.tbi
+	+header()
+	main
+		section
+			.container
+				h1 Brain Survey
+		iframe.brain-survey-embed(src="https://brainsurvey.org")
+	+footer()

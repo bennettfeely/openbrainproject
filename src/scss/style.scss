@@ -299,21 +299,6 @@ header {
 		vertical-align: middle;
 		margin-right: var(--small);
 	}
-
-	.slug {
-		display: none;
-
-		@media (min-width: $tablet) {
-			display: inline-block;
-			font-weight: normal;
-			opacity: 0.5;
-
-			&:not(:empty):before {
-				content: "/";
-				margin-left: var(--small);
-			}
-		}
-	}
 }
 
 // Navigation ============================================================================
@@ -836,3 +821,27 @@ footer {
 
 // TBI ===================================================================================
 @import "partials/tbi";
+
+// Brain Survey ==========================================================================
+@import "partials/brainsurvey";
+
+// Brain Survey ==========================================================================
+.four-oh-four-section {
+	text-align: center;
+
+	.link-block {
+		display: inline-block;
+		font-size: 80%;
+		margin: var(--large) 0 0;
+
+		.container {
+			padding: var(--small) var(--extra-large);
+		}
+	}
+}
+
+.four-oh-four-title {
+	font-size: 4em;
+}
+
+

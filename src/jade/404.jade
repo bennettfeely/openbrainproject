@@ -1,0 +1,19 @@
+include ./partials/_head
+include ./partials/_header
+include ./partials/_icon
+include ./partials/_footer
+
++head("The Open Brain Project | 404 Page not found")
+body.home
+	+header("")
+	main
+		section.four-oh-four-section
+			.container
+				h1.four-oh-four-title 404
+				h2 Sorry, this page isn't available.
+				a.link-block.blue-gradient(href="/")
+						.container
+							h1 
+								| Go home
+								+icon("rarr")
+	+footer()

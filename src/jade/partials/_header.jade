@@ -1,14 +1,13 @@
 include ./_icon
 include ./_nav
 
-mixin header(pageHeaderTitle)
+mixin header()
 	header
 		.container
 			.site-logo
 				a(href="/")
 					+icon("brain")
 					| The Open Brain Project
-				span.slug= pageHeaderTitle
 			.right-header-content
 				a(href="https://twitter.com").social-link
 					+icon("twitter")
