@@ -3,7 +3,7 @@ include ./_icon
 mixin nav()
 	nav.nav-menu
 		.container
-			ul
+			ul.discover-nav
 				li 
 					a(href="/discover") Discover
 					ul
@@ -15,14 +15,18 @@ mixin nav()
 							a(href="/discover#resources-for-scientists") Resources for Scientists
 						li
 							a(href="/discover#data-sets") Data Sets
+			ul.educate-nav
 				li
 					a(href="/educate") Educate
+			ul.translate-nav
 				li
 					a(href="/translate") Translate
-			ul
+			ul.stroke-nav
 				li
 					a(href="/stroke") Stroke
+			ul.brain-tumors-nav
 				li
 					a(href="/brain-tumors") Brain Tumors
+			ul.tbi-nav
 				li
 					a(href="/tbi") Traumatic Brain Injury

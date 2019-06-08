@@ -183,6 +183,10 @@ ul {
 	margin-bottom: var(--large);
 }
 
+li {
+	margin-bottom: var(--small);
+}
+
 input {
 	display: block;
 	font: inherit;
@@ -355,7 +359,7 @@ header {
 	color: $white;
 
 	color: $black;
-	display: none;
+	display: block;
 
 	.has-nav & {
 		display: block;
@@ -370,13 +374,19 @@ header {
 		margin: 0;
 	}
 
+	ul {
+		border-left: 2px solid $light_gray;
+		margin-bottom: var(--medium);
+		padding-left: var(--large);
+	}
+
 	li {
 		list-style: none;
 
 		ul {
 			a {
 				font-weight: normal;
-				padding-left: var(--extra-large);
+				padding-left: var(--large);
 			}
 		}
 	}
@@ -389,82 +399,30 @@ header {
 		text-decoration: none;
 		cursor: pointer;
 		border-radius: var(--radius);
-
-		&[href="/discover"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#d84315,
-					#fb8c00
-				);
-			}
-		}
-
-		&[href="/educate"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#43a047,
-					#8bc34a
-				);
-			}
-		}
-		&[href="/translate"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#1976d2,
-					#00acc1
-				);
-			}
-		}
-
-		&[href="/stroke"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#d84315,
-					#ec407a
-				);
-			}
-		}
-		&[href="/brain-tumors"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#f57c00,
-					#ffc107
-				);
-			}
-		}
-		&[href="/tbi"] {
-			& + ul a:hover,
-			& + ul a:focus,
-			&:hover,
-			&:focus {
-				background-image: linear-gradient(
-					to top right,
-					#5e35b1,
-					#ab47bc
-				);
-			}
-		}
 	}
+}
+
+.discover-nav {
+	border-color: #d84315;
+}
+
+.orange-gradient {
+	@include gradient(#d84315, #fb8c00);
+}
+.green-gradient {
+	@include gradient(#43a047, #8bc34a);
+}
+.blue-gradient {
+	@include gradient(#1976d2, #00acc1);
+}
+.pink-gradient {
+	@include gradient(#d84315, #ec407a);
+}
+.yellow-gradient {
+	@include gradient(#f57c00, #ffc107);
+}
+.purple-gradient {
+	@include gradient(#5e35b1, #ab47bc);
 }
 
 // Elements ==============================================================================
@@ -567,19 +525,15 @@ header {
 	@include gradient(#555, #222);
 	color: $white;
 }
-
 .orange-gradient {
 	@include gradient(#d84315, #fb8c00);
 }
-
 .green-gradient {
 	@include gradient(#43a047, #8bc34a);
 }
-
 .blue-gradient {
 	@include gradient(#1976d2, #00acc1);
 }
-
 .pink-gradient {
 	@include gradient(#d84315, #ec407a);
 }
@@ -592,8 +546,8 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
-	h1 {
-		font-weight: normal;
+	p {
+		font-size: 1.5em;
 	}
 }
 
@@ -789,36 +743,6 @@ header {
 	}
 }
 
-// Footer ================================================================================
-footer {
-	border-top: thin solid $light_gray;
-	margin-top: var(--large);
-	text-align: center;
-	opacity: 0.75;
-
-	@media (min-width: $tablet) {
-		text-align: left;
-	}
-
-	a {
-		&,
-		&:visited {
-			color: $black;
-		}
-	}
-
-	.social-link {
-		font-size: 1.5em;
-		vertical-align: middle;
-		text-decoration: none;
-		margin-right: var(--medium);
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-}
-
 // TBI ===================================================================================
 @import "partials/tbi";
 
@@ -844,4 +768,14 @@ footer {
 	font-size: 4em;
 }
 
+// Footer ================================================================================
+footer {
+	border-top: thin solid $light_gray;
+	margin-top: var(--large);
+	text-align: center;
+	opacity: 0.5;
 
+	@media (min-width: $tablet) {
+		text-align: left;
+	}
+}

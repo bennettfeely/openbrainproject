@@ -98,8 +98,8 @@ function createScene() {
     // Turn on the lights
     var light = new THREE.AmbientLight(0xffffff);
     scene.add(light);
-    var directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
-    directionalLight.position.set(0, 100, 0);
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(0, 20, 0);
     scene.add(directionalLight);
 
     // Setup Orbit Controls
@@ -199,7 +199,12 @@ function main() {
             if (force > 0.001) {
                 var height = force * 30 + 0.5;
 
-                var geometry = new THREE.CylinderGeometry(0.5, 0.5, height, 16);
+                var geometry = new THREE.CylinderGeometry(
+                    0.75,
+                    0.75,
+                    height,
+                    16
+                );
 
                 var color_index = Math.round(force * gradient_array.length);
                 var hex = "#" + gradient_array[color_index];
