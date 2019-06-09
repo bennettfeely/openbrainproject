@@ -12,25 +12,6 @@
 	box-shadow: 0 $size/4 $size $color;
 }
 
-@mixin circles-background() {
-	background-image: radial-gradient(
-			circle at top left,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		),
-		radial-gradient(
-			circle at bottom right,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		);
-}
-
 @mixin gradient($start, $end) {
 	@include shadow(rgba($start, 0.3), 2rem);
 	background-color: $start;
@@ -56,9 +37,9 @@ $light_white: rgba($white, 0.1);
 $blue: #147ace;
 $purple: #9d13c1;
 
-$mobile: 20em;
-$tablet: 40em;
-$desktop: 60em;
+$mobile: 20rem;
+$tablet: 40rem;
+$desktop: 60rem;
 
 $inferno-array: #000004, #160b39, #420a68, #6a176e, #932667, #ba3655, #dd513a,
 	#f3761b, #fca50a, #f6d746, #f6d746;
@@ -105,19 +86,28 @@ $color-array: $spectral-array;
 
 // Base Styles ===========================================================================
 body {
-	min-height: 100vh;
-
 	font-size: var(--root-size);
 	font-family: Source Sans Pro, Helvetica Neue, Helvetica, sans-serif;
 	line-height: 1.5;
 	color: $black;
 	background: $white;
-	@include circles-background();
-
-	&.dark {
-		background-color: $black;
-		color: $white;
-	}
+	background-image: radial-gradient(
+			circle at top left,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		),
+		radial-gradient(
+			circle at bottom right,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		);
+	min-height: 100vh;
 }
 
 section {
@@ -235,48 +225,44 @@ button {
 header {
 	border-bottom: thin solid $light_gray;
 
+	@media (min-width: $tablet) {
+		font-size: 1.25em;
+	}
+
+	a {
+		&,
+		&:visited {
+			color: $black;
+		}
+	}
+
 	.container {
 		display: flex;
 		justify-content: space-between;
 	}
-
-	// & > * > * {
-	// 	outline: thin solid red;
-	// }
-
-	.social-link {
-		display: inline-block;
-		vertical-align: middle;
-		color: $black;
-		margin-right: var(--large);
-		line-height: 2.5em;
-		width: 2.5em;
-		text-align: center;
-		cursor: pointer;
-		vertical-align: top;
-		border-radius: 50%;
-
-		.icon {
-			width: 1.25em;
-			height: 1.25em;
-			vertical-align: middle;
-		}
-
-		&:hover {
-			background: $light_gray;
-		}
-
-		@media (min-width: $tablet) {
-			display: inline-block;
-		}
-	}
 }
 
-.site-logo,
-.nav-toggle,
-.social-link {
-	@media (min-width: $tablet) {
-		font-size: 1.25em;
+.right-header-content {
+}
+
+.header-social-link {
+	display: inline-block;
+	vertical-align: middle;
+	border-right: thin solid $light_gray;
+	line-height: 2.5em;
+	padding: 0 var(--medium);
+	text-align: center;
+	cursor: pointer;
+	vertical-align: top;
+
+	.icon {
+		width: 1.25em;
+		height: 1.25em;
+		vertical-align: middle;
+	}
+
+	&:hover {
+		background: $light_gray;
 	}
 }
 
@@ -285,6 +271,7 @@ header {
 	@extend %no-select;
 
 	display: inline-block;
+	white-space: nowrap;
 	font-weight: bold;
 	line-height: 2.5em;
 
@@ -306,16 +293,13 @@ header {
 }
 
 // Navigation ============================================================================
-.nav {
-}
-
 .nav-toggle {
 	@extend %no-select;
 
 	display: inline-block;
 	position: relative;
 	font-weight: bold;
-	padding: 0 var(--large);
+	padding: 0 var(--medium);
 	line-height: 2.5em;
 	cursor: pointer;
 	float: right;
@@ -330,11 +314,20 @@ header {
 		}
 	}
 
+	span {
+		display: none;
+
+		@media (min-width: $tablet) {
+			display: inline-block;
+			margin: 0 var(--small) 0 0;
+		}
+	}
+
 	.icon {
 		width: 1.5em;
 		height: 1.5em;
 		vertical-align: middle;
-		margin: 0 0 0 var(--small);
+		margin: 0;
 	}
 
 	.icon-close {
@@ -354,19 +347,28 @@ header {
 }
 
 .nav-menu {
-	@include circles-background();
-	background-color: $black;
+	display: none;
 	color: $white;
-
-	color: $black;
-	display: block;
+	background-color: $black;
+	background-image: radial-gradient(
+			circle at top right,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		),
+		radial-gradient(
+			circle at bottom left,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		);
 
 	.has-nav & {
 		display: block;
-	}
-
-	.container {
-		padding: var(--large);
 	}
 
 	ul,
@@ -375,18 +377,18 @@ header {
 	}
 
 	ul {
-		border-left: 2px solid $light_gray;
-		margin-bottom: var(--medium);
-		padding-left: var(--large);
+		border-left: var(--small) solid $light_gray;
+		margin: var(--medium) 0;
 	}
 
 	li {
 		list-style: none;
 
 		ul {
+			margin-left: var(--medium);
+
 			a {
 				font-weight: normal;
-				padding-left: var(--large);
 			}
 		}
 	}
@@ -395,15 +397,36 @@ header {
 		display: block;
 		font-weight: bold;
 		color: $white;
-		padding: var(--small) var(--large);
+		padding: var(--small) var(--medium);
+		margin: 0 var(--medium);
 		text-decoration: none;
 		cursor: pointer;
-		border-radius: var(--radius);
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
-.discover-nav {
-	border-color: #d84315;
+.nav-menu {
+	.discover-nav {
+		border-color: #fb8c00;
+	}
+	.educate-nav {
+		border-color: #8bc34a;
+	}
+	.translate-nav {
+		border-color: #00acc1;
+	}
+	.stroke-nav {
+		border-color: #ec407a;
+	}
+	.brain-tumors-nav {
+		border-color: #ffc107;
+	}
+	.tbi-nav {
+		border-color: #ab47bc;
+	}
 }
 
 .orange-gradient {
