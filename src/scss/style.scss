@@ -596,17 +596,21 @@ header {
 
 .partner-link {
 	display: inline-block;
-	width: 33.33%;
+	width: 50%;
 	filter: grayscale(1);
 	padding: var(--medium);
 	transition: filter var(--transition);
 
+	&:hover {
+		filter: grayscale(0);
+	}
+
+	@media (min-width: $mobile) {
+		width: 33.33%;
+	}
+
 	@media (min-width: $tablet) {
 		width: 20%;
-
-		&:hover {
-			filter: grayscale(0);
-		}
 	}
 }
 
