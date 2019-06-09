@@ -285,10 +285,15 @@ header {
 	}
 
 	.icon {
-		width: 2em;
-		height: 2em;
+		width: 1.5em;
+		height: 1.5em;
 		vertical-align: middle;
 		margin-right: var(--small);
+
+		@media (min-width: $tablet) {
+			width: 2em;
+			height: 2em;
+		}
 	}
 }
 
