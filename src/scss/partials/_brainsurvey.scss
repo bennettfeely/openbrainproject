@@ -1,6 +1,5 @@
 .bs-main {
 	width: 100%;
-	min-height: 100vh;
 	padding: 0;
 	background: $light_gray;
 	color: $black;
@@ -16,15 +15,11 @@
 	}
 
 	h2 {
-		font-size: 1.25em;
+		font-size: 1.2em;
 	}
 	h3 {
 		font-size: 1em;
 		margin: 0;
-	}
-
-	& + footer {
-		margin-top: 0;
 	}
 }
 
@@ -76,6 +71,7 @@
 	height: 90vw;
 	overflow: hidden;
 	transition: transform var(--transition-decorative);
+	background: linear-gradient($light_black, $black);
 
 	canvas {
 		position: relative;
@@ -99,11 +95,6 @@
 	}
 
 	@media (min-width: $desktop) {
-		position: fixed;
-		width: calc(100% - var(--sidebar-width));
-		right: 0;
-		top: 0;
-		bottom: 0;
 		z-index: 10;
 		transform-origin: center;
 	}
@@ -135,15 +126,28 @@
 
 // Regions search ========================================================================
 .bs-regions-wrapper {
-	background: $light_gray;
 }
 
-.bs-regions-search {
+.bs-regions-filter {
 	@include shadow($light_gray, 1em);
 
 	background: $white;
-	padding: var(--medium) var(--large);
-	width: 100%;
+	display: flex;
+	align-items: center;
+	border-radius: var(--radius);
+	padding: var(--small);
+	cursor: text;
+
+	.icon {
+		width: 2em;
+		height: 2em;
+		padding: var(--small);
+	}
+}
+
+.bs-regions-search {
+	background: transparent;
+	flex: 1;
 }
 
 // Toggles ===============================================================================

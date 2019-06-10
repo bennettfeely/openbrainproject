@@ -1,3 +1,13 @@
+$inferno-array: #000004, #160b39, #420a68, #6a176e, #932667, #ba3655, #dd513a,
+	#f3761b, #fca50a, #f6d746, #f6d746;
+$rainbow-array: #6e40aa, #be3caf, #fe4b83, #ff7747, #e3b62f, #b0ef5a, #53f666,
+	#1edfa2, #23acd8, #4c6fdc, #4c6fdc;
+
+$spectral-array: #9e0142, #d13b4b, #f0704a, #fcab63, #fedc8c, #fbf8b0, #e0f3a1,
+	#aadda2, #69bda9, #4288b5, #4288b5;
+
+$color-array: $spectral-array;
+
 // Canvas ================================================================================
 .canvas-wrapper {
 	position: relative;

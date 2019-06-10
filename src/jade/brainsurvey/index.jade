@@ -23,7 +23,7 @@ body.brainsurvey
 			.bs-content-wrapper
 				.action-buttons-wrapper
 					button.back-button.outline-button
-						+icon("larr-icon")
+						+icon("larr")
 						| Back
 				.container
 			.status-wrapper
@@ -35,24 +35,27 @@ body.brainsurvey
 					h2 Regions
 					.bs-box-wrapper
 						label.bs-regions-filter
+							+icon("search")
 							input.bs-regions-search(type="text", placeholder="Search brain regions...")
 						.regions-results
-			section.bs-visibility-wrapper
-				.container
-					.bs-box-wrapper
-						+toggle("hemisphere-toggle left-hemisphere-toggle", "Left Hemisphere")
-						+toggle("hemisphere-toggle right-hemisphere-toggle", "Right Hemisphere")
-					.bs-box-wrapper
-						+toggle("head-toggle", "Show Head")
 			section.tools-wrapper
 				.container
 					h2 Tools
 					.bs-box-wrapper
 						+toggle("slice-toggle", "Slice Tool")
+			section.bs-visibility-wrapper
+				.container
+					h2 Visibility
+					.bs-box-wrapper
+						+toggle("hemisphere-toggle left-hemisphere-toggle", "Left Hemisphere")
+						+toggle("hemisphere-toggle right-hemisphere-toggle", "Right Hemisphere")
+					.bs-box-wrapper
+						+toggle("head-toggle", "Show Head")
 			section.settings-wrapper
 				.container
 					h2 Settings
 					.bs-box-wrapper
 						+toggle("orbit-toggle", "Orbit")
 						+toggle("fullscreen-toggle", "Fullscreen")
+
 	+footer()
