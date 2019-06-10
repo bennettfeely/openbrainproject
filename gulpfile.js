@@ -73,33 +73,6 @@ gulp.task("jade-subfolder", function() {
     );
 });
 
-// gulp.task("jade-tbi-subfolder", function() {
-//   return gulp
-//     .src("src/jade/tbi/index.jade")
-//     .pipe(
-//       jade({
-//         pretty: true,
-//         data: {
-//           datasets: datasets_obj
-//         }
-//       })
-//     )
-//     .pipe(
-//       htmlmin({
-//         collapseWhitespace: true,
-//         removeComments: true,
-//         minifyCSS: true,
-//         minifyJS: true
-//       })
-//     )
-//     .pipe(gulp.dest("./dist/tbi"))
-//     .pipe(
-//       browserSync.reload({
-//         stream: true
-//       })
-//     );
-// });
-
 // Compile CSS ===========================================================================
 gulp.task("scss", function() {
   return gulp
@@ -184,7 +157,7 @@ gulp.task("default", function() {
   });
 
   // CSS
-  gulp.watch("src/scss/*.scss", function() {
+  gulp.watch(["src/scss/*", "src/scss/partials/*"], function() {
     return gulp.run("scss");
   });
 

@@ -35,7 +35,18 @@ $light_gray: rgba(mix($black, $white), 0.2);
 $light_white: rgba($white, 0.1);
 
 $blue: #147ace;
+$light_blue: tint($blue, 50%);
 $purple: #9d13c1;
+
+$gray-100: mix($white, $black, 10%);
+$gray-200: mix($white, $black, 20%);
+$gray-300: mix($white, $black, 30%);
+$gray-400: mix($white, $black, 40%);
+$gray-500: mix($white, $black, 50%);
+$gray-600: mix($white, $black, 60%);
+$gray-700: mix($white, $black, 70%);
+$gray-800: mix($white, $black, 80%);
+$gray-900: mix($white, $black, 90%);
 
 $mobile: 20rem;
 $tablet: 40rem;
@@ -119,6 +130,10 @@ section {
 	}
 }
 
+.page-title {
+	border-bottom: thin solid $light_gray;
+}
+
 .container,
 .wrapper {
 	position: relative;
@@ -161,6 +176,10 @@ a {
 	&:visited {
 		color: $purple;
 	}
+}
+
+label {
+	display: block;
 }
 
 ul,
@@ -219,6 +238,33 @@ button {
 	vertical-align: baseline;
 	width: 0.7em;
 	height: 0.7em;
+}
+
+// Spinner ===============================================================================
+.spinner-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.spinner {
+	width: 50px;
+	height: 50px;
+	border: 2px solid;
+	border-color: $white $white transparent transparent;
+	border-radius: 50%;
+	animation: spin 0.6s linear infinite;
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	}
 }
 
 // Header ================================================================================
@@ -399,7 +445,7 @@ header {
 	}
 
 	a {
-		display: block;
+		display: inline-block;
 		font-weight: bold;
 		color: $white;
 		padding: var(--small) var(--medium);
@@ -781,7 +827,7 @@ header {
 // Brain Survey ==========================================================================
 @import "partials/brainsurvey";
 
-// Brain Survey ==========================================================================
+// 404 Page ==============================================================================
 .four-oh-four-section {
 	text-align: center;
 
@@ -805,7 +851,7 @@ footer {
 	border-top: thin solid $light_gray;
 	margin-top: var(--large);
 	text-align: center;
-	opacity: 0.5;
+	opacity: 0.7;
 
 	@media (min-width: $tablet) {
 		text-align: left;

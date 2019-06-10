@@ -4,13 +4,55 @@ include ../partials/_svg
 include ../partials/_icon
 include ../partials/_footer
 
+include ../partials/_slice_tool
+include ../partials/_spinner
+include ../partials/_toggle
 
 +head("Brain Survey | The Open Brain Project", "Where personalized medicine meets translational human brain mapping")
-body.tbi
+body.brainsurvey
 	+header()
-	main
-		section
-			.container
-				h1 Brain Survey
-		iframe.brain-survey-embed(src="https://brainsurvey.org")
+	.page-title
+		.container
+			h1 Brain Survey
+	section.bs-main
+		.bs-main-wrapper
+			// +slice_tool()
+			.bs-brain-wrapper
+				.spinner-wrapper
+					.spinner
+			.bs-content-wrapper
+				.action-buttons-wrapper
+					button.back-button.outline-button
+						+icon("larr-icon")
+						| Back
+				.container
+			.status-wrapper
+			.tooltip-wrapper
+		.bs-side-wrapper
+			.bs-warning
+			section.bs-regions-wrapper
+				.container
+					h2 Regions
+					.bs-box-wrapper
+						label.bs-regions-filter
+							input.bs-regions-search(type="text", placeholder="Search brain regions...")
+						.regions-results
+			section.bs-visibility-wrapper
+				.container
+					.bs-box-wrapper
+						+toggle("hemisphere-toggle left-hemisphere-toggle", "Left Hemisphere")
+						+toggle("hemisphere-toggle right-hemisphere-toggle", "Right Hemisphere")
+					.bs-box-wrapper
+						+toggle("head-toggle", "Show Head")
+			section.tools-wrapper
+				.container
+					h2 Tools
+					.bs-box-wrapper
+						+toggle("slice-toggle", "Slice Tool")
+			section.settings-wrapper
+				.container
+					h2 Settings
+					.bs-box-wrapper
+						+toggle("orbit-toggle", "Orbit")
+						+toggle("fullscreen-toggle", "Fullscreen")
 	+footer()
