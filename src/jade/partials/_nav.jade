@@ -3,27 +3,30 @@ include ./_icon
 mixin nav()
 	nav.nav-menu
 		.container
+			ul.home-nav
+				li
+					a(href="/") Home
 			ul.discover-nav
 				li 
 					a(href="/discover") Discover
 					ul
 						li
-							a(href="/discover#news") News
+							a(href="/discover#research-articles") Research Articles
 						li
-							a(href="/discover#scientific-products") Scientific Products
+							a(href="/discover#open-data-sets") Open Data Sets
 						li
-							a(href="/discover#resources-for-scientists") Resources for Scientists
+							a(href="/discover#experimental-stimuli") Experimental Stimuli
 						li
-							a(href="/discover#data-sets") Data Sets
-			ul.educate-nav
-				li
-					a(href="/educate") Educate
-					ul
-						li
-							a(href="/brainsurvey") Brain Survey
+							a(href="/discover#code") Code
 			ul.translate-nav
 				li
 					a(href="/translate") Translate
+			ul.care-nav
+				li
+					a(href="/care") Care
+					ul
+						li
+							a(href="/brainsurvey") Brain Survey
 			ul.stroke-nav
 				li
 					a(href="/stroke") Stroke

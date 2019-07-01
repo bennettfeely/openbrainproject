@@ -28,7 +28,7 @@
 }
 
 // Variables =============================================================================
-$white: #ffffff;
+$white: #fff;
 $black: #16161d;
 $light_black: tint($black, 10%);
 $light_gray: rgba(mix($black, $white), 0.25);
@@ -454,7 +454,7 @@ header {
 	.discover-nav {
 		border-color: #fb8c00;
 	}
-	.educate-nav {
+	.care-nav {
 		border-color: #8bc34a;
 	}
 	.translate-nav {
@@ -500,14 +500,9 @@ header {
 		color: $white;
 	}
 
-	.split {
-		align-items: center;
-	}
-
 	h1 {
 		font-size: 2em;
 		line-height: 1;
-		margin: var(--large) 0;
 	}
 
 	p {
@@ -516,6 +511,10 @@ header {
 }
 
 .page-hero {
+	h1 {
+		font-size: 2.5em;
+		margin: 0 0 var(--medium);
+	}
 	p {
 		font-size: 1.2em;
 	}
@@ -527,7 +526,6 @@ header {
 
 		p {
 			font-size: 1.4em;
-			margin: 0 0 0 var(--extra-large);
 		}
 	}
 }
@@ -548,6 +546,7 @@ header {
 	flex: 1;
 	transition: box-shadow var(--transition), transform var(--transition),
 		background-color var(--transition);
+	padding: var(--medium) 0;
 
 	@media (min-width: $desktop) {
 		transform: scale(1);
@@ -586,10 +585,6 @@ header {
 }
 
 // Gradients =============================================================================
-.black-gradient {
-	@include gradient(#555, #222);
-	color: $white;
-}
 .orange-gradient {
 	@include gradient(#d84315, #fb8c00);
 }
@@ -607,6 +602,10 @@ header {
 }
 .purple-gradient {
 	@include gradient(#5e35b1, #ab47bc);
+}
+.black-gradient {
+	@include gradient(#555, #222);
+	color: $white;
 }
 
 // Mission ===============================================================================
@@ -664,6 +663,8 @@ header {
 // Email signup ==========================================================================
 .signup-modal {
 	@include shadow($light_gray, 2rem);
+
+	display: none;
 
 	$background: mix($white, $black, 90%);
 	background: rgba($background, 0.95);
@@ -743,12 +744,20 @@ header {
 }
 
 // Videos ================================================================================
+.videos-section {
+	p {
+		font-size: 1.2em;
+		margin: var(--small) 0 0;
+	}
+}
 .videos-list {
 	padding: 0 var(--large) var(--large);
+	overflow: hidden;
 }
 
 .video-block {
 	display: inline-block;
+	float: left;
 	width: 33.33%;
 	padding: var(--large);
 	vertical-align: top;
@@ -758,15 +767,23 @@ header {
 		width: 25%;
 	}
 
-	@media (min-width: ($tablet + $desktop)/2) {
-		width: 20%;
-	}
-
 	&:hover,
 	&:active,
 	&:focus {
 		.icon-youtube {
 			opacity: 1;
+		}
+	}
+
+	&:first-child {
+		width: 100%;
+
+		@media (min-width: $tablet) {
+			width: 75%;
+		}
+
+		@media (min-width: $desktop) {
+			width: 50%;
 		}
 	}
 }
@@ -779,7 +796,7 @@ header {
 	background-size: cover;
 	background-position: center center;
 	border-radius: var(--radius);
-	margin: 0 0 var(--small);
+	margin: 0 0 var(--medium);
 
 	.icon-youtube-wrapper {
 		display: flex;
@@ -809,6 +826,10 @@ header {
 	.video-block:active &,
 	.video-block:focus & {
 		color: $blue;
+	}
+
+	.video-block:first-child & {
+		font-size: 1.2em;
 	}
 }
 

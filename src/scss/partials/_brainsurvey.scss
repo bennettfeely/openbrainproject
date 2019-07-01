@@ -1,8 +1,7 @@
 .bs-main {
 	width: 100%;
-	padding: 0;
 	background: $light_gray;
-	color: $black;
+	margin-top: -1px;
 
 	@media (min-width: $tablet) {
 		display: flex;
@@ -12,14 +11,14 @@
 	h2,
 	h3 {
 		font-weight: normal;
+		margin: 0;
 	}
 
 	h2 {
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 	h3 {
 		font-size: 1em;
-		margin: 0;
 	}
 }
 
@@ -41,27 +40,14 @@
 		width: var(--sidebar-width);
 	}
 
-	section {
-		padding: 0;
-	}
-
 	.container {
-		padding: var(--large);
+		padding: 0 var(--large);
 	}
 }
 
 .bs-box-wrapper {
 	position: relative;
-
-	& + & {
-		margin-top: var(--medium);
-	}
-
-	.box-link {
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+	margin-top: var(--small);
 }
 
 // Brain Wrapper =========================================================================

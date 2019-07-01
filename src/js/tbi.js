@@ -35,8 +35,6 @@ function run(data_set) {
         .querySelector("." + data_set.class_name)
         .classList.add("is-running");
 
-    console.log("." + data_set.class_name);
-
     data = data_set.data_values;
 
     main();

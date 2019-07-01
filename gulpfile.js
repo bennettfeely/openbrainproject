@@ -148,7 +148,7 @@ gulp.task("default", function() {
 
   // Videos
   gulp.watch(["src/js/_videos.js"], function() {
-    return gulp.run("js", "jade");
+    return gulp.run("jade");
   });
 
   // TBI
