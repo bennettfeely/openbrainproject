@@ -122,10 +122,6 @@ main {
 section {
 	padding: var(--large) 0;
 	border-bottom: thin solid $light_gray;
-
-	&:last-of-type {
-		border-bottom: 0;
-	}
 }
 
 .page-title {
@@ -269,16 +265,10 @@ button {
 
 // Header ================================================================================
 header {
-	.home & {
-		border-bottom: thin solid $light_gray;
-	}
+	border-bottom: thin solid $light_gray;
 
 	@media (min-width: $tablet) {
 		font-size: 1.25em;
-
-		.home & {
-			border-bottom: 0;
-		}
 	}
 
 	a {
@@ -723,8 +713,11 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
+	padding: 0;
+	border: 0;
+
 	p {
-		font-size: 1.6em;
+		font-size: 1.2em;
 		margin: 0;
 	}
 }
