@@ -73,6 +73,33 @@ gulp.task("jade-subfolder", function() {
     );
 });
 
+gulp.task("jade-sub-subfolder", function() {
+  return gulp
+    .src("src/jade/*/*/index.jade")
+    .pipe(
+      jade({
+        pretty: true,
+        data: {
+          datasets: datasets_obj
+        }
+      })
+    )
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true
+      })
+    )
+    .pipe(gulp.dest("./dist/"))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
+});
+
 // Compile CSS ===========================================================================
 gulp.task("scss", function() {
   return gulp
@@ -144,6 +171,11 @@ gulp.task("default", function() {
   // Subfolders and Partials
   gulp.watch(["src/jade/*/index.jade", "src/jade/partials/*.jade"], function() {
     return gulp.run("jade", "jade-subfolder");
+  });
+
+  // Subsubfolders
+  gulp.watch(["src/jade/*/*/index.jade"], function() {
+    return gulp.run("jade", "jade-sub-subfolder");
   });
 
   // Videos
