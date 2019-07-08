@@ -18,8 +18,3 @@ mixin header()
 					+icon("menu")
 					+icon("close")
 	+nav()
-	script
-		| var html = document.querySelector("html");
-		| function addNav() { html.classList.add("has-nav"); }
-		| function removeNav() { html.classList.remove("has-nav"); }
-		| function toggleNav() { html.classList.toggle("has-nav"); }

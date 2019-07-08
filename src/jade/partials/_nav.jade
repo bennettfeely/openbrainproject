@@ -1,38 +1,63 @@
 include ./_icon
 
 mixin nav()
-	nav.nav-menu
-		.container
-			ul.home-nav
-				li
-					a(href="/") Home
-			ul.discover-nav
-				li 
-					a(href="/discover") Discover
-					ul
-						li
-							a(href="/discover#research-articles") Research Articles
-						li
-							a(href="/discover#open-data-sets") Open Data Sets
-						li
-							a(href="/discover#experimental-stimuli") Experimental Stimuli
-						li
-							a(href="/discover#code") Code
-			ul.translate-nav
-				li
-					a(href="/translate") Translate
-			ul.care-nav
-				li
-					a(href="/care") Care
-					ul
-						li
-							a(href="/brainsurvey") Brain Survey
-			ul.stroke-nav
-				li
-					a(href="/stroke") Stroke
-			ul.brain-tumors-nav
-				li
-					a(href="/brain-tumors") Brain Tumors
-			ul.tbi-nav
-				li
-					a(href="/tbi") Traumatic Brain Injury
+	.nav
+		.nav-spacer(onclick="removeNav()")
+		nav.nav-menu
+			.container
+				ul
+					li.nav-item.nav-group
+						a.nav-link.main-nav-link(href="/discover") 
+							| Discover
+							+icon("rarr")
+							+icon("darr") 
+						ul.nav-subgroup.discover-group
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Brain Explorer
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Research Articles
+								ul.nav-sub-subgroup
+									li.nav-item
+										a.nav-link(href="/XXXXXX") Stroke
+									li.nav-item
+										a.nav-link(href="/XXXXXX") Brain Tumor
+									li.nav-item
+										a.nav-link(href="/XXXXXX") TBI
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Open Data Sets
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Experiment Exchange
+					li.nav-item.nav-group
+						a.nav-link.main-nav-link(href="/translate")
+							| Translate
+							+icon("rarr")
+							+icon("darr")
+						ul.nav-subgroup.translate-group
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Brain Mapping with MRI
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Brain Mapping During Neurosurgery
+					li.nav-item.nav-group
+						a.nav-link.main-nav-link(href="/treat")
+							| Treat
+							+icon("rarr")
+							+icon("darr")
+						ul.nav-subgroup.treat-group
+							li.nav-item
+								a.nav-link(href="/XXXXXX") University of Rochester Neurosurgery
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Resources for Patients
+								ul.nav-sub-subgroup
+									li.nav-item
+										a.nav-link(href="/XXXXXX") Stroke
+									li.nav-item
+										a.nav-link(href="/XXXXXX") Brain Tumor
+									li.nav-item
+										a.nav-link(href="/XXXXXX") TBI
+							li.nav-item
+								a.nav-link(href="/XXXXXX") Technology
+	script
+		| var html = document.querySelector("html");
+		| function addNav() { html.classList.add("has-nav"); }
+		| function removeNav() { html.classList.remove("has-nav"); }
+		| function toggleNav() { html.classList.toggle("has-nav"); }

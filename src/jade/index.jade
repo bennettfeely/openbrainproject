@@ -4,64 +4,63 @@ include ./partials/_icon
 include ./partials/_footer
 include ./partials/_signup
 
-+head("The Open Brain Project | Discover, Translate, Care", "The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care.")
++head("The Open Brain Project | Discover, Translate, Treat", "The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care.")
 body.home
 	+header("")
 	main
 		section.main-area-blocks-section
 			.container
 				.link-blocks.main-area-blocks
-					a.link-block.discover-block.orange-gradient(href="/discover")
+					a.link-block.discover-block.light-blue-gradient(href="/discover")
 						.container
 							h1 
 								| Discover
 								+icon("rarr")
-							//- p Opening new frontiers in understanding human brain structure and function.
-							//- .button
-							//- 	| Learn More
-							//- 	+icon("rarr")
-					a.link-block.translate-block.blue-gradient(href="/translate")
+							p Opening new frontiers in understanding human brain structure and function.
+							.button
+								| Learn More
+								+icon("rarr")
+					a.link-block.translate-block.orange-gradient(href="/translate")
 						.container
 							h1 
 								| Translate
 								+icon("rarr")
-							//- p Turning the latest discoveries about human brain structure and function into better outcomes for patients.
-							//- .button
-							//- 	| Learn More
-							//- 	+icon("rarr")
-					a.link-block.care-block.green-gradient(href="/care")
+							p Turning the latest discoveries about human brain structure and function into better outcomes for patients.
+							.button
+								| Learn More
+								+icon("rarr")
+					a.link-block.treat-block.blue-gradient(href="/treat")
 						.container
 							h1 
-								| Care
+								| Treat
 								+icon("rarr")
-							//- p Connecting patients who have questions about a recent diagnosis to answers, students to educational resources, and scientists and clinicians to the latest tools for advancing knowledge and patient care.
-							//- .button
-							//- 	| Learn More
-							//- 	+icon("rarr")
-
+							p Connecting patients who have questions about a recent diagnosis to answers, students to educational resources, and scientists and clinicians to the latest tools for advancing knowledge and patient care.
+							.button
+								| Learn More
+								+icon("rarr")
 		section.mission-section
 			.container
-				p The Open Brain Project supports basic discoveries of brain function that advance patient care.
-		section.focus-area-section
-			.container
-				h1 Our Focus Areas
-			.container
-				.link-blocks.focus-area-blocks
-					a.link-block.stroke-block.pink-gradient(href="/stroke")
-						.container
-							h1 
-								| Stroke
-								+icon("rarr")
-					a.link-block.stroke-block.yellow-gradient(href="/brain-tumors")
-						.container
-							h1 
-								| Brain Tumors
-								+icon("rarr")
-					a.link-block.stroke-block.purple-gradient(href="/tbi")
-						.container
-							h1 
-								| Traumatic Brain Injury
-								+icon("rarr")
+				p The Open Brain Project supports discoveries about the human brain and their translation into treatment.
+		//- section.focus-area-section
+		//- 	.container
+		//- 		h1 Our Focus Areas
+		//- 	.container
+		//- 		.link-blocks.focus-area-blocks
+		//- 			a.link-block.stroke-block.pink-gradient(href="/stroke")
+		//- 				.container
+		//- 					h1 
+		//- 						| Stroke
+		//- 						+icon("rarr")
+		//- 			a.link-block.stroke-block.yellow-gradient(href="/brain-tumors")
+		//- 				.container
+		//- 					h1 
+		//- 						| Brain Tumors
+		//- 						+icon("rarr")
+		//- 			a.link-block.stroke-block.purple-gradient(href="/tbi")
+		//- 				.container
+		//- 					h1 
+		//- 						| Traumatic Brain Injury
+		//- 						+icon("rarr")
 		section.partners-section
 			.container
 				h1 Collaborating Laboratories by Institution
@@ -115,6 +114,8 @@ body.home
 						.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
 							.icon-youtube-wrapper
 								+icon("youtube")
-						h4.video-title= video.title
+						.video-meta
+							h4.video-title= video.title
+							p.video-description= video.description
 	+footer()
 	+signup()

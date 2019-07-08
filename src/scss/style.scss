@@ -12,17 +12,19 @@
 	box-shadow: 0 $size/4 $size $color;
 }
 
-@mixin gradient($start, $end) {
-	@include shadow(rgba($start, 0.3), 2rem);
-	background-color: $start;
-	background-image: linear-gradient(to top left, rgba($start, 0), $end);
+@mixin gradient($color) {
+	background-color: $color;
+	background-image: linear-gradient(
+		to bottom right,
+		rgba($color, 0),
+		adjust-hue(shade($color, 20%), -15%)
+	);
 
 	&.link-block:hover {
-		@include shadow(rgba($start, 0.6), 2rem);
-		background-color: shade($start, 25%);
+		background-color: shade($color, 20%);
 
 		.button:hover {
-			color: shade($start, 25%);
+			color: shade($color, 25%);
 		}
 	}
 }
@@ -32,6 +34,7 @@ $white: #fff;
 $black: #16161d;
 $light_black: tint($black, 10%);
 $light_gray: rgba(mix($black, $white), 0.25);
+$light_gray_opaque: tint($black, 92%);
 $light_white: rgba($white, 0.1);
 
 $blue: #147ace;
@@ -108,7 +111,12 @@ body {
 			transparent 50%,
 			transparent 0
 		);
+	background: $white;
 	min-height: 100vh;
+}
+
+main {
+	background: $white;
 }
 
 section {
@@ -122,6 +130,7 @@ section {
 
 .page-title {
 	padding: var(--small) 0;
+	border-top: thin solid $light_gray;
 	border-bottom: thin solid $light_gray;
 }
 
@@ -260,10 +269,16 @@ button {
 
 // Header ================================================================================
 header {
-	border-bottom: thin solid $light_gray;
+	.home & {
+		border-bottom: thin solid $light_gray;
+	}
 
 	@media (min-width: $tablet) {
 		font-size: 1.25em;
+
+		.home & {
+			border-bottom: 0;
+		}
 	}
 
 	a {
@@ -277,9 +292,6 @@ header {
 		display: flex;
 		justify-content: space-between;
 	}
-}
-
-.right-header-content {
 }
 
 .header-social-link {
@@ -300,6 +312,12 @@ header {
 
 	&:hover {
 		background: $light_gray;
+	}
+
+	@media (min-width: $tablet) {
+		&:nth-child(2) {
+			border-right: 0;
+		}
 	}
 }
 
@@ -334,7 +352,7 @@ header {
 	}
 }
 
-// Navigation ============================================================================
+// Nav toggle ============================================================================
 .nav-toggle {
 	@extend %no-select;
 
@@ -346,7 +364,6 @@ header {
 	cursor: pointer;
 	float: right;
 	vertical-align: top;
-	border-radius: var(--radius);
 
 	&:hover {
 		background: $light_gray;
@@ -378,6 +395,9 @@ header {
 
 	.has-nav & {
 		background: $light_gray;
+		z-index: 200;
+		position: relative;
+		color: $white;
 
 		.icon-menu {
 			display: none;
@@ -386,108 +406,169 @@ header {
 			display: inline-block;
 		}
 	}
+
+	@media (min-width: $tablet) {
+		display: none;
+	}
 }
 
-.nav-menu {
-	display: none;
-	color: $white;
-	background-color: $black;
-	background-image: radial-gradient(
-			circle at top right,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		),
-		radial-gradient(
-			circle at bottom left,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		);
-
-	.has-nav & {
-		display: block;
-	}
-
+// Navigation ============================================================================
+.nav {
 	ul,
 	li {
 		margin: 0;
 	}
 
-	ul {
-		border-left: var(--small) solid $light_gray;
-		margin: var(--medium) 0;
-	}
-
 	li {
 		list-style: none;
+	}
+}
 
-		ul {
-			margin-left: var(--medium);
+.nav-link {
+	display: inline-block;
+	text-decoration: none;
 
-			a {
-				font-weight: normal;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.main-nav-link {
+	font-weight: bold;
+}
+
+@media (max-width: $tablet) {
+	.nav {
+		display: flex;
+		position: fixed;
+		z-index: 100;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(white, 0.7);
+		pointer-events: none;
+		opacity: 0;
+		transition: var(--transition);
+
+		.has-nav & {
+			pointer-events: initial;
+			opacity: 1;
+		}
+	}
+
+	.nav-spacer {
+		flex: 1;
+	}
+
+	.nav-menu {
+		width: 80%;
+		background: rgba($black, 0.95);
+		overflow-y: auto;
+		transform: translate(var(--large));
+		transition: transform var(--transition);
+
+		.has-nav & {
+			transform: none;
+		}
+
+		li {
+			ul {
+				margin: 0 0 0 var(--small);
+				padding: 0 0 0 var(--large);
+				border-left: thin solid $light_gray;
+
+				&.discover-group {
+					border-color: #00bcd4;
+				}
+
+				&.translate-group {
+					border-color: #ffa726;
+				}
+
+				&.treat-group {
+					border-color: #2196f3;
+				}
 			}
 		}
 	}
 
-	a {
-		display: inline-block;
-		font-weight: bold;
-		color: $white;
-		padding: var(--small) var(--medium);
-		margin: 0 var(--medium);
-		text-decoration: none;
-		cursor: pointer;
+	.nav-group {
+		padding: var(--small) 0;
+	}
 
-		&:hover {
-			text-decoration: underline;
+	.nav-link {
+		padding: 0.25em var(--small);
+
+		&,
+		&:visited {
+			color: $white;
+		}
+
+		.icon-darr {
+			display: none;
 		}
 	}
 }
 
-.nav-menu {
-	.discover-nav {
-		border-color: #fb8c00;
+@media (min-width: $tablet) {
+	.nav {
+		position: relative;
+		background: tint($light_gray, 50%);
+
+		.container {
+			padding: 0 var(--extra-large);
+		}
 	}
-	.care-nav {
-		border-color: #8bc34a;
+	.nav-group {
+		display: inline-block;
+
+		&:hover {
+			background: $light_gray_opaque;
+		}
 	}
-	.translate-nav {
-		border-color: #00acc1;
+
+	.nav-subgroup {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: var(--extra-large);
+		right: var(--extra-large);
+		z-index: 100;
+		background: inherit;
+
+		.nav-group:hover & {
+			display: block;
+		}
 	}
-	.stroke-nav {
-		border-color: #ec407a;
+
+	.nav-sub-subgroup {
+		margin-left: var(--large);
+
+		.nav-link {
+			padding-left: var(--extra-large);
+		}
 	}
-	.brain-tumors-nav {
-		border-color: #ffc107;
-	}
-	.tbi-nav {
-		border-color: #ab47bc;
+
+	.nav-link {
+		display: block;
+		padding: var(--medium) var(--large);
+
+		&,
+		&:visited {
+			color: $black;
+		}
+
+		.icon-rarr {
+			display: none;
+		}
 	}
 }
 
-.orange-gradient {
-	@include gradient(#d84315, #fb8c00);
-}
-.green-gradient {
-	@include gradient(#43a047, #8bc34a);
-}
-.blue-gradient {
-	@include gradient(#1976d2, #00acc1);
-}
-.pink-gradient {
-	@include gradient(#d84315, #ec407a);
-}
-.yellow-gradient {
-	@include gradient(#f57c00, #ffc107);
-}
-.purple-gradient {
-	@include gradient(#5e35b1, #ab47bc);
+@media (min-width: $desktop) {
+	.nav-subgroup {
+		right: 50%;
+	}
 }
 
 // Elements ==============================================================================
@@ -507,14 +588,20 @@ header {
 
 	p {
 		font-weight: normal;
+		margin-top: var(--medium);
 	}
 }
 
 .page-hero {
+	position: relative;
+
+	$overhang: 6rem;
+
 	h1 {
 		font-size: 2.5em;
 		margin: 0 0 var(--medium);
 	}
+
 	p {
 		font-size: 1.2em;
 	}
@@ -526,6 +613,16 @@ header {
 
 		p {
 			font-size: 1.4em;
+		}
+	}
+
+	@media (min-width: $desktop) {
+		padding-bottom: $overhang;
+		margin-bottom: -$overhang - 1.5rem;
+
+		& + section .container {
+			background: $white;
+			padding-top: var(--extra-large);
 		}
 	}
 }
@@ -586,32 +683,36 @@ header {
 
 // Gradients =============================================================================
 .orange-gradient {
-	@include gradient(#d84315, #fb8c00);
+	@include gradient(#ffa726);
 }
 .green-gradient {
-	@include gradient(#43a047, #8bc34a);
+	@include gradient(#42a5f5);
+}
+.light-blue-gradient {
+	@include gradient(#00bcd4);
 }
 .blue-gradient {
-	@include gradient(#1976d2, #00acc1);
+	@include gradient(#2196f3);
 }
 .pink-gradient {
-	@include gradient(#d84315, #ec407a);
+	@include gradient(#f06292);
 }
 .yellow-gradient {
-	@include gradient(#f57c00, #ffc107);
+	@include gradient(#ffeb3b);
 }
 .purple-gradient {
-	@include gradient(#5e35b1, #ab47bc);
+	@include gradient(#ba68c8);
 }
 .black-gradient {
-	@include gradient(#555, #222);
+	@include gradient(#555);
 	color: $white;
 }
 
 // Mission ===============================================================================
 .mission-section {
 	p {
-		font-size: 1.5em;
+		font-size: 1.6em;
+		margin: 0;
 	}
 }
 
@@ -745,11 +846,11 @@ header {
 
 // Videos ================================================================================
 .videos-section {
-	p {
+	h1 + p {
 		font-size: 1.2em;
-		margin: var(--small) 0 0;
 	}
 }
+
 .videos-list {
 	padding: 0 var(--large) var(--large);
 	overflow: hidden;
@@ -764,7 +865,7 @@ header {
 	text-decoration: none;
 
 	@media (min-width: $tablet) {
-		width: 25%;
+		width: 16.666%;
 	}
 
 	&:hover,
@@ -778,12 +879,47 @@ header {
 	&:first-child {
 		width: 100%;
 
-		@media (min-width: $tablet) {
-			width: 75%;
+		// .video-meta:before {
+		// 	content: "Featured";
+		// 	font-size: 0.8em;
+		// 	text-transform: uppercase;
+		// 	color: mix($black, $white, 40%);
+		// 	border: thin solid $light_gray;
+		// 	padding: 2px var(--small);
+		// 	pointer-events: none;
+		// 	border-radius: var(--radius);
+		// }
+
+		.video-title {
+			font-weight: bold;
+			font-size: 1.2em;
+			line-height: 1.4;
+			color: $blue;
+			margin: var(--small) 0;
+		}
+		.video-description {
+			font-size: 0.9em;
+			color: $black;
 		}
 
-		@media (min-width: $desktop) {
-			width: 50%;
+		@media (min-width: $tablet) {
+			display: flex;
+			align-items: center;
+
+			.video-thumbnail {
+				padding: 0;
+				min-height: 15em;
+			}
+
+			.video-thumbnail,
+			.video-meta {
+				display: inline-block;
+				flex: 1;
+			}
+
+			.video-meta {
+				padding-left: var(--extra-large);
+			}
 		}
 	}
 }
@@ -796,7 +932,6 @@ header {
 	background-size: cover;
 	background-position: center center;
 	border-radius: var(--radius);
-	margin: 0 0 var(--medium);
 
 	.icon-youtube-wrapper {
 		display: flex;
@@ -810,6 +945,7 @@ header {
 	}
 
 	.icon-youtube {
+		max-width: 5rem;
 		width: 40%;
 		height: auto;
 		opacity: 0;
@@ -821,15 +957,12 @@ header {
 	color: $black;
 	hyphens: auto;
 	transition: color var(--transition);
+	margin: var(--medium) 0 0;
 
 	.video-block:hover &,
 	.video-block:active &,
 	.video-block:focus & {
 		color: $blue;
-	}
-
-	.video-block:first-child & {
-		font-size: 1.2em;
 	}
 }
 
