@@ -6,56 +6,62 @@ mixin nav()
 		nav.nav-menu
 			.container
 				ul
-					li.nav-item.nav-group
+					li.nav-item.nav-group.discover-group
 						a.nav-link.main-nav-link(href="/discover") 
-							| Discover
+							span Discover
 							+icon("rarr")
 							+icon("dchev") 
-						ul.nav-subgroup.discover-group
+						ul.nav-subgroup
 							li.nav-item
-								a.nav-link(href="/discover/brainsurvey") Brain Explorer
+								a.nav-link(href="/discover/brainsurvey") 
+									span Brain Explorer
 							li.nav-item
-								a.nav-link(href="/discover/publications") Publications
-								ul.nav-sub-subgroup
-									li.nav-item
-										a.nav-link(href="/XXXXXX") Stroke
-									li.nav-item
-										a.nav-link(href="/XXXXXX") Brain Tumor
-									li.nav-item
-										a.nav-link(href="/XXXXXX") TBI
+								a.nav-link(href="/discover/publications") 
+									span Publications
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Open Data Sets
+								a.nav-link(href="/discover/open-data-sets") 
+									span Open Data Sets
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Experiment Exchange
-					li.nav-item.nav-group
+								a.nav-link(href="/discover/experiment-exchange") 
+									span Experiment Exchange
+					li.nav-item.nav-group.translate-group
 						a.nav-link.main-nav-link(href="/translate")
-							| Translate
+							span Translate
 							+icon("rarr")
 							+icon("dchev")
-						ul.nav-subgroup.translate-group
+						ul.nav-subgroup
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Brain Mapping with MRI
+								a.nav-link(href="/translate/brain-mapping-with-mri")
+									span Brain Mapping with MRI
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Brain Mapping During Neurosurgery
-					li.nav-item.nav-group
-						a.nav-link.main-nav-link(href="/treat")
-							| Treat
+								a.nav-link(href="/translate/brain-mapping-during-neurosurgery")
+									span Brain Mapping during Neurosurgery
+					li.nav-item.nav-group.care-group
+						a.nav-link.main-nav-link(href="/care")
+							span Care
 							+icon("rarr")
 							+icon("dchev")
-						ul.nav-subgroup.treat-group
+						ul.nav-subgroup
 							li.nav-item
-								a.nav-link(href="/XXXXXX") University of Rochester Neurosurgery
+								a.nav-link(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx")
+									span University of Rochester Neurosurgery
+									+icon("external")
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Resources for Patients
-								ul.nav-sub-subgroup
-									li.nav-item
-										a.nav-link(href="/XXXXXX") Stroke
-									li.nav-item
-										a.nav-link(href="/XXXXXX") Brain Tumor
-									li.nav-item
-										a.nav-link(href="/XXXXXX") TBI
+								a.nav-link(href="/care/resources-for-patients")
+									span Resources for Patients
+								//- ul.nav-sub-subgroup
+								//- 	li.nav-item
+								//- 		a.nav-link(href="/XXXXXX")
+								//- 			span Stroke
+								//- 	li.nav-item
+								//- 		a.nav-link(href="/XXXXXX")
+								//- 			span Brain Tumor
+								//- 	li.nav-item
+								//- 		a.nav-link(href="/XXXXXX")
+								//- 			span TBI
 							li.nav-item
-								a.nav-link(href="/XXXXXX") Technology
+								a.nav-link(href="/care/technology")
+									span Technology
 	script
 		| var html = document.querySelector("html");
 		| function addNav() { html.classList.add("has-nav"); }

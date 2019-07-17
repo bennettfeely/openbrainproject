@@ -165,17 +165,17 @@ gulp.task("default", function() {
 
   // Home
   gulp.watch(["src/jade/*.jade"], function() {
-    return gulp.run("jade");
+    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
   });
 
   // Subfolders and Partials
   gulp.watch(["src/jade/*/index.jade", "src/jade/partials/*.jade"], function() {
-    return gulp.run("jade", "jade-subfolder");
+    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
   });
 
   // Subsubfolders
   gulp.watch(["src/jade/*/*/index.jade"], function() {
-    return gulp.run("jade", "jade-sub-subfolder");
+    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
   });
 
   // Videos
@@ -185,7 +185,7 @@ gulp.task("default", function() {
 
   // TBI
   gulp.watch(["src/js/_datasets.js", "src/js/tbi.js"], function() {
-    return gulp.run("js", "jade-subfolder");
+    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
   });
 
   // CSS

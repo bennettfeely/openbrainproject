@@ -32,24 +32,21 @@
 // Variables =============================================================================
 $white: #fff;
 $black: #16161d;
-$light_black: tint($black, 10%);
+$light_black: tint($black, 5%);
+$lighter_black: tint($black, 10%);
 $light_gray: rgba(mix($black, $white), 0.25);
-$light_gray_opaque: tint($black, 92%);
 $light_white: rgba($white, 0.1);
 
-$blue: #147ace;
-$light_blue: tint($blue, 50%);
-$purple: #9d13c1;
+$blue_link: #147ace;
+$purple_link: #9d13c1;
 
-$gray-100: mix($white, $black, 10%);
-$gray-200: mix($white, $black, 20%);
-$gray-300: mix($white, $black, 30%);
-$gray-400: mix($white, $black, 40%);
-$gray-500: mix($white, $black, 50%);
-$gray-600: mix($white, $black, 60%);
-$gray-700: mix($white, $black, 70%);
-$gray-800: mix($white, $black, 80%);
-$gray-900: mix($white, $black, 90%);
+$blue: #2196f3;
+$light_blue: #00bcd4;
+$green: #37b055;
+$orange: #ffa726;
+$pink: #f06292;
+$purple: #ba68c8;
+$yellow: #ffeb3b;
 
 $mobile: 20rem;
 $tablet: 40rem;
@@ -111,12 +108,7 @@ body {
 			transparent 50%,
 			transparent 0
 		);
-	background: $white;
 	min-height: 100vh;
-}
-
-main {
-	background: $white;
 }
 
 section {
@@ -167,10 +159,10 @@ p {
 }
 
 a {
-	color: $blue;
+	color: $blue_link;
 
 	&:visited {
-		color: $purple;
+		color: $purple_link;
 	}
 }
 
@@ -265,8 +257,6 @@ button {
 
 // Header ================================================================================
 header {
-	border-bottom: thin solid $light_gray;
-
 	@media (min-width: $tablet) {
 		font-size: 1.25em;
 	}
@@ -424,7 +414,9 @@ header {
 	}
 
 	&:hover {
-		text-decoration: underline;
+		span {
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -441,10 +433,10 @@ header {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background: rgba(white, 0.7);
 		pointer-events: none;
 		opacity: 0;
 		transition: var(--transition);
+		background: rgba($white, 0.8);
 
 		.has-nav & {
 			pointer-events: initial;
@@ -458,7 +450,7 @@ header {
 
 	.nav-menu {
 		width: 80%;
-		background: rgba($black, 0.95);
+		background: $lighter_black;
 		overflow-y: auto;
 		transform: translate(var(--large));
 		transition: transform var(--transition);
@@ -473,17 +465,17 @@ header {
 				padding: 0 0 0 var(--large);
 				border-left: thin solid $light_gray;
 
-				&.discover-group {
-					border-color: #00bcd4;
-				}
+				// &.discover-group {
+				// 	border-color: $light_blue;
+				// }
 
-				&.translate-group {
-					border-color: #ffa726;
-				}
+				// &.translate-group {
+				// 	border-color: $orange;
+				// }
 
-				&.treat-group {
-					border-color: #2196f3;
-				}
+				// &.treat-group {
+				// 	border-color: $blue;
+				// }
 			}
 		}
 	}
@@ -494,6 +486,7 @@ header {
 
 	.nav-link {
 		padding: 0.25em var(--small);
+		border-bottom: thin solid $light_gray;
 
 		&,
 		&:visited {
@@ -509,7 +502,7 @@ header {
 @media (min-width: $tablet) {
 	.nav {
 		position: relative;
-		background: tint($light_gray, 50%);
+		background: $lighter_black;
 
 		.container {
 			padding: 0 var(--extra-large);
@@ -517,23 +510,26 @@ header {
 	}
 	.nav-group {
 		display: inline-block;
+		position: relative;
 
 		&:hover {
-			background: $light_gray_opaque;
+			background: $light_black;
 		}
 	}
 
 	.nav-subgroup {
 		display: none;
 		position: absolute;
-		top: 100%;
-		left: var(--extra-large);
-		right: var(--extra-large);
+		left: 0;
+		min-width: 22em;
 		z-index: 100;
-		background: inherit;
+		border-radius: 0 0 var(--radius) var(--radius);
+		overflow: hidden;
+		background: $light_black;
 
 		.nav-group:hover & {
 			display: block;
+			box-shadow: 0 0.5em 1em $light_gray;
 		}
 	}
 
@@ -551,50 +547,50 @@ header {
 
 		&,
 		&:visited {
-			color: $black;
+			color: $white;
+		}
+
+		&:not(.main-nav-link):hover {
+			background: $black;
 		}
 
 		.icon-rarr {
 			display: none;
 		}
 	}
-}
 
-@media (min-width: $desktop) {
-	.nav-subgroup {
-		right: 50%;
+	.discover-page .main-nav-link[href^="/discover"] {
+		box-shadow: inset 0 var(--small) $light_blue;
+		background: $black;
+	}
+	.translate-page .main-nav-link[href^="/translate"] {
+		box-shadow: inset 0 var(--small) $orange;
+		background: $black;
+	}
+	.care-page .main-nav-link[href^="/care"] {
+		box-shadow: inset 0 var(--small) $blue;
+		background: $black;
 	}
 }
 
 // Elements ==============================================================================
-.page-hero,
-.link-block {
-	display: block;
-
-	&,
-	&:visited {
-		color: $white;
-	}
-
-	h1 {
-		font-size: 2em;
-		line-height: 1;
-	}
-
-	p {
-		font-weight: normal;
-		margin-top: var(--medium);
-	}
-}
-
 .page-hero {
 	position: relative;
+	color: $white;
 
-	$overhang: 6rem;
+	.discover-page & {
+		@extend .light-blue-gradient;
+	}
+	.translate-page & {
+		@extend .orange-gradient;
+	}
+	.care-page & {
+		@extend .blue-gradient;
+	}
 
 	h1 {
 		font-size: 2.5em;
-		margin: 0 0 var(--medium);
+		line-height: 1;
 	}
 
 	.backlink {
@@ -607,104 +603,57 @@ header {
 
 	p {
 		font-size: 1.2em;
+		font-weight: normal;
+		margin: var(--medium) 0 0;
+		max-width: 30em;
 	}
 
 	@media (min-width: $tablet) {
 		.container {
 			padding: var(--extra-large);
 		}
-
-		p {
-			font-size: 1.4em;
-		}
 	}
 
-	@media (min-width: $desktop) {
-		padding-bottom: $overhang;
-		margin-bottom: -$overhang - 1.5rem;
+	// @media (min-width: $desktop) {
+	// 	padding-bottom: $overhang;
+	// 	margin-bottom: -$overhang - 1.5rem;
 
-		& + section .container {
-			background: $white;
-			padding-top: var(--extra-large);
-		}
-	}
+	// 	& + section .container {
+	// 		background: $white;
+	// 		padding-top: var(--extra-large);
+	// 	}
+	// }
 }
 
-.link-blocks {
-	position: relative;
-	z-index: 10;
+.page-subhero {
+	padding: 0;
 
-	@media (min-width: $desktop) {
-		display: flex;
-	}
-}
-
-.link-block {
-	border-radius: var(--radius-large);
-	margin: 0 0 var(--medium);
-	text-decoration: none;
-	flex: 1;
-	transition: box-shadow var(--transition), transform var(--transition),
-		background-color var(--transition);
-	padding: var(--medium) 0;
-
-	@media (min-width: $desktop) {
-		transform: scale(1);
-		margin: 0 var(--large) 0 0;
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-
-	&:hover {
-		@media (min-width: $desktop) {
-			transform: scale(1.02);
-		}
-	}
-
-	.container {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	.button {
-		align-self: flex-start;
-		background: rgba($white, 0.1);
-		margin-bottom: var(--medium);
-	}
-
-	&:hover .button {
-		background: rgba($white, 0.2);
-
-		&:hover {
-			background: $white;
-		}
+	p {
+		margin: 0;
 	}
 }
 
 // Gradients =============================================================================
 .orange-gradient {
-	@include gradient(#ffa726);
+	@include gradient($orange);
 }
 .green-gradient {
-	@include gradient(#42a5f5);
+	@include gradient($green);
 }
 .light-blue-gradient {
-	@include gradient(#00bcd4);
+	@include gradient($light_blue);
 }
 .blue-gradient {
-	@include gradient(#2196f3);
+	@include gradient($blue);
 }
 .pink-gradient {
-	@include gradient(#f06292);
+	@include gradient($pink);
 }
 .yellow-gradient {
-	@include gradient(#ffeb3b);
+	@include gradient($yellow);
 }
 .purple-gradient {
-	@include gradient(#ba68c8);
+	@include gradient($purple);
 }
 .black-gradient {
 	@include gradient(#555);
@@ -713,9 +662,6 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
-	padding: 0;
-	border: 0;
-
 	p {
 		font-size: 1.2em;
 		margin: 0;
@@ -900,7 +846,7 @@ header {
 			font-weight: bold;
 			font-size: 1.2em;
 			line-height: 1.4;
-			color: $blue;
+			color: $blue_link;
 			margin: var(--small) 0;
 		}
 		.video-description {
@@ -968,7 +914,105 @@ header {
 	.video-block:hover &,
 	.video-block:active &,
 	.video-block:focus & {
-		color: $blue;
+		color: $blue_link;
+	}
+}
+
+// Publications page ===================================================================
+.publications-page {
+	p:after {
+		// display: none;
+		font-size: 0.8rem;
+		padding: 0.1rem var(--small);
+		margin: 0 0 0 var(--small);
+		border-radius: var(--radius);
+		pointer-events: none;
+	}
+
+	li:hover p:after {
+		display: inline;
+	}
+}
+
+.filter-publications {
+	background: linear-gradient($white, $light_white);
+}
+
+.filter-button {
+	border: thin solid $light_gray;
+	background: $white;
+	border-radius: var(--radius);
+	cursor: pointer;
+	padding: 0 var(--small);
+
+	.icon-close {
+		display: none;
+	}
+
+	&.is-filtering {
+		.icon-close {
+			display: inline-block;
+		}
+	}
+}
+
+// Stroke -----------------------
+$stroke-color: tint($green, 50%);
+.stroke-filter.is-filtering {
+	background: $stroke-color;
+}
+.stroke-publication p:after {
+	content: "Stroke";
+	background: $stroke-color;
+}
+.show-stroke-filter {
+	.brain-tumor-publication,
+	.tbi-publication {
+		display: none;
+	}
+
+	p:after {
+		display: inline;
+	}
+}
+
+// Brain Tumor -----------------------
+$brain-tumor-color: tint($purple, 50%);
+.brain-tumor-filter.is-filtering {
+	background: $brain-tumor-color;
+}
+.brain-tumor-publication p:after {
+	content: "Brain Tumor";
+	background: $brain-tumor-color;
+}
+.show-brain-tumor-filter {
+	.stroke-publication,
+	.tbi-publication {
+		display: none;
+	}
+
+	p:after {
+		display: inline;
+	}
+}
+
+// TBI -----------------------
+$tbi-color: tint($yellow, 20%);
+.tbi-filter.is-filtering {
+	background: $tbi-color;
+}
+.tbi-publication p:after {
+	content: "TBI";
+	background: $tbi-color;
+}
+.show-tbi-filter {
+	.brain-tumor-publication,
+	.stroke-publication {
+		display: none;
+	}
+
+	p:after {
+		display: inline;
 	}
 }
 
@@ -999,8 +1043,6 @@ header {
 
 // Footer ================================================================================
 footer {
-	border-top: thin solid $light_gray;
-	margin-top: var(--large);
 	text-align: center;
 	opacity: 0.7;
 
