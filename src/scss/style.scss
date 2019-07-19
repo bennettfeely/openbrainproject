@@ -7,28 +7,6 @@
 @import "partials/extensions";
 @import "partials/functions";
 
-// Mixins ================================================================================
-@mixin shadow($color, $size) {
-	box-shadow: 0 $size/4 $size $color;
-}
-
-@mixin gradient($color) {
-	background-color: $color;
-	background-image: linear-gradient(
-		to bottom right,
-		rgba($color, 0),
-		adjust-hue(shade($color, 20%), -15%)
-	);
-
-	&.link-block:hover {
-		background-color: shade($color, 20%);
-
-		.button:hover {
-			color: shade($color, 25%);
-		}
-	}
-}
-
 // Variables =============================================================================
 $white: #fff;
 $black: #16161d;
@@ -47,10 +25,54 @@ $orange: #ffa726;
 $pink: #f06292;
 $purple: #ba68c8;
 $yellow: #ffeb3b;
+$gray: #606670;
 
 $mobile: 20rem;
 $tablet: 40rem;
 $desktop: 60rem;
+
+// Mixins ================================================================================
+@mixin shadow($color, $size) {
+	box-shadow: 0 $size/4 $size $color;
+}
+
+@mixin gradient($color) {
+	background-color: $color;
+	background-image: linear-gradient(
+		to bottom right,
+		rgba($color, 0),
+		adjust-hue(shade($color, 25%), -15%)
+	);
+}
+
+.orange-gradient {
+	@include gradient($orange);
+}
+.green-gradient {
+	@include gradient($green);
+}
+.light-blue-gradient {
+	@include gradient($light_blue);
+}
+.blue-gradient {
+	@include gradient($blue);
+}
+.pink-gradient {
+	@include gradient($pink);
+}
+.yellow-gradient {
+	@include gradient($yellow);
+}
+.purple-gradient {
+	@include gradient($purple);
+}
+.gray-gradient {
+	@include gradient($gray);
+}
+.black-gradient {
+	@include gradient(#555);
+	color: $white;
+}
 
 :root {
 	--root-size: 90%;
@@ -92,22 +114,22 @@ body {
 	line-height: 1.5;
 	color: $black;
 	background: $white;
-	background-image: radial-gradient(
-			circle at top left,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		),
-		radial-gradient(
-			circle at bottom right,
-			transparent 0,
-			transparent 40%,
-			rgba($light_gray, 0.06) 0,
-			transparent 50%,
-			transparent 0
-		);
+	// background-image: radial-gradient(
+	// 		circle at top left,
+	// 		transparent 0,
+	// 		transparent 40%,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 50%,
+	// 		transparent 0
+	// 	),
+	// 	radial-gradient(
+	// 		circle at bottom right,
+	// 		transparent 0,
+	// 		transparent 40%,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 50%,
+	// 		transparent 0
+	// 	);
 	min-height: 100vh;
 }
 
@@ -203,21 +225,9 @@ button {
 	display: inline-block;
 	padding: var(--small) var(--large);
 	font-weight: bold;
-	border-radius: 2em;
+	border-radius: var(--radius);
 	transition: color var(--transition), background-color var(--transition);
 	cursor: pointer;
-}
-
-.split {
-	@media (min-width: $tablet) {
-		display: flex;
-		align-items: flex-start;
-
-		.stretch {
-			flex: 1;
-			padding-left: var(--extra-large);
-		}
-	}
 }
 
 // Icons =================================================================================
@@ -420,8 +430,10 @@ header {
 	}
 }
 
-.main-nav-link {
-	font-weight: bold;
+.primary-nav-items {
+	.main-nav-link {
+		font-weight: bold;
+	}
 }
 
 @media (max-width: $tablet) {
@@ -464,18 +476,6 @@ header {
 				margin: 0 0 0 var(--small);
 				padding: 0 0 0 var(--large);
 				border-left: thin solid $light_gray;
-
-				// &.discover-group {
-				// 	border-color: $light_blue;
-				// }
-
-				// &.translate-group {
-				// 	border-color: $orange;
-				// }
-
-				// &.treat-group {
-				// 	border-color: $blue;
-				// }
 			}
 		}
 	}
@@ -497,6 +497,12 @@ header {
 			display: none;
 		}
 	}
+
+	.secondary-nav-items {
+		.main-nav-link {
+			font-size: 0.9em;
+		}
+	}
 }
 
 @media (min-width: $tablet) {
@@ -507,6 +513,11 @@ header {
 		.container {
 			padding: 0 var(--extra-large);
 		}
+	}
+	.nav-list {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 	.nav-group {
 		display: inline-block;
@@ -531,13 +542,10 @@ header {
 			display: block;
 			box-shadow: 0 0.5em 1em $light_gray;
 		}
-	}
 
-	.nav-sub-subgroup {
-		margin-left: var(--large);
-
-		.nav-link {
-			padding-left: var(--extra-large);
+		.secondary-nav-items .nav-group:last-child & {
+			right: 0;
+			left: initial;
 		}
 	}
 
@@ -571,12 +579,21 @@ header {
 		box-shadow: inset 0 var(--small) $blue;
 		background: $black;
 	}
+	.scientific-products-page .main-nav-link[href^="/scientific-products"],
+	.in-the-news-page .main-nav-link[href^="/in-the-news"],
+	.join-page .main-nav-link[href^="/join"],
+	.data-consortium-page .main-nav-link[href^="/data-consortium"] {
+		box-shadow: inset 0 var(--small) tint($gray, 25%);
+		background: $black;
+	}
 }
 
 // Elements ==============================================================================
 .page-hero {
 	position: relative;
 	color: $white;
+
+	@extend .gray-gradient;
 
 	.discover-page & {
 		@extend .light-blue-gradient;
@@ -593,36 +610,33 @@ header {
 		line-height: 1;
 	}
 
-	.backlink {
-		font-size: 2em;
-		color: rgba($white, 0.6);
-		text-decoration: none;
-		margin-bottom: var(--large);
-		font-weight: bold;
-	}
-
 	p {
 		font-size: 1.2em;
 		font-weight: normal;
 		margin: var(--medium) 0 0;
-		max-width: 30em;
+
+		@media (min-width: $desktop) {
+			max-width: 70%;
+		}
 	}
 
 	@media (min-width: $tablet) {
+		padding-bottom: 6rem;
+
+		& + .page-content {
+			margin-top: -6em;
+
+			.container {
+				background: $white;
+				min-height: 10em;
+				padding-top: var(--extra-large);
+			}
+		}
+
 		.container {
 			padding: var(--extra-large);
 		}
 	}
-
-	// @media (min-width: $desktop) {
-	// 	padding-bottom: $overhang;
-	// 	margin-bottom: -$overhang - 1.5rem;
-
-	// 	& + section .container {
-	// 		background: $white;
-	// 		padding-top: var(--extra-large);
-	// 	}
-	// }
 }
 
 .page-subhero {
@@ -631,33 +645,6 @@ header {
 	p {
 		margin: 0;
 	}
-}
-
-// Gradients =============================================================================
-.orange-gradient {
-	@include gradient($orange);
-}
-.green-gradient {
-	@include gradient($green);
-}
-.light-blue-gradient {
-	@include gradient($light_blue);
-}
-.blue-gradient {
-	@include gradient($blue);
-}
-.pink-gradient {
-	@include gradient($pink);
-}
-.yellow-gradient {
-	@include gradient($yellow);
-}
-.purple-gradient {
-	@include gradient($purple);
-}
-.black-gradient {
-	@include gradient(#555);
-	color: $white;
 }
 
 // Mission ===============================================================================
@@ -831,17 +818,6 @@ header {
 	&:first-child {
 		width: 100%;
 
-		// .video-meta:before {
-		// 	content: "Featured";
-		// 	font-size: 0.8em;
-		// 	text-transform: uppercase;
-		// 	color: mix($black, $white, 40%);
-		// 	border: thin solid $light_gray;
-		// 	padding: 2px var(--small);
-		// 	pointer-events: none;
-		// 	border-radius: var(--radius);
-		// }
-
 		.video-title {
 			font-weight: bold;
 			font-size: 1.2em;
@@ -920,30 +896,43 @@ header {
 
 // Publications page ===================================================================
 .publications-page {
-	p:after {
-		// display: none;
+	.page-hero p {
+		max-width: initial;
+	}
+	li p:after {
 		font-size: 0.8rem;
 		padding: 0.1rem var(--small);
 		margin: 0 0 0 var(--small);
 		border-radius: var(--radius);
 		pointer-events: none;
-	}
-
-	li:hover p:after {
-		display: inline;
+		background: $light_gray;
 	}
 }
 
 .filter-publications {
-	background: linear-gradient($white, $light_white);
+	font-size: 0.6em;
 }
 
 .filter-button {
-	border: thin solid $light_gray;
-	background: $white;
+	font-size: 0.8em;
+	font-weight: bold;
+	border: 0;
+	background: rgba($black, 0.3);
+	color: $white;
+	border: 0;
 	border-radius: var(--radius);
 	cursor: pointer;
-	padding: 0 var(--small);
+	padding: var(--small) var(--medium);
+	transition: background-color var(--transition);
+
+	&:hover {
+		background: rgba($black, 0.6);
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: inset 0 0 0 2px rgba($white, 0.5);
+	}
 
 	.icon-close {
 		display: none;
@@ -957,62 +946,95 @@ header {
 }
 
 // Stroke -----------------------
-$stroke-color: tint($green, 50%);
-.stroke-filter.is-filtering {
-	background: $stroke-color;
-}
-.stroke-publication p:after {
-	content: "Stroke";
-	background: $stroke-color;
-}
 .show-stroke-filter {
-	.brain-tumor-publication,
-	.tbi-publication {
+	.page-content li:not(.stroke-publication) {
 		display: none;
-	}
-
-	p:after {
-		display: inline;
 	}
 }
 
 // Brain Tumor -----------------------
-$brain-tumor-color: tint($purple, 50%);
-.brain-tumor-filter.is-filtering {
-	background: $brain-tumor-color;
-}
-.brain-tumor-publication p:after {
-	content: "Brain Tumor";
-	background: $brain-tumor-color;
-}
 .show-brain-tumor-filter {
-	.stroke-publication,
-	.tbi-publication {
+	.page-content li:not(.brain-tumor-publication) {
 		display: none;
-	}
-
-	p:after {
-		display: inline;
 	}
 }
 
 // TBI -----------------------
-$tbi-color: tint($yellow, 20%);
+.show-tbi-filter {
+	.page-content li:not(.tbi-publication) {
+		display: none;
+	}
+}
+
+.stroke-filter.is-filtering,
+.brain-tumor-filter.is-filtering,
 .tbi-filter.is-filtering {
-	background: $tbi-color;
+	background: $black;
+	color: $white;
+}
+
+.stroke-publication p:after {
+	content: "Stroke";
+}
+.brain-tumor-publication p:after {
+	content: "Brain Tumor";
 }
 .tbi-publication p:after {
 	content: "TBI";
-	background: $tbi-color;
 }
-.show-tbi-filter {
-	.brain-tumor-publication,
-	.stroke-publication {
-		display: none;
+
+// Form ===================================================================
+.flex-form-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.form-aside {
+	flex: 1 0 15em;
+	margin-right: var(--extra-large);
+
+	p {
+		font-size: 0.9em;
+	}
+}
+
+.form {
+	flex: 1 0 30em;
+	background: $light_gray;
+	border-radius: var(--radius);
+
+	section {
+		margin: 0;
+		padding: var(--large);
+
+		&:last-child {
+			border: 0;
+		}
+	}
+	label {
+		cursor: pointer;
 	}
 
-	p:after {
-		display: inline;
+	input[type="text"],
+	input[type="email"],
+	textarea {
+		display: block;
+		width: 100%;
+		border: thin solid $light_gray;
+		background: $white;
+	}
+	input[type="radio"] {
+		display: inline-block;
+		margin-right: var(--medium);
+	}
+
+	button[type="submit"] {
+		color: $white;
+		padding: var(--medium) var(--large);
+	}
+
+	textarea {
+		resize: vertical;
 	}
 }
 

@@ -1,0 +1,57 @@
+include ../../partials/_head
+include ../../partials/_header
+include ../../partials/_svg
+include ../../partials/_icon
+include ../../partials/_footer
+
++head("Publications | The Open Brain Project", "List of publications on the Open Brain Project")
+body.scientific-products-page.publications-page
+	+header()
+	main
+		section.page-hero
+			.container
+				h1 Publications
+				p.filter-publications
+					| Filter publications related to:
+					button.filter-button.stroke-filter
+						| Stroke
+						+icon("close")
+					button.filter-button.brain-tumor-filter
+						| Brain Tumor
+						+icon("close")
+					button.filter-button.tbi-filter
+						| TBI
+						+icon("close")
+		main.page-content
+			section
+				.container
+					h2 Research Articles
+					ul
+						li.tbi-publication
+							:marked
+								Schneider CL, Prentiss EK, Busza A, Matmati K, Matmati N, Williams ZR, Sahin B, Mahon BZ. 2019 Survival of retinal ganglion cells after damage to the occipital lobe in humans is activity dependent. *Proc. R. Soc. B 286: 20182733.*[[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Schneider-2520et-2520al.-5FRSPB-5F2019.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=OKpoN_IclMtVN7PtmOpk3Sohs0VJGKWlLHZuWGuAf_w&amp;e=) Supplemental Materials [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Schneider-2520et-2520al.-5FRSPB-5F2019-5Fsupp.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=mCluoxXuiM05VAbig6_DxlS9OBt6v4ZjQkFgFfJ5g4g&amp;e=)
+						li.brain-tumor-publication
+							:marked
+								Busza, A. & Schneider, C. & L. R., Z. & Mahon, B. Z., & Sahin, B. (2019). Using Vision to Study Poststroke Recovery and Test Hypotheses About Neurorehabilitation. *Neurorehabilitation and Neural Repair*, 33(2), 87–95. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Busza-2520et-2520al.-5FNNR-5F2019.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=ErNTZeU15foSsNltwEU574RvTRvwpjquSwf1AZU2xA8&amp;e=)
+						li.brain-tumor-publication
+							:marked
+								Chernoff, B.L., Teghipco, A., Garcea, F.E., Sims, M. H., Paul, D.A., Tivarus, M.E., Smith, S.O., Pilcher, W.H., & Mahon, B.Z. (2018). A Role for the Frontal Aslant Tract in Speech Planning: A Neurosurgical Case Study. *Journal of Cognitive Neuroscience*, 30(5), 1-18.
+						li.stroke-publication
+							:marked
+								Prentiss, E.K., Schneider, C.L., Williams, Z.R., Sahin, B. & Mahon, B.Z. (2018). Spontaneous in-flight accommodation of hand orientation to unseen grasp targets: A case of action blindsight. *Cognitive Neuropsychology*. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Prentiss-2520et-2520al.-5FCognitive-2520Neuropsychology-5F2018.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=vfBSuvLngJixDKFNtZusitUocwxjWGedVr4yVCIa3jA&amp;e=), [[Supplemental Videos]](https://urldefense.proofpoint.com/v2/url?u=https-3A__youtu.be_xLsutJkH-2DiM&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=T8p8KkHVbgs2cIMe_hsL0ajBpn-rz-Uxv32bfmzP4tA&amp;e=)
+						li.tbi-publication
+							:marked
+								Garcea, F.E., Chernoff, B.L., Diamond, B., Lewis, W., Sims, M.H., Tomlinson, S.B., Teghipco, A., Belkhir, R., Gannon, S.B., Erickson, S., Smith, S.O., Stone, J., Liu, L., Tollefson, T., Langfitt, J., Marvin, E., Pilcher, W.H., & Mahon, B.Z. (2017). Direct electrical stimulation in the human brain disrupts melody processing.* Current Biology, 27,* 2684-2691. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Garcea-2520et-2520al.-5FCurrent-2520Biology-5F2017.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=hO2W98cdNI4grVmMwhR64k-5K_ojR8RjtnUN4BEMhUE&amp;e=), [[Supplemental Videos]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.youtube.com_watch-3Fv-3D10lYEIlhkAI-26list-3DPL453zCNxjRbgzu1Zl-5FyNN2yE7Ad17-2DLxA&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=qeJXO0Jeqff13O-Jfsgtw88SaZNn94WcYecMZ1MkreI&amp;e=")
+						li.stroke-publication
+							:marked
+								Stasenko, A., Bonn, C., Teghipco, A., Garcea, F.E., Sweet, C., Dombovy, M., McDonough, J., and Mahon, B.Z. (2015). A causal test of the motor theory of speech perception: a case of impaired speech production and spared speech perception. *Cognitive Neuropsychology, 32, *38-57. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_StasenkoColleagues-5FCN-5F2015.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=YmVDYecDTytbje6HZYZudkJzwqsCnJAmIZvpaZGGixI&amp;e=)
+						li.brain-tumor-publication
+							:marked
+								Paul, D.A., Gaffin-Cahn, E., Hintz, E.B., Adeclat, G.J., Zhu, T., Williams, Z.R., Vates, G.E., & Mahon, B.Z. (2014). White matter changes linked to visual recovery after nerve decompression. *Science Translational Medicine, 6,* 1-12. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Paul-2520et-2520al.-5FScience-2520Translational-2520Medicine-5F2014-25282-2529.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=XAn1gJChZX2p_Y0L21aNrG7ZclCykVWDEB8zN2EFv7I&amp;e=) Supplemental Materials [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Paul-2520et-2520al.-5FScience-2520Translational-2520Medicine-5F2014.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=nVouBJ5-9m3vI5Y1TRekf9_zZr_htyCE_sRsqBbygKc&amp;e=)
+						li.tbi-publication
+							:marked
+								Stasenko, A., Garcea, F.E., Dombovy, M., & Mahon, B.Z. (2014). When concepts lose their color: A case of object color knowledge impairment. *Cortex, 58,* 217-238. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Stasenko-2520et-2520al.-5FCortex-5F2014.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=iaI99cFkHWY0BdoZ9l79BLmFZYtJzzsbizBgD1qXdEA&amp;e=) Supplemental Materials [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_StasenkoColleagues-5FCortex-5FSupplementalMaterials.pdf&amp;d=DwMDaQ&amp;c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&amp;r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&amp;m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&amp;s=4I6D4vjd8X8PbBDlKz6BB0ecvFehtWR9c1lqEz7ZbRg&amp;e=)
+						li.stroke-publication
+							:marked
+								Garcea, F.E., Dombovy, M., & Mahon, B.Z. (2013). Preserved tool knowledge in the context of impaired action knowledge: Implications for models of semantic memory. *Frontiers in Human Neuroscience, 7,* 1-18.
+	+footer()

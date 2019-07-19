@@ -1,0 +1,46 @@
+include ../../partials/_head
+include ../../partials/_header
+include ../../partials/_svg
+include ../../partials/_icon
+include ../../partials/_footer
+
++head("Contribute Data or Publications | The Open Brain Project", "Where personalized medicine meets translational human brain mapping.")
+body.join-page.contribute-page
+	+header()
+	section.page-hero
+		.container
+			h1 Contribute
+			p Contribute data or publications to The Open Brain Project
+	main.page-content
+		section
+			.container.flex-form-container
+				aside.form-aside
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				form.form(name="contribute", method="POST", data-netlify="true")
+					section
+						label
+							| Your Name:
+							input(type="text", name="name")
+					section
+						label
+							| Your Email:
+							input(type="email", name="email")
+					section
+						| I am a:
+						label
+							input(type="radio", id="scientist", name="i_am_a", value="scientist")
+							| Scientist
+						label
+							input(type="radio", id="clinician", name="i_am_a", value="clinician")
+							| Clinician
+					section
+						| I would like to submit:
+						label
+							input(type="radio", id="publications", name="submission_content", value="publications")
+							| Publication
+						label
+							input(type="radio", id="data", name="submission_content", value="data")
+							| Data
+					section
+						button.button.blue-gradient(type="submit") Send
+	+footer()
