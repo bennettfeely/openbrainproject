@@ -672,32 +672,56 @@ header {
 
 // Partners ==============================================================================
 .partners-grid {
-	text-align: center;
+	// text-align: center;
+	overflow: hidden;
 }
 
-.partner-link {
-	display: inline-block;
-	width: 50%;
-	filter: grayscale(1);
-	padding: var(--medium);
-	transition: filter var(--transition);
+.partner-wrapper {
+	display: flex;
+	align-items: center;
+	margin: 0 0 var(--large);
 
-	&:hover {
-		filter: grayscale(0);
+	&:last-child {
+		margin: 0;
 	}
 
-	@media (min-width: $mobile) {
-		width: 33.33%;
-	}
-
-	@media (min-width: $tablet) {
-		width: 20%;
+	@media (min-width: $desktop) {
+		width: 50%;
+		float: left;
 	}
 }
 
 .partner-img {
-	width: 100%;
+	width: 8em;
 	height: auto;
+	margin-right: var(--large);
+}
+.partner-meta {
+	flex: 1;
+	border-left: thin solid $light_gray;
+	padding: 0 var(--medium);
+}
+
+.partner {
+	margin: var(--large) var(--medium);
+}
+
+.partner-name,
+.partner-title {
+	display: block;
+	text-decoration: none;
+
+	&,
+	&:visited {
+		color: $black;
+	}
+}
+
+.partner-name {
+	font-weight: bold;
+}
+.partner-title {
+	font-size: 0.9em;
 }
 
 // Email signup ==========================================================================
@@ -985,8 +1009,10 @@ header {
 
 // Form ===================================================================
 .flex-form-container {
-	display: flex;
-	flex-wrap: wrap;
+	@media (min-width: $tablet) {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
 .form-aside {
