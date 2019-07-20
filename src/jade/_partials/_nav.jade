@@ -1,0 +1,90 @@
+include ./_icon
+
+mixin nav()
+	.nav
+		.nav-spacer(onclick="removeNav()")
+		nav.nav-menu
+			.container
+				ul.nav-list
+					.primary-nav-items
+						li.nav-item.nav-group.discover-group
+							.nav-link.main-nav-link
+								span Discover
+								+icon("rarr")
+								+icon("dchev") 
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/brainsurvey") 
+										span Brain Survey
+								li.nav-item
+									a.nav-link(href="/open-data-sets") 
+										span Open Data Sets
+								li.nav-item
+									a.nav-link(href="/experiment-exchange") 
+										span Experiment Exchange
+						li.nav-item.nav-group.translate-group
+							.nav-link.main-nav-link
+								span Translate
+								+icon("rarr")
+								+icon("dchev")
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/brain-mapping-with-mri")
+										span Brain Mapping with MRI
+								li.nav-item
+									a.nav-link(href="/brain-mapping-during-neurosurgery")
+										span Brain Mapping during Neurosurgery
+						li.nav-item.nav-group.care-group
+							.nav-link.main-nav-link
+								span Care
+								+icon("rarr")
+								+icon("dchev")
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/resources-for-patients")
+										span Resources for Patients
+								li.nav-item
+									a.nav-link(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx", target="_blank")
+										span University of Rochester Neurosurgery
+										+icon("external")
+								li.nav-item
+									a.nav-link(href="https://www.upmc.com/Services/neurosurgery", target="_blank")
+										span University of Pittsburgh Neurosurgery
+										+icon("external")
+					.secondary-nav-items
+						li.nav-item.nav-group.scientific-products-group
+							.nav-link.main-nav-link
+								span Scientific Products
+								+icon("rarr")
+								+icon("dchev") 
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/publications") 
+										span Publications
+								li.nav-item
+									a.nav-link(href="/technology") 
+										span Technology
+						li.nav-item.nav-group.data-consortium-group
+							a.nav-link.main-nav-link(href="/data-consortium") 
+								span Data Consortium
+						li.nav-item.nav-group.in-the-news-group
+							a.nav-link.main-nav-link(href="/in-the-news") 
+								span In the News
+						li.nav-item.nav-group.join-group
+							.nav-link.main-nav-link
+								span Join
+								+icon("rarr")
+								+icon("dchev") 
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/contribute-data-or-publications") 
+										span Contribute Data or Publications
+								li.nav-item
+									a.nav-link(href="/join-as-a-patient") 
+										span For Patients
+
+	script
+		| var html = document.querySelector("html");
+		| function addNav() { html.classList.add("has-nav"); }
+		| function removeNav() { html.classList.remove("has-nav"); }
+		| function toggleNav() { html.classList.toggle("has-nav"); }

@@ -1,10 +1,12 @@
-include ./partials/_head
-include ./partials/_header
-include ./partials/_icon
-include ./partials/_footer
-include ./partials/_signup
+include ./_partials/_head
+include ./_partials/_header
+include ./_partials/_icon
+include ./_partials/_footer
+include ./_partials/_signup
 
-+head("The Open Brain Project | Discover, Translate, Treat", "The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care.")
+
+
++head("The Open Brain Project")
 body.home
 	+header("")
 	main
@@ -17,7 +19,7 @@ body.home
 			.container
 				.partners-grid
 					.partner-wrapper
-						img.partner-img(src="img/partners/cmu_color.png", width="500", height="490", alt="Carnegie Mellon University")
+						img.partner-img(src="_img/partners/cmu_color.png", width="500", height="490", alt="Carnegie Mellon University")
 						.partner-meta
 							.partner
 								a.partner-name(href="https://scholar.google.com/citations?user=jA6kkvgAAAAJ&hl=en") Bradford Z. Mahon, PhD
@@ -26,7 +28,7 @@ body.home
 								a.partner-name(href="https://scholar.google.com/citations?user=DEpnUW8AAAAJ&hl=en") N. Bonnie Nozari, MD, PhD
 								a.partner-title(href="http://nazbanou.net/") Language Production and Executive Control Lab
 					.partner-wrapper
-						img.partner-img(src="img/partners/urmc_color.png", width="500", height="490", alt="University of Rochester Medical School")
+						img.partner-img(src="_img/partners/urmc_color.png", width="500", height="490", alt="University of Rochester Medical School")
 						.partner-meta
 							.partner
 								a.partner-name(href="https://www.urmc.rochester.edu/people/20554798-webster-h-pilcher") Webster Pilcher, MD, PhD
@@ -35,19 +37,19 @@ body.home
 								a.partner-name(href="https://www.urmc.rochester.edu/people/28451778-bogachan-sahin") Bogachan Sahin, MD, PhD
 								a.partner-title(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx") Program for Translational Brain Mapping
 					.partner-wrapper
-						img.partner-img(src="img/partners/uc_color.png", width="500", height="490", alt="University of Coimbra")
+						img.partner-img(src="_img/partners/uc_color.png", width="500", height="490", alt="University of Coimbra")
 						.partner-meta
 							.partner
 								a.partner-name(href="https://scholar.google.com/citations?user=ejJVE0wAAAAJ&hl=en") Jorge Almeida, PhD
 								a.partner-title(href="http://proactionlab.fpce.uc.pt/") Concepts, Actions, Objects Lab
 					.partner-wrapper
-						img.partner-img(src="img/partners/beijing_color.png", width="500", height="490", alt="Beijing Normal University")
+						img.partner-img(src="_img/partners/beijing_color.png", width="500", height="490", alt="Beijing Normal University")
 						.partner-meta
 							.partner
 								a.partner-name(href="https://scholar.google.com/citations?user=bLz-hogAAAAJ&hl=en") Yanchao Bi, PhD
 								a.partner-title(href="http://bilab.bnu.edu.cn/") Concept Lab
 					.partner-wrapper
-						img.partner-img(src="img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
+						img.partner-img(src="_img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
 						.partner-meta
 							.partner
 								a.partner-name(href="https://scholar.google.com/citations?user=hvvrK8cAAAAJ&hl=en") Alfonso Caramazza

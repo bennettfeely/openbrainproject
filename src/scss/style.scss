@@ -287,12 +287,15 @@ header {
 .header-social-link {
 	display: inline-block;
 	vertical-align: middle;
-	border-right: thin solid $light_gray;
 	line-height: 2.5em;
 	padding: 0 var(--medium);
 	text-align: center;
 	cursor: pointer;
 	vertical-align: top;
+
+	&:first-child {
+		border-right: thin solid $light_gray;
+	}
 
 	.icon {
 		width: 1.25em;
@@ -302,12 +305,6 @@ header {
 
 	&:hover {
 		background: $light_gray;
-	}
-
-	@media (min-width: $tablet) {
-		&:nth-child(2) {
-			border-right: 0;
-		}
 	}
 }
 
@@ -342,68 +339,19 @@ header {
 	}
 }
 
-// Nav toggle ============================================================================
-.nav-toggle {
-	@extend %no-select;
-
-	display: inline-block;
-	position: relative;
-	font-weight: bold;
-	padding: 0 var(--medium);
-	line-height: 2.5em;
-	cursor: pointer;
-	float: right;
-	vertical-align: top;
-
-	&:hover {
-		background: $light_gray;
-
-		span {
-			text-decoration: underline;
-		}
-	}
-
-	span {
-		display: none;
-
-		@media (min-width: $tablet) {
-			display: inline-block;
-			margin: 0 var(--small) 0 0;
-		}
-	}
-
-	.icon {
-		width: 1.5em;
-		height: 1.5em;
-		vertical-align: middle;
-		margin: 0;
-	}
-
-	.icon-close {
-		display: none;
-	}
-
-	.has-nav & {
-		background: $light_gray;
-		z-index: 200;
-		position: relative;
-		color: $white;
-
-		.icon-menu {
-			display: none;
-		}
-		.icon-close {
-			display: inline-block;
-		}
-	}
-
-	@media (min-width: $tablet) {
-		display: none;
-	}
-}
-
 // Navigation ============================================================================
 .nav {
+	position: relative;
+	background: $lighter_black;
+
+	.container {
+		padding: 0 var(--large);
+
+		@media (min-width: $tablet) {
+			padding: 0 var(--extra-large);
+		}
+	}
+
 	ul,
 	li {
 		margin: 0;
@@ -413,19 +361,49 @@ header {
 		list-style: none;
 	}
 }
+.nav-list {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
 
-.nav-link {
+.nav-group {
 	display: inline-block;
-	text-decoration: none;
 
-	&[href="/XXXXXX"] {
-		text-decoration: line-through;
-		color: crimson;
+	@media (min-width: $tablet) {
+		position: relative;
 	}
 
-	&:hover {
-		span {
-			text-decoration: underline;
+	&:hover,
+	&:focus-within {
+		background: $light_black;
+	}
+}
+
+.nav-subgroup {
+	display: none;
+	position: absolute;
+	left: var(--large);
+	right: var(--large);
+	z-index: 100;
+	overflow: hidden;
+	background: $light_black;
+	border-radius: 0 0 var(--radius) var(--radius);
+
+	.nav-group:hover &,
+	.nav-group:focus-within & {
+		display: block;
+		box-shadow: 0 0.5em 1em $light_gray;
+	}
+
+	@media (min-width: $tablet) {
+		left: 0;
+		right: initial;
+		min-width: 22em;
+
+		.secondary-nav-items .nav-group:last-child & {
+			right: 0;
+			left: initial;
 		}
 	}
 }
@@ -436,124 +414,23 @@ header {
 	}
 }
 
-@media (max-width: $tablet) {
-	.nav {
-		display: flex;
-		position: fixed;
-		z-index: 100;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		pointer-events: none;
-		opacity: 0;
-		transition: var(--transition);
-		background: rgba($white, 0.8);
+.nav-link {
+	display: block;
+	padding: var(--medium) var(--large);
+	cursor: default;
+	color: $white;
 
-		.has-nav & {
-			pointer-events: initial;
-			opacity: 1;
-		}
-	}
-
-	.nav-spacer {
-		flex: 1;
-	}
-
-	.nav-menu {
-		width: 80%;
-		background: $lighter_black;
-		overflow-y: auto;
-		transform: translate(var(--large));
-		transition: transform var(--transition);
-
-		.has-nav & {
-			transform: none;
-		}
-
-		li {
-			ul {
-				margin: 0 0 0 var(--small);
-				padding: 0 0 0 var(--large);
-				border-left: thin solid $light_gray;
-			}
-		}
-	}
-
-	.nav-group {
-		padding: var(--small) 0;
-	}
-
-	.nav-link {
-		padding: 0.25em var(--small);
-		border-bottom: thin solid $light_gray;
-
-		&,
-		&:visited {
-			color: $white;
-		}
-
-		.icon-dchev {
-			display: none;
-		}
-	}
-
-	.secondary-nav-items {
-		.main-nav-link {
-			font-size: 0.9em;
-		}
-	}
-}
-
-@media (min-width: $tablet) {
-	.nav {
-		position: relative;
-		background: $lighter_black;
-
-		.container {
-			padding: 0 var(--extra-large);
-		}
-	}
-	.nav-list {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
-	.nav-group {
-		display: inline-block;
-		position: relative;
+	&[href] {
+		text-decoration: none;
 
 		&:hover {
-			background: $light_black;
-		}
-	}
+			cursor: pointer;
 
-	.nav-subgroup {
-		display: none;
-		position: absolute;
-		left: 0;
-		min-width: 22em;
-		z-index: 100;
-		border-radius: 0 0 var(--radius) var(--radius);
-		overflow: hidden;
-		background: $light_black;
-
-		.nav-group:hover & {
-			display: block;
-			box-shadow: 0 0.5em 1em $light_gray;
+			span {
+				text-decoration: underline;
+			}
 		}
 
-		.secondary-nav-items .nav-group:last-child & {
-			right: 0;
-			left: initial;
-		}
-	}
-
-	.nav-link {
-		display: block;
-		padding: var(--medium) var(--large);
-
-		&,
 		&:visited {
 			color: $white;
 		}
@@ -561,30 +438,33 @@ header {
 		&:not(.main-nav-link):hover {
 			background: $black;
 		}
-
-		.icon-rarr {
-			display: none;
-		}
 	}
 
-	.discover-page .main-nav-link[href^="/discover"] {
-		box-shadow: inset 0 var(--small) $light_blue;
-		background: $black;
+	.icon-rarr {
+		display: none;
 	}
-	.translate-page .main-nav-link[href^="/translate"] {
-		box-shadow: inset 0 var(--small) $orange;
-		background: $black;
-	}
-	.care-page .main-nav-link[href^="/care"] {
-		box-shadow: inset 0 var(--small) $blue;
-		background: $black;
-	}
-	.scientific-products-page .main-nav-link[href^="/scientific-products"],
-	.in-the-news-page .main-nav-link[href^="/in-the-news"],
-	.join-page .main-nav-link[href^="/join"],
-	.data-consortium-page .main-nav-link[href^="/data-consortium"] {
+}
+
+.discover-page .discover-group .main-nav-link {
+	box-shadow: inset 0 var(--small) $light_blue;
+	background: $black;
+}
+.translate-page .translate-group .main-nav-link {
+	box-shadow: inset 0 var(--small) $orange;
+	background: $black;
+}
+.care-page .care-group .main-nav-link {
+	box-shadow: inset 0 var(--small) $blue;
+	background: $black;
+}
+.scientific-products-page .scientific-products-group .main-nav-link,
+.in-the-news-page .in-the-news-group .main-nav-link,
+.join-page .join-group .main-nav-link,
+.data-consortium-page .data-consortium-group .main-nav-link {
+	background: $black;
+
+	@media (min-width: $tablet) {
 		box-shadow: inset 0 var(--small) tint($gray, 25%);
-		background: $black;
 	}
 }
 
@@ -672,13 +552,12 @@ header {
 
 // Partners ==============================================================================
 .partners-grid {
-	// text-align: center;
 	overflow: hidden;
 }
 
 .partner-wrapper {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	margin: 0 0 var(--large);
 
 	&:last-child {
@@ -692,9 +571,13 @@ header {
 }
 
 .partner-img {
-	width: 8em;
+	width: 6em;
 	height: auto;
 	margin-right: var(--large);
+
+	@media (min-width: $tablet) {
+		width: 8em;
+	}
 }
 .partner-meta {
 	flex: 1;
@@ -1012,12 +895,12 @@ header {
 	@media (min-width: $tablet) {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 }
 
 .form-aside {
-	flex: 1 0 15em;
-	margin-right: var(--extra-large);
+	flex: 1;
 
 	p {
 		font-size: 0.9em;
@@ -1025,9 +908,14 @@ header {
 }
 
 .form {
-	flex: 1 0 30em;
-	background: $light_gray;
+	flex: 2;
 	border-radius: var(--radius);
+	background: $light_gray;
+	margin: var(--extra-large) 0 0;
+
+	@media (min-width: $tablet) {
+		margin: 0 0 0 var(--extra-large);
+	}
 
 	section {
 		margin: 0;

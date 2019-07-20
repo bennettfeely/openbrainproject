@@ -1,0 +1,16 @@
+include ./_icon
+include ./_nav
+
+mixin header()
+	header
+		.container
+			.site-logo
+				a(href="/")
+					+icon("brain")
+					| The Open Brain Project
+			.right-header-content
+				a.header-social-link(href="https://twitter.com")
+					+icon("twitter")
+				a.header-social-link(href="https://facebook.com")
+					+icon("facebook")
+	+nav()

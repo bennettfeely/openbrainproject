@@ -119,7 +119,7 @@ gulp.task("scss", function() {
         path.extname = ".css";
       })
     )
-    .pipe(gulp.dest("./dist/css"))
+    .pipe(gulp.dest("./dist/_css"))
     .pipe(
       browserSync.reload({
         stream: true
@@ -132,7 +132,7 @@ gulp.task("js", function() {
   return gulp
     .src(["src/js/_datasets.js", "src/js/tbi.js"])
     .pipe(concat("tbi.js"))
-    .pipe(gulp.dest("./dist/js"))
+    .pipe(gulp.dest("./dist/_js"))
     .pipe(
       browserSync.reload({
         stream: true
@@ -165,18 +165,21 @@ gulp.task("default", function() {
 
   // Home
   gulp.watch(["src/jade/*.jade"], function() {
-    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
+    return gulp.run("jade");
   });
 
   // Subfolders and Partials
-  gulp.watch(["src/jade/*/index.jade", "src/jade/partials/*.jade"], function() {
-    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
-  });
+  gulp.watch(
+    ["src/jade/*/index.jade", "src/jade/_partials/*.jade"],
+    function() {
+      return gulp.run("jade", "jade-subfolder");
+    }
+  );
 
   // Subsubfolders
-  gulp.watch(["src/jade/*/*/index.jade"], function() {
-    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
-  });
+  // gulp.watch(["src/jade/*/*/index.jade"], function() {
+  //   return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
+  // });
 
   // Videos
   gulp.watch(["src/js/_videos.js"], function() {
@@ -185,7 +188,7 @@ gulp.task("default", function() {
 
   // TBI
   gulp.watch(["src/js/_datasets.js", "src/js/tbi.js"], function() {
-    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
+    return gulp.run("jade", "jade-subfolder");
   });
 
   // CSS
