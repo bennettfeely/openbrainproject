@@ -110,9 +110,10 @@ $desktop: 60rem;
 // Base Styles ===========================================================================
 body {
 	font-size: var(--root-size);
-	font-family: Helvetica Neue, Helvetica, sans-serif;
+	font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
 	line-height: 1.5;
 	color: $black;
+	min-height: 100vh;
 	background: $white;
 	// background-image: radial-gradient(
 	// 		circle at top left,
@@ -130,7 +131,6 @@ body {
 	// 		transparent 50%,
 	// 		transparent 0
 	// 	);
-	min-height: 100vh;
 }
 
 section {
@@ -346,10 +346,6 @@ header {
 
 	.container {
 		padding: 0 var(--large);
-
-		@media (min-width: $tablet) {
-			padding: 0 var(--extra-large);
-		}
 	}
 
 	ul,
@@ -471,6 +467,7 @@ header {
 // Elements ==============================================================================
 .page-hero {
 	position: relative;
+	padding-bottom: 6rem;
 	color: $white;
 
 	@extend .gray-gradient;
@@ -500,16 +497,38 @@ header {
 		}
 	}
 
-	@media (min-width: $tablet) {
-		padding-bottom: 6rem;
+	& + .page-content {
+		margin: -6rem var(--large) 0;
 
-		& + .page-content {
-			margin-top: -6em;
+		.container {
+			background: $white;
+			min-height: 10em;
+			padding-top: var(--extra-large);
 
-			.container {
-				background: $white;
-				min-height: 10em;
-				padding-top: var(--extra-large);
+			&:first-child {
+				position: relative;
+				border-radius: var(--radius) var(--radius) 0 0;
+
+				&:before,
+				&:after {
+					position: absolute;
+					top: 5rem;
+					bottom: 0;
+					width: 1px;
+					background: linear-gradient(
+						$light_gray,
+						rgba($light_gray, 0)
+					);
+					content: "";
+				}
+
+				&:before {
+					left: -1px;
+				}
+
+				&:after {
+					right: -1px;
+				}
 			}
 		}
 
@@ -532,21 +551,6 @@ header {
 	p {
 		font-size: 1.2em;
 		margin: 0;
-	}
-}
-
-// Focus Areas ===========================================================================
-.focus-area-blocks {
-	font-size: 0.8em;
-
-	.link-block {
-		flex: auto;
-		white-space: nowrap;
-		padding: var(--small) 0;
-
-		h1 {
-			margin: 0;
-		}
 	}
 }
 
@@ -602,92 +606,13 @@ header {
 
 .partner-name {
 	font-weight: bold;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 .partner-title {
 	font-size: 0.9em;
-}
-
-// Email signup ==========================================================================
-.signup-modal {
-	@include shadow($light_gray, 2rem);
-
-	display: none;
-
-	$background: mix($white, $black, 90%);
-	background: rgba($background, 0.95);
-	background-image: linear-gradient($background, rgba($background, 0));
-	position: fixed;
-	left: var(--large);
-	right: var(--large);
-	bottom: 0;
-	border-radius: var(--radius-large) var(--radius-large) 0 0;
-	z-index: 200;
-	color: $black;
-
-	p {
-		font-size: 0.9em;
-	}
-
-	@media (min-width: $tablet) {
-		bottom: var(--large);
-		border-radius: var(--radius-large);
-		right: initial;
-		max-width: 25em;
-	}
-
-	.close-signup-modal {
-		position: absolute;
-		color: $black;
-		cursor: pointer;
-		top: var(--large);
-		right: var(--large);
-		width: 1.5em;
-		height: 1.5em;
-
-		&:hover {
-			color: red;
-		}
-	}
-
-	.icon-close {
-		width: 1.5em;
-		height: 1.5em;
-	}
-
-	&.is-hidden {
-		display: none;
-	}
-}
-
-.email-signup {
-	display: flex;
-	align-items: center;
-	padding-bottom: var(--small);
-
-	input,
-	button {
-		@include shadow($light_gray, 1rem);
-		background: $white;
-		color: $black;
-		border-radius: var(--radius);
-	}
-
-	&:hover {
-		input,
-		button {
-			background: $white;
-			color: $black;
-		}
-	}
-
-	input {
-		flex: 1;
-		margin: 0 var(--small) 0 0;
-	}
-
-	button {
-		@extend %no-select;
-	}
 }
 
 // Videos ================================================================================
@@ -954,9 +879,6 @@ header {
 
 // TBI ===================================================================================
 @import "partials/tbi";
-
-// Brain Survey ==========================================================================
-@import "partials/brainsurvey";
 
 // 404 Page ==============================================================================
 .four-oh-four-section {
