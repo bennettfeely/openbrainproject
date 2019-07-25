@@ -7,22 +7,23 @@ mixin nav()
 			.container
 				ul.nav-list
 					.primary-nav-items
-						li.nav-item.nav-group.discover-group
+						li.nav-item.nav-group.discover-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Discover
 								+icon("rarr")
 								+icon("dchev") 
 							ul.nav-subgroup
 								li.nav-item
-									a.nav-link(href="/brainsurvey") 
+									a.nav-link(href="https://brainsurvey.org") 
 										span Brain Survey
+										+icon("external")
 								li.nav-item
 									a.nav-link(href="/open-data-sets") 
 										span Open Data Sets
 								li.nav-item
 									a.nav-link(href="/experiment-exchange") 
 										span Experiment Exchange
-						li.nav-item.nav-group.translate-group
+						li.nav-item.nav-group.translate-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Translate
 								+icon("rarr")
@@ -34,7 +35,7 @@ mixin nav()
 								li.nav-item
 									a.nav-link(href="/brain-mapping-during-neurosurgery")
 										span Brain Mapping during Neurosurgery
-						li.nav-item.nav-group.care-group
+						li.nav-item.nav-group.care-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Care
 								+icon("rarr")
@@ -61,7 +62,7 @@ mixin nav()
 						li.nav-item.nav-group.in-the-news-group
 							a.nav-link.main-nav-link(href="/in-the-news") 
 								span In the News
-						li.nav-item.nav-group.join-group
+						li.nav-item.nav-group.join-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Join
 								+icon("rarr")
@@ -73,9 +74,3 @@ mixin nav()
 								li.nav-item
 									a.nav-link(href="/join-as-a-patient") 
 										span For Patients
-
-	script
-		| var html = document.querySelector("html");
-		| function addNav() { html.classList.add("has-nav"); }
-		| function removeNav() { html.classList.remove("has-nav"); }
-		| function toggleNav() { html.classList.toggle("has-nav"); }

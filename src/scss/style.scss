@@ -737,6 +737,10 @@ header {
 }
 
 // Videos ================================================================================
+.featured-content-section {
+	overflow: hidden;
+}
+
 .videos-section {
 	h1 + p {
 		font-size: 1.2em;
@@ -744,15 +748,15 @@ header {
 }
 
 .videos-list {
-	padding: 0 var(--large);
-	overflow: hidden;
+	// padding: 0 var(--large);
+	// overflow: hidden;
 }
 
 .video-block {
 	display: inline-block;
 	float: left;
 	width: 33.33%;
-	padding: var(--large);
+	padding: var(--large) 0;
 	vertical-align: top;
 	text-decoration: none;
 
@@ -776,11 +780,15 @@ header {
 			font-size: 1.2em;
 			line-height: 1.4;
 			color: $blue_link;
-			margin: var(--small) 0;
+			margin: var(--large) 0 var(--small);
 		}
 		.video-description {
 			font-size: 0.9em;
 			color: $black;
+		}
+
+		.icon-youtube {
+			opacity: 1;
 		}
 
 		@media (min-width: $tablet) {
@@ -806,7 +814,7 @@ header {
 }
 
 .video-thumbnail {
-	@include shadow($light_gray, 1em);
+	box-shadow: 0 0 2rem $light_gray;
 	position: relative;
 	padding-bottom: 56%;
 	background-color: $black;

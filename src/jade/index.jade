@@ -32,17 +32,24 @@ body.home
 		section.featured-content-section
 			.container
 				h1 Featured Content from The Open Brain Project
-		section.videos-section
-			.container
-				h1 Featured Videos
-				p Translating the latest discoveries in human neuroscience into the best care for patients.
-			.wrapper.videos-list
-				for video in videos
-					a.video-block(href="https://www.youtube.com/watch?v=" + video.video_url)
-						.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
+				.wrapper.videos-list
+					a.video-block(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
+						.video-thumbnail(style="background-image: url(_img/mapping_language_thumb.png)")
 							.icon-youtube-wrapper
 								+icon("youtube")
 						.video-meta
-							h4.video-title= video.title
-							p.video-description= video.description
+							h4.video-title Mapping language ability during awake brain surgery
+		// section.videos-section
+		// 	.container
+		// 		h1 Featured Videos
+		// 		p Translating the latest discoveries in human neuroscience into the best care for patients.
+		// 	.wrapper.videos-list
+		// 		for video in videos
+		// 			a.video-block(href="https://www.youtube.com/watch?v=" + video.video_url)
+		// 				.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
+		// 					.icon-youtube-wrapper
+		// 						+icon("youtube")
+		// 				.video-meta
+		// 					h4.video-title= video.title
+		// 					p.video-description= video.description
 	+footer()
