@@ -4,56 +4,34 @@ include ./_partials/_icon
 include ./_partials/_footer
 include ./_partials/_signup
 
-
-
 +head("The Open Brain Project")
 body.home
 	+header("")
 	main
 		section.mission-section
+			.wrapper
+				.container.mission-container
+					p The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.
+				.container.cycle-container
+					.cycle
+						.pulse-block.pulse-1.cycle-block.discover-cycle-block
+							h1 Discover
+							p Insights about brain <br>structure and function
+						.pulse-block.pulse-2.arrow-block.arrow-block-1
+							+icon("cycle-darr")
+						.pulse-block.pulse-6.arrow-block.arrow-block-2
+							+icon("cycle-uarr")
+						.pulse-block.pulse-3.cycle-block.translate-cycle-block
+							h1 Translate
+							p  Personalized cognitive <br>brain mapping
+						.pulse-block.pulse-5.cycle-block.care-cycle-block
+							h1 Care
+							p  Improve recovery and outcome <br>after brain injury
+						.pulse-block.pulse-4.arrow-block.arrow-block-3
+							+icon("cycle-darr")
+		section.featured-content-section
 			.container
-				p Supporting discoveries about the human brain and their translation into treatment.
-		section.partners-section
-			.container
-				h1 Collaborating Laboratories by Institution
-			.container
-				.partners-grid
-					.partner-wrapper
-						img.partner-img(src="_img/partners/cmu_color.png", width="500", height="490", alt="Carnegie Mellon University")
-						.partner-meta
-							.partner
-								a.partner-name(href="https://scholar.google.com/citations?user=jA6kkvgAAAAJ&hl=en") Bradford Z. Mahon, PhD
-								a.partner-title(href="https://www.cmu.edu/dietrich/psychology/caoslab/neuroscience.html") Concepts, Actions, Objects Lab
-							.partner
-								a.partner-name(href="https://scholar.google.com/citations?user=DEpnUW8AAAAJ&hl=en") N. Bonnie Nozari, MD, PhD
-								a.partner-title(href="http://nazbanou.net/") Language Production and Executive Control Lab
-					.partner-wrapper
-						img.partner-img(src="_img/partners/urmc_color.png", width="500", height="490", alt="University of Rochester Medical School")
-						.partner-meta
-							.partner
-								a.partner-name(href="https://www.urmc.rochester.edu/people/20554798-webster-h-pilcher") Webster Pilcher, MD, PhD
-								a.partner-title(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx") Program for Translational Brain Mapping
-							.partner
-								a.partner-name(href="https://www.urmc.rochester.edu/people/28451778-bogachan-sahin") Bogachan Sahin, MD, PhD
-								a.partner-title(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx") Program for Translational Brain Mapping
-					.partner-wrapper
-						img.partner-img(src="_img/partners/uc_color.png", width="500", height="490", alt="University of Coimbra")
-						.partner-meta
-							.partner
-								a.partner-name(href="https://scholar.google.com/citations?user=ejJVE0wAAAAJ&hl=en") Jorge Almeida, PhD
-								a.partner-title(href="http://proactionlab.fpce.uc.pt/") Concepts, Actions, Objects Lab
-					.partner-wrapper
-						img.partner-img(src="_img/partners/beijing_color.png", width="500", height="490", alt="Beijing Normal University")
-						.partner-meta
-							.partner
-								a.partner-name(href="https://scholar.google.com/citations?user=bLz-hogAAAAJ&hl=en") Yanchao Bi, PhD
-								a.partner-title(href="http://bilab.bnu.edu.cn/") Concept Lab
-					.partner-wrapper
-						img.partner-img(src="_img/partners/harvard_color.png", width="500", height="490", alt="Harvard University")
-						.partner-meta
-							.partner
-								a.partner-name(href="https://scholar.google.com/citations?user=hvvrK8cAAAAJ&hl=en") Alfonso Caramazza
-								a.partner-title(href="https://cogneuro.psychology.fas.harvard.edu/") Cognitive Neuropsychology Lab
+				h1 Featured Content from The Open Brain Project
 		section.videos-section
 			.container
 				h1 Featured Videos
@@ -68,4 +46,3 @@ body.home
 							h4.video-title= video.title
 							p.video-description= video.description
 	+footer()
-	+signup()

@@ -4,10 +4,12 @@ include ./_nav
 mixin header()
 	header
 		.container
-			.site-logo
-				a(href="/")
+			a.site-logo-link(href="/")
+				.site-logo
 					+icon("brain")
-					| The Open Brain Project
+					.site-logo-text
+						h1 The Open Brain Project
+						h2 Translating discovery into care
 			.right-header-content
 				a.header-social-link(href="https://twitter.com")
 					+icon("twitter")

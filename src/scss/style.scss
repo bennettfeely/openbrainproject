@@ -309,33 +309,39 @@ header {
 }
 
 // Logo ==================================================================================
-.site-logo {
-	@extend %no-select;
-
+.site-logo-link {
 	display: inline-block;
-	white-space: nowrap;
-	font-weight: bold;
-	line-height: 2.5em;
+	text-decoration: none;
+}
 
-	a {
-		color: $black;
-		text-decoration: none;
+.site-logo {
+	display: flex;
+	align-items: center;
 
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-
-	.icon {
-		width: 1.5em;
-		height: 1.5em;
-		vertical-align: middle;
-		margin-right: var(--small);
+	.icon-brain {
+		width: 2em;
+		height: 2em;
+		margin-right: 0.5em;
 
 		@media (min-width: $tablet) {
-			width: 2em;
-			height: 2em;
+			width: 2.5em;
+			height: 2.5em;
 		}
+	}
+}
+
+.site-logo-text {
+	h1,
+	h2 {
+		margin: 0;
+	}
+	h1 {
+		font-size: 1em;
+	}
+	h2 {
+		font-size: 0.8em;
+		font-style: italic;
+		font-weight: normal;
 	}
 }
 
@@ -453,10 +459,10 @@ header {
 	box-shadow: inset 0 var(--small) $blue;
 	background: $black;
 }
-.scientific-products-page .scientific-products-group .main-nav-link,
+.publications-page .publications-group .main-nav-link,
 .in-the-news-page .in-the-news-group .main-nav-link,
 .join-page .join-group .main-nav-link,
-.data-consortium-page .data-consortium-group .main-nav-link {
+.consortium-page .consortium-group .main-nav-link {
 	background: $black;
 
 	@media (min-width: $tablet) {
@@ -548,15 +554,130 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
+	@media (min-width: $tablet) {
+		.wrapper {
+			display: flex;
+			align-items: center;
+		}
+		.mission-container {
+			flex: 1;
+		}
+		.cycle-container {
+			flex: 2;
+		}
+	}
+
 	p {
-		font-size: 1.2em;
+		font-size: 1.3em;
+		margin: 0;
+		flex: 1;
+	}
+}
+
+.cycle {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	max-width: 35rem;
+}
+
+.cycle-block,
+.arrow-block {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	padding: var(--large);
+
+	@media (min-width: $tablet) {
+		width: 33.33%;
+	}
+}
+
+// .pulse-block {
+// 	animation: pulse 6s ease-in-out infinite;
+
+// 	@for $i from 1 through 6 {
+// 		&.pulse-#{$i} {
+// 			animation-delay: $i * 1s;
+// 		}
+// 	}
+// }
+
+// @keyframes pulse {
+// 	16.6% {
+// 		opacity: 0.5;
+// 	}
+// 	0%,
+// 	33% {
+// 		opacity: 1;
+// 	}
+// }
+
+.cycle-block {
+	flex-direction: column;
+	text-align: center;
+	border-radius: var(--radius-large);
+	color: $white;
+
+	p {
+		font-size: 0.9em;
+		line-height: 1.3;
 		margin: 0;
 	}
+}
+
+.arrow-block {
+	opacity: 0.5;
+
+	.icon {
+		width: 4rem;
+		height: 4rem;
+	}
+}
+
+.arrow-block-3 {
+	transform: rotate(90deg);
+}
+
+@media (min-width: $tablet) {
+	.arrow-block-1 {
+		order: 1;
+		transform: rotate(-90deg);
+	}
+	.discover-cycle-block {
+		order: 2;
+	}
+	.arrow-block-3 {
+		order: 3;
+		transform: none;
+	}
+	.care-cycle-block {
+		order: 4;
+	}
+	.arrow-block-2 {
+		order: 5;
+		transform: rotate(-90deg);
+	}
+	.translate-cycle-block {
+		order: 6;
+	}
+}
+
+.discover-cycle-block {
+	@extend .light-blue-gradient;
+}
+.translate-cycle-block {
+	@extend .orange-gradient;
+}
+.care-cycle-block {
+	@extend .blue-gradient;
 }
 
 // Partners ==============================================================================
 .partners-grid {
 	overflow: hidden;
+	margin-top: var(--extra-large);
 }
 
 .partner-wrapper {
@@ -623,7 +744,7 @@ header {
 }
 
 .videos-list {
-	padding: 0 var(--large) var(--large);
+	padding: 0 var(--large);
 	overflow: hidden;
 }
 
@@ -726,6 +847,17 @@ header {
 	}
 }
 
+// Resouces for patients page ============================================================
+.resources-for-patients-list {
+	@media (min-width: $desktop) {
+		.column {
+			display: inline-block;
+			vertical-align: top;
+			width: 33.33%;
+		}
+	}
+}
+
 // Publications page ===================================================================
 .publications-page {
 	.page-hero p {
@@ -741,10 +873,6 @@ header {
 	}
 }
 
-.filter-publications {
-	font-size: 0.6em;
-}
-
 .filter-button {
 	font-size: 0.8em;
 	font-weight: bold;
@@ -755,7 +883,6 @@ header {
 	border-radius: var(--radius);
 	cursor: pointer;
 	padding: var(--small) var(--medium);
-	transition: background-color var(--transition);
 
 	&:hover {
 		background: rgba($black, 0.6);
@@ -763,7 +890,6 @@ header {
 
 	&:focus {
 		outline: 0;
-		box-shadow: inset 0 0 0 2px rgba($white, 0.5);
 	}
 
 	.icon-close {
@@ -771,6 +897,9 @@ header {
 	}
 
 	&.is-filtering {
+		background: $white;
+		color: $black;
+
 		.icon-close {
 			display: inline-block;
 		}
@@ -796,13 +925,6 @@ header {
 	.page-content li:not(.tbi-publication) {
 		display: none;
 	}
-}
-
-.stroke-filter.is-filtering,
-.brain-tumor-filter.is-filtering,
-.tbi-filter.is-filtering {
-	background: $black;
-	color: $white;
 }
 
 .stroke-publication p:after {
