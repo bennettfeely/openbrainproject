@@ -2,7 +2,7 @@ var html = document.querySelector("html");
 var body = document.querySelector("body");
 
 // Publications filtering
-if (body.classList.hasClass("publications-page")) {
+if (body.classList.contains("publications-page")) {
 	var filter_buttons = ["stroke-filter", "brain-tumor-filter", "tbi-filter"];
 	var filters = [
 		"show-stroke-filter",
