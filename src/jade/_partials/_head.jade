@@ -11,12 +11,13 @@ mixin head(pageTitle, pageDescription)
 				title "The Open Brain Project | Discover, Translate, Care"
 			- else
 				title=pageTitle + " | The Open Brain Project"
-			
+
 			// Page description
-			- if (pageDescription === "")
-				meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
-			- else
-				meta(name="description", content=pageDescription)
+			meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			// - if (pageDescription == "")
+			// 	meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			// - else
+			// 	meta(name="description", content=pageDescription)
 			
 			// Styles
 			link(href="../_css/style.min.css", rel="stylesheet")
