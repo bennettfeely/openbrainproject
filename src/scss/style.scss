@@ -137,7 +137,7 @@ section {
 	padding: var(--large) 0;
 	border-bottom: thin solid $light_gray;
 
-	.page-content &:last-child {
+	.page-content > &:last-child {
 		padding: var(--large) 0 0;
 	}
 }
@@ -971,8 +971,8 @@ header {
 .form {
 	flex: 2;
 	border-radius: var(--radius);
-	background: $light_gray;
 	margin: var(--extra-large) 0 0;
+	background: $light_gray;
 
 	@media (min-width: $tablet) {
 		margin: 0 0 0 var(--extra-large);

@@ -177,9 +177,9 @@ gulp.task("default", function() {
   );
 
   // Subsubfolders
-  // gulp.watch(["src/jade/*/*/index.jade"], function() {
-  //   return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
-  // });
+  gulp.watch(["src/jade/*/*/index.jade"], function() {
+    return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
+  });
 
   // Videos
   gulp.watch(["src/js/_videos.js"], function() {
