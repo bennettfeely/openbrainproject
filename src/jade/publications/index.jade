@@ -13,50 +13,127 @@ body.publications-page
 				h1 Publications
 				p.filter-publications
 					| Filter publications related to:
-					button.filter-button.stroke-filter
-						| Stroke
-						+icon("close")
-					button.filter-button.brain-tumor-filter
-						| Brain Tumor
-						+icon("close")
-					button.filter-button.tbi-filter
-						| TBI
-						+icon("close")
+					.filters-list
+						button.filter-button(data-filter="brain-tumor")
+							| Brain Tumor
+							+icon("close")
+						button.filter-button(data-filter="stroke")
+							| Stroke
+							+icon("close")
+						//- button.filter-button(data-filter="tbi")
+						//- 	| TBI
+						//- 	+icon("close")
+						button.filter-button(data-filter="craniotomy")
+							| Craniotomy
+							+icon("close")
+						button.filter-button(data-filter="tdcs")
+							| tDCS
+							+icon("close")
+						button.filter-button(data-filter="vision")
+							| Vision
+							+icon("close")
+						button.filter-button(data-filter="language")
+							| Language
+							+icon("close")
+						//- button.filter-button(data-filter="action")
+						//- 	| Action
+						//- 	+icon("close")
 		main.page-content
 			section
 				.container
 					h2 Research Articles
-					ul
-						:marked
-							* Akhavan, N., Göksun, T., & Nozari, N. (2018). Integrity and function of gestures in aphasia. *Aphasiology*, 32(11), 1310–1335. [[PDF]](https://doi.org/10.1080/02687038.2017.1396573)
-							* Almeida, J., Amaral, L., Garcea, F. E., Aguiar de Sousa, D., Xu, S., Mahon, B. Z., & Martins, I. P. (2018). Visual and visuomotor processing of hands and tools as a case study of cross talk between the dorsal and ventral streams. *Cognitive Neuropsychology*, 35(5–6), 288–303. [[PDF]](https://doi.org/10.1080/02643294.2018.1463980)
-							* Bhattacharjee, S., Chew, A., Kashyap, R., Wu, C., Yeo, M., O’Brien, B., … Chen, S. (2019). Could tDCS Modulate Bilingual Reading? *Brain Stimulation*. [[PDF]](https://doi.org/10.1016/j.brs.2018.12.885)
-							* Busza, A., Schneider, C. L., Williams, Z. R., Mahon, B. Z., & Sahin, B. (2019). Using Vision to Study Poststroke Recovery and Test Hypotheses About Neurorehabilitation. *Neurorehabilitation and Neural Repair*, 33(2), 87–95. [[PDF]](https://doi.org/10.1177/1545968319827569)
-							* Chernoff, B. L., Sims, M. H., Smith, S. O., Pilcher, W. H., & Mahon, B. Z. (2019). Direct electrical stimulation of the left frontal aslant tract disrupts sentence planning without affecting articulation. Cognitive Neuropsychology, 1–15. [[PDF]](https://doi.org/10.1080/02643294.2019.1619544)
-							* Chernoff, B. L., Teghipco, A., Garcea, F. E., Sims, M. H., Paul, D. A., Tivarus, M. E., … Mahon, B. Z. (2018). A Role for the Frontal Aslant Tract in Speech Planning: A Neurosurgical Case Study. *Journal of Cognitive Neuroscience*, 30(5), 752–769. [[PDF]](https://doi.org/10.1162/jocn_a_01244)
-							* Fang, Y., Wang, X., Zhong, S., Song, L., Han, Z., Gong, G., & Bi, Y. (2018). Semantic representation in the white matter pathway. *PLoS Biology*, 16(4), 1–21. [[PDF]](https://doi.org/10.1371/journal.pbio.2003993)
-							* Fischer-Baum, S., & Rapp, B. (2014). The analysis of perseverations in acquired dysgraphia reveals the internal structure of orthographic representations. *Cognitive Neuropsychology*, 31(3), 237–265. [[PDF]](https://doi.org/10.1080/02643294.2014.880676)
-							* Garcea, F. E., Almeida, J., Sims, M. H., Nunno, A., Meyers, S. P., Li, Y. M., … Mahon, B. Z. (2018). Domain-Specific Diaschisis: Lesions to Parietal Action Areas Modulate Neural Responses to Tools in the Ventral Stream. *Cerebral Cortex*, 1–14. [[PDF]](https://doi.org/10.1093/cercor/bhy183)
-							* Garcea, F. E., Chernoff, B. L., Diamond, B., Lewis, W., Sims, M. H., Tomlinson, S. B., ... Mahon, B. Z. (2017). Direct Electrical Stimulation in the Human Brain Disrupts Melody Processing. *Current Biology*, 27(17), 2684–2691.e7. [[PDF]](https://doi.org/10.1016/j.cub.2017.07.051)
-							* Han, Z., Ma, Y., Gong, G., He, Y., Caramazza, A., & Bi, Y. (2013). White matter structural connectivity underlying semantic processing: Evidence from brain damaged patients. *Brain*, 136(10), 2952–2965. [[PDF]](https://doi.org/10.1093/brain/awt205)
-							* Han, Z., Ma, Y., Gong, G., Huang, R., Song, L., & Bi, Y. (2016). White matter pathway supporting phonological encoding in speech production: a multi-modal imaging study of brain damage patients. *Brain Structure and Function*, 221(1), 577–589. [[PDF]](https://doi.org/10.1007/s00429-014-0926-2)
-							* Lee, D., Mahon, B. Z., & Almeida, J. (2019). Action at a distance on object-related ventral temporal representations. *Cortex*, 117, 157–167. [[PDF]](https://doi.org/10.1016/j.cortex.2019.02.018)
-							* Li, Y., Fang, Y., Wang, X., Song, L., Huang, R., Han, Z., … Bi, Y. (2018). Connectivity of the ventral visual cortex is necessary for object recognition in patients. *Human Brain Mapping*, 39(7), 2786–2799. [[PDF]](https://doi.org/10.1002/hbm.24040)
-							* Liu, T. T., & Behrmann, M. (2017). Functional outcomes following lesions in visual cortex: Implications for plasticity of high-level vision. *Neuropsychologia*, 105, 197–214. [[PDF]](https://doi.org/10.1016/j.neuropsychologia.2017.06.030)
-							* Liu, T. T., Freud, E., Patterson, C., & Behrmann, M. (2019). Perceptual function and category-selective neural organization in children with resections of visual cortex. *The Journal of Neuroscience*, 3160–18. [[PDF]](https://doi.org/10.1523/jneurosci.3160-18.2019)
-							* Liu, T. T., Nestor, A., Vida, M. D., Pyles, J. A., Patterson, C., Yang, Y., … Behrmann, M. (2018). Successful Reorganization of Category-Selective Visual Cortex following Occipito-temporal Lobectomy in Childhood. *Cell Reports*, 24(5), 1113–1122.e6. [[PDF]](https://doi.org/10.1016/j.celrep.2018.06.099)
-							* Mahon, B. Z., Milleville, S. C., Negri, G. A. L., Rumiati, R. I., Caramazza, A., & Martin, A. (2007). Action-Related Properties Shape Object Representations in the Ventral Stream. *Neuron*, 55(3), 507–520. [[PDF]](https://doi.org/10.1016/j.neuron.2007.07.011)
-							* Negri, G. A. L., Rumiati, R., Zadini, A., Ukmar, M., Mahon, B., & Caramazza, A. (2007). What is the role of motor simulation in action and object recognition? Evidence from apraxia. *Cognitive Neuropsychology*, 24(8), 795–816. [[PDF]](https://doi.org/10.1080/02643290701707412)
-							* Nozari, N. (2019). The dual origin of semantic errors in access deficit: activation vs. inhibition deficit. Cognitive Neuropsychology, 36(1–2), 31–53. [[PDF]](https://doi.org/10.1080/02643294.2019.1587397)
-							* Nozari, N., Arnold, J. E., & Thomspon-Schill, S. L. (2014). The effects of anodal stimulation of the left prefrontal cortex on sentence production. *Brain Stimulation*, 7(6), 784–792. [[PDF]](https://doi.org/10.1016/j.brs.2014.07.035)
-							* Nozari, N., & Faroqi-Shah, Y. (2017). Investigating the origin of nonfluency in aphasia: A path modeling approach to neuropsychology. *Cortex*, 95, 119–135. [[PDF]](https://doi.org/10.1016/j.cortex.2017.08.003)
-							* Nozari, N., Woodard, K., & Thompson-Schill, S. L. (2014). Consequences of cathodal stimulation for behavior: When does it help and when does it hurt performance? *PLoS ONE*, 9(1). [[PDF]](https://doi.org/10.1371/journal.pone.0084338)
-							* Rofes, A., Mandonnet, E., de Aguiar, V., Rapp, B., Tsapkini, K., & Miceli, G. (2018). Language processing from the perspective of electrical stimulation mapping. *Cognitive Neuropsychology*, 0(0), 1–23. [[PDF]](https://doi.org/10.1080/02643294.2018.1485636)
-							* Schneider, C. L., Prentiss, E. K., Busza, A., Matmati, K., Matmati, N., Williams, Z. R., … Mahon, B. Z. (2019). Survival of retinal ganglion cells after damage to the occipital lobe in humans is activity dependent. *Proceedings of the Royal Society B: Biological Sciences*, 286(1897). [[PDF]](https://doi.org/10.1098/rspb.2018.2733)
-							* Stasenko, A., Garcea, F. E., Dombovy, M., & Mahon, B. Z. (2014). When concepts lose their color: A case ofobject-color knowledge impairment. *Cortex*, 58, 217–238. [[PDF]](https://doi.org/10.1016/j.cortex.2014.05.013)
-							* Tao, Y., & Rapp, B. (2019). The effects of lesion and treatment-related recovery on functional network modularity in post-stroke dysgraphia. *NeuroImage: Clinical*, 23(April), 101865. [[PDF]](https://doi.org/10.1016/j.nicl.2019.101865)
-							* Tsapkini, K., Webster, K., Ficek, B. N., Desmond, J., Onyike, C., Rapp, B., … Hillis, A. E. (2017). Transcranial direct current stimulation in primary progressive aphasia: Whom does it help? *Brain Stimulation*, 10(4), e40. [[PDF]](https://doi.org/10.1016/j.brs.2017.04.073)
-							* Tsapkini, K., Webster, K. T., Ficek, B. N., Desmond, J. E., Onyike, C. U., Rapp, B., … Hillis, A. E. (2018). Electrical brain stimulation in different variants of primary progressive aphasia: A randomized clinical trial. *Alzheimer’s and Dementia: Translational Research and Clinical Interventions*, 4, 461–472. [[PDF]](https://doi.org/10.1016/j.trci.2018.08.002)
-							* Yang, H., Lin, Q., Han, Z., Li, H., Song, L., Chen, L., … Bi, Y. (2017). Dissociable intrinsic functional networks support noun-object and verb-action processing. *Brain and Language*, 175(August), 29–41. [[PDF]](https://doi.org/10.1016/j.bandl.2017.08.009)
-							* Yuan, B., Fang, Y., Han, Z., Song, L., He, Y., & Bi, Y. (2017). Brain hubs in lesion models: Predicting functional network topology with lesion patterns in patients. *Scientific Reports*, 7(1), 1–12. [[PDF]](https://doi.org/10.1038/s41598-017-17886-x)
+					ul.publications-list
+						li.stroke-pub.vision-pub
+							:marked
+								Schneider CL, Prentiss EK, Busza A, Matmati K, Matmati N, Williams ZR, Sahin B, Mahon BZ. 2019 Survival of retinal ganglion cells after damage to the occipital lobe in humans is activity dependent. *Proc. R. Soc. B 286: 20182733.* [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Schneider-2520et-2520al.-5FRSPB-5F2019.pdf&d=DwMDaQ&c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&s=OKpoN_IclMtVN7PtmOpk3Sohs0VJGKWlLHZuWGuAf_w&e=) Supplemental Materials [pdf].
+						li.stroke-pub.vision-pub
+							:marked
+								Busza, A. & Schneider, C. & L. R., Z. & Mahon, B. Z., & Sahin, B. (2019). Using Vision to Study Poststroke Recovery and Test Hypotheses About Neurorehabilitation. *Neurorehabilitation and Neural Repair*, 33(2), 87–95. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Busza-2520et-2520al.-5FNNR-5F2019.pdf&d=DwMDaQ&c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&s=ErNTZeU15foSsNltwEU574RvTRvwpjquSwf1AZU2xA8&e=)
+						li.brain-tumor-pub.craniotomy-pub.language-pub
+							:marked
+								Chernoff, B.L., Teghipco, A., Garcea, F.E., Sims, M. H., Paul, D.A., Tivarus, M.E., Smith, S.O., Pilcher, W.H., & Mahon, B.Z. (2018). A Role for the Frontal Aslant Tract in Speech Planning: A Neurosurgical Case Study. *Journal of Cognitive Neuroscience*, 30(5), 1-18.
+						li.brain-tumor-pub.craniotomy-pub.language-pub
+							:marked
+								Garcea, F.E., Chernoff, B.L., Diamond, B., Lewis, W., Sims, M.H., Tomlinson, S.B., Teghipco, A., Belkhir, R., Gannon, S.B., Erickson, S., Smith, S.O., Stone, J., Liu, L., Tollefson, T., Langfitt, J., Marvin, E., Pilcher, W.H., & Mahon, B.Z. (2017). Direct electrical stimulation in the human brain disrupts melody processing. *Current Biology, 27*, 2684-2691.
+						li.stroke-pub.vision-pub.language-pub
+							:marked
+								Stasenko, A., Garcea, F.E., Dombovy, M., & Mahon, B.Z. (2014). When concepts lose their color: A case of object color knowledge impairment. *Cortex, 58*, 217-238. [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_Stasenko-2520et-2520al.-5FCortex-5F2014.pdf&d=DwMDaQ&c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&s=iaI99cFkHWY0BdoZ9l79BLmFZYtJzzsbizBgD1qXdEA&e=) Supplemental Materials [[pdf]](https://urldefense.proofpoint.com/v2/url?u=https-3A__www.cmu.edu_dietrich_psychology_caoslab_pdf_StasenkoColleagues-5FCortex-5FSupplementalMaterials.pdf&d=DwMDaQ&c=4sF48jRmVAe_CH-k9mXYXEGfSnM3bY53YSKuLUQRxhA&r=TAQHLsQ3QdWAO1nQ9Yo9NlTO9d-Jr_KEGxWlR5koMsFYLrYE9Bswi7JEFqA29aEK&m=C1top5wUEer2j1A4o51Rw9k-Yr3k3TbZC6lH67nfCGE&s=4I6D4vjd8X8PbBDlKz6BB0ecvFehtWR9c1lqEz7ZbRg&e=)
+						li.brain-tumor-pub.craniotomy-pub.language-pub
+							:marked
+								Chernoff, B.L., Sims, M.H., Garcea, Smith, S.O., Pilcher, W.H., & Mahon, B.Z. (2019). Direct Electrical Stimulation of the Left Frontal Aslant Tract Disrupts Sentence Planning Without Affecting Articulation *Cognitive Neuropsychology*, 1-15. [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Chernoff%20et%20al._Cognitive%20Neuropsychology_2019.pdf). Supplemental Online Video Showing Intra-Operative Mapping [[pdf]](https://www.youtube.com/watch?v=bNOtxXxhYHE&feature=youtu.be)
+						li.brain-tumor-pub.craniotomy-pub.vision-pub
+							:marked
+								Garcea, F.E., Almeida, J., Sims, M., Nunno, A., Meyers, S.P., Li, Y.M., Walter, K., Pilcher, W.H., & Mahon, B.Z. (2018). Domain-Specific Diaschisis: Lesions to Parietal Action Areas Modulate Neural Responses to Tools in the Ventral Stream. *Cerebral Cortex*. [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Garcea%20et%20al._Cerebral%20Cortex_2018.pdf). Supplemental Materials [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Garcea%20et%20al._Cerebral%20Cortex_2018_SOM.pdf)
+						li.stroke-pub.vision-pub.action-pub
+							:marked
+								Negri, G.A.L., Rumiati, R.I., Zadini, A., Ukmar, M., Mahon, B.Z., & Caramazza, A. (2007). What is the Role of Motor Simulation in Action & Object Recognition? Evidence from Apraxia. *Cognitive Neuropsychology*, 24, 795-816. [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Negri%20et%20al._Cognitive%20Neuropsychology_2007.pdf) 
+						li.stroke-pub.vision-pub.action-pub
+							:marked
+								Mahon, B.Z., Milleville, S., Negri, G.A.L., Rumiati, R.I., Caramazza, A, & Martin, A. (2007). Action-related properties of objects shape object representations in the ventral stream. *Neuron*, 55, 3, 507-520. [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Mahon%20et%20al._Neuron_2007.pdf) Supplemental Materials [[pdf]](https://www.cmu.edu/dietrich/psychology/caoslab/pdf/Mahon_Neuron_Sup-Data.pdf)
+						li.stroke-pub.vision-pub.action-pub
+							:marked
+								*Visual and visuomotor processing of hands and tools as a case study of cross talk between the dorsal and ventral streams*. J Almeida, L Amaral, FE Garcea, D Aguiar de Sousa, S Xu, BZ Mahon, ... *Cognitive neuropsychology* 35 (5-6), 288-303 
+						li.stroke-pub.vision-pub
+							:marked
+								*Connectivity of the ventral visual cortex is necessary for object recognition in patients*. Y Li, Y Fang, X Wang, L Song, R Huang, Z Han, G Gong, Y Bi. _Human brain mapping_ 39 (7), 2786-2799
+						li.stroke-pub.vision-pub.language-pub.action-pub
+							:marked
+								*Semantic representation in the white matter pathway*. Y Fang, X Wang, S Zhong, L Song, Z Han, G Gong, Y Bi. _PLoS biology_ 16 (4), e2003993
+						li.stroke-pub.vision-pub.language-pub.action-pub
+							:marked
+								*Brain hubs in lesion models: Predicting functional network topology with lesion patterns in patients*. B Yuan, Y Fang, Z Han, L Song, Y He, Y Bi. _Scientific reports_ 7 (1), 17908
+						li.stroke-pub.language-pub.action-pub
+							:marked
+								*Dissociable intrinsic functional networks support noun-object and verb-action processing*. H Yang, Q Lin, Z Han, H Li, L Song, L Chen, Y He, Y Bi. _Brain and language_ 175, 29-41 
+						li.stroke-pub.language-pub
+							:marked
+								*White matter pathway supporting phonological encoding in speech production: a multi-modal imaging study of brain damage patients*. Z Han, Y Ma, G Gong, R Huang, L Song, Y Bi. _Brain Structure and Function_ 221 (1), 577-589 
+						li.stroke-pub.language-pub
+							:marked
+								*White matter structural connectivity underlying semantic processing: evidence from brain damaged patients*. Z Han, Y Ma, G Gong, Y He, A Caramazza, Y Bi. _Brain_ 136 (10), 2952-2965 
+						li.stroke-pub.language-pub
+							:marked
+								Nozari, N. (in press). *[The dual origin of errors in access deficit: activation vs. inhibition deficit.](http://nazbanou.net/files/Nozari2019CN.pdf) Cognitive Neuropsychology.*
+						li.stroke-pub.language-pub
+							:marked
+								*Nozari, N. & Faroqi-Shah, Y. (2017). [Investigating the origin of nonfluency in aphasia: A path modeling approach to neuropsychology.](http://nazbanou.net/files/NozariFaroqi2017.pdf) Cortex, 95, 119-135. doi: 10.1016/j.cortex.2017.08.003*
+						li.stroke-pub.language-pub
+							:marked
+								*Akhavan, N., Goksun, T. & Nozari, N. (accepted). [Integrity and function of gestures in aphasia](http://nazbanou.net/files/AkhavanGoksunNozari2017.pdf) Aphasiology.*
+						li.tdcs-pub
+							:marked
+								*Nozari, N., Woodard, K., & Thompson-Schill, S. L. (2014). [Consequences of cathodal stimulation for behavior: when does it help and when does it hurt performance?](http://www.ncbi.nlm.nih.gov/pubmed/24409291) PloS one, 9(1), e84338.*
+						li.tdcs-pub.language-pub
+							:marked
+								*Nozari, N., Arnold, J. E., & Thompson-Schill, S. L. (2014). [The effects of anodal stimulation of the left prefrontal cortex on sentence production.](http://www.ncbi.nlm.nih.gov/pubmed/25129401) Brain Stimulation, 7(6), 784–792.*
+						li.tdcs-pub.vision-pub.action-pub
+							:marked
+								*Action at a distance on object–related ventral temporal representations*. D Lee, BZ Mahon, J. Almeida. *Cortex*. 
+						li.craniotomy-pub.vision-pub
+							:marked
+								Liu TT, Freud E, Patterson C, Behrmann M. Perceptual function and category-selective neural organization in children with resections of visual cortex. J Neurosci. 2019 Jun 5. pii: 3160-18. doi: [10.1523/JNEUROSCI.3160-18.2019](https://doi.org/10.1523/JNEUROSCI.3160-18.2019). [Epub ahead of print]
+						li.craniotomy-pub.vision-pub
+							:marked
+								Liu, T., Nestor, A., Vida, M. D., Pyles, J. A., Patterson, C., Yang, Y., Yang, F. N., Freud, E., Behrmann, M. (2018). Successful Reorganization of Category-Selective Visual Cortex following Occipito-temporal Lobectomy in Childhood. Cell Repots 24:1113-1122. doi: 10.1016/j.celrep.2018.06.099. [[pdf]](https://www.cmu.edu/dietrich/behrmannlab/Publications/CellReports_longitudinal.pdf) 
+						li.craniotomy-pub.stroke-pub.vision-pub
+							:marked
+								Liu, T. T. and Behrmann, M. (2017). Functional outcomes in patients with lesions in visual cortex: Implications for developmental
+						li.tdcs-pub.language-pub
+							:marked
+								*Could tDCS Modulate Bilingual Reading?* S Bhattacharjee, A Chew, R Kashyap, C Wu, M Yeo, B O’Brien, B Rapp, ... Brain Stimulation: Basic, Translational, and Clinical Research in ...
+						li.stroke-pub.language-pub
+							:marked
+								*The effects of lesion and treatment-related recovery on functional network modularity in post-stroke dysgraphia*. Y Tao, B Rapp. _NeuroImage_: Clinical 23, 101865
+						li.craniotomy-pub.language-pub
+							:marked
+								*Language processing from the perspective of electrical stimulation mapping*. A Rofes, E Mandonnet, V de Aguiar, B Rapp, K Tsapkini, G Miceli. *Cognitive Neuropsychology*, 1-23
+						li.tdcs-pub.language-pub
+							:marked
+								*Electrical brain stimulation in different variants of primary progressive aphasia: A randomized clinical trial*. K Tsapkini, KT Webster, BN Ficek, JE Desmond, CU Onyike, B Rapp, ... Alzheimer's & Dementia: Translational Research & Clinical Interventions 4 ...
+						li.tdcs-pub.language-pub
+							:marked
+								*Transcranial direct current stimulation in primary progressive aphasia: Whom does it help?* K Tsapkini, K Webster, BN Ficek, J Desmond, C Onyike, B Rapp, ... Brain Stimulation: Basic, Translational, and Clinical Research in ...
+						li.stroke-pub.language-pub
+							:marked
+								*The analysis of perseverations in acquired dysgraphia reveals the internal structure of orthographic representations*. S Fischer-Baum, B Rapp. *Cognitive Neuropsychology*. 31 (3), 237-265
 	+footer()

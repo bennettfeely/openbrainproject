@@ -3,46 +3,25 @@ var body = document.querySelector("body");
 
 // Publications filtering
 if (body.classList.contains("publications-page")) {
-	var filter_buttons = ["stroke-filter", "brain-tumor-filter", "tbi-filter"];
-	var filters = [
-		"show-stroke-filter",
-		"show-brain-tumor-filter",
-		"show-tbi-filter"
-	];
+	var filter_buttons = document.querySelectorAll(".filter-button");
+	var publications_list = document.querySelector(".publications-list");
 
-	filter_buttons.forEach(function(filter) {
-		document
-			.querySelector("." + filter)
-			.addEventListener("click", function() {
-				console.log("clicked");
+	console.log(filter_buttons);
 
-				if (html.classList.contains("show-" + filter)) {
-					// Clear any filters
-					html.classList.remove(...filters);
+	filter_buttons.forEach(function(filter_button) {
+		// console.log(filter_button.dataset.filter);
 
-					// Iterate through filter buttons and clear is-filtering class
-					filter_buttons.forEach(function(filter_button) {
-						document
-							.querySelector("." + filter_button)
-							.classList.remove("is-filtering");
-					});
-				} else {
-					// Clear any filters
-					html.classList.remove(...filters);
+		filter_button.addEventListener("click", function(elem) {
+			var target = elem.currentTarget;
 
-					// Add filter of clicked button
-					html.classList.add("show-" + filter);
+			console.log(target);
 
-					// Iterate through filter buttons and clear is-filtering class
-					filter_buttons.forEach(function(filter_button) {
-						document
-							.querySelector("." + filter_button)
-							.classList.remove("is-filtering");
-					});
+			target.classList.toggle("is-filtering");
 
-					// Add is-filtering class to current filtering button
-					this.classList.add("is-filtering");
-				}
-			});
+			var filter = target.dataset.filter;
+			publications_list.classList.toggle("show-" + filter + "-pub");
+
+			console.log(target.dataset.filter);
+		});
 	});
 }

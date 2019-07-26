@@ -1,0 +1,15 @@
+include ../_partials/_head
+include ../_partials/_header
+include ../_partials/_svg
+include ../_partials/_icon
+include ../_partials/_footer
+
++head("Brain Survey")
+body.discover-page.brainsurvey-page
+	+header()
+	main
+		//- .page-title
+		//- 	.container
+		//- 		h1 Brain Survey
+		iframe.bs-iframe(src="https://brainsurvey.org")
+	+footer()
