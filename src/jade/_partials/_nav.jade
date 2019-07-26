@@ -2,11 +2,10 @@ include ./_icon
 
 mixin nav()
 	.nav
-		.nav-spacer(onclick="removeNav()")
 		nav.nav-menu
 			.container
-				ul.nav-list
-					.primary-nav-items
+				.nav-list
+					ul.primary-nav-items
 						li.nav-item.nav-group.discover-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Discover
@@ -52,7 +51,7 @@ mixin nav()
 									a.nav-link(href="https://www.upmc.com/Services/neurosurgery", target="_blank")
 										span University of Pittsburgh Neurosurgery
 										+icon("external")
-					.secondary-nav-items
+					ul.secondary-nav-items
 						li.nav-item.nav-group.publications-group
 							a.nav-link.main-nav-link(href="/publications") 
 								span Publications

@@ -1,6 +1,4 @@
 mixin head(pageTitle, pageDescription)
-	- defaultDescription = "The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care."
-	- themeColor = "#959ba6"
 	doctype html
 	html(lang="en")
 		head
@@ -16,7 +14,7 @@ mixin head(pageTitle, pageDescription)
 			
 			// Page description
 			- if (pageDescription === "")
-				meta(name="description", content=defaultDescription)
+				meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
 			- else
 				meta(name="description", content=pageDescription)
 			
@@ -31,9 +29,9 @@ mixin head(pageTitle, pageDescription)
 			link(rel="mask-icon", href="../_img/safari-pinned-tab.svg", color="#fa8072")
 			
 			// Web appification
-			meta(name="theme-color", content=themeColor)
+			meta(name="theme-color", content="#959ba6")
 			meta(name="application-name" content="Open Brain Project")
-			meta(name="msapplication-TileColor", content=themeColor)
+			meta(name="msapplication-TileColor", content="#959ba6")
 			meta(name="rating" content="General")
 			meta(name="mobile-web-app-capable", content="yes")
 
@@ -47,7 +45,7 @@ mixin head(pageTitle, pageDescription)
 			meta(property="og:title" content="The Open Brain Project")
 			// meta(property="og:image" content="https://example.com/image.jpg")
 			meta(property="og:image:alt" content="A description of what is in the image (not a caption)")
-			meta(property="og:description" content=defaultDescription)
+			meta(property="og:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
 			meta(property="og:site_name" content="The Open Brain Project")
 			meta(property="og:locale" content="en_US")
 			meta(property="article:author" content="Brad Mahon")
@@ -58,6 +56,6 @@ mixin head(pageTitle, pageDescription)
 			// meta(name="twitter:creator" content="@individual_account")
 			// meta(name="twitter:url" content="https://example.com/page.html")
 			meta(name="twitter:title" content="The Open Brain Project")
-			meta(name="twitter:description" content=defaultDescription)
+			meta(name="twitter:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
 			// meta(name="twitter:image" content="https://example.com/image.jpg")
 			// meta(name="twitter:image:alt" content="A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.")
