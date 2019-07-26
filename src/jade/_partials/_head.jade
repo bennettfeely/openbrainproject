@@ -1,21 +1,63 @@
 mixin head(pageTitle, pageDescription)
+	- defaultDescription = "The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care."
+	- themeColor = "#959ba6"
 	doctype html
 	html(lang="en")
 		head
+			// Essentials
 			meta(charset="utf-8")
-			meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+			meta(name="viewport", content="width=device-width, initial-scale=1")
+			
+			// Page title
 			- if (pageTitle === "")
 				title "The Open Brain Project | Discover, Translate, Care"
 			- else
 				title=pageTitle + " | The Open Brain Project"
+			
+			// Page description
 			- if (pageDescription === "")
-				meta(name="description", content="The Open Brain Project is a collaborative effort among scientists and clinicians to support basic discoveries of brain function that advance patient care.")
+				meta(name="description", content=defaultDescription)
 			- else
 				meta(name="description", content=pageDescription)
+			
+			// Styles
 			link(href="../_css/style.min.css", rel="stylesheet")
 			link(href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap",rel="stylesheet")
+			
+			// Icons
 			link(rel="apple-touch-icon", sizes="180x180", href="../_img/apple-touch-icon.png")
 			link(rel="icon", type="image/png", sizes="32x32", href="../_img/favicon-32x32.png")
 			link(rel="icon", type="image/png", sizes="16x16", href="../_img/favicon-16x16.png")
 			link(rel="mask-icon", href="../_img/safari-pinned-tab.svg", color="#fa8072")
-			meta(name="msapplication-TileColor", content="#b91d47")
+			
+			// Web appification
+			meta(name="theme-color", content=themeColor)
+			meta(name="application-name" content="Open Brain Project")
+			meta(name="msapplication-TileColor", content=themeColor)
+			meta(name="rating" content="General")
+			meta(name="mobile-web-app-capable", content="yes")
+
+			// Force IE 8/9/10 to use its latest rendering engine
+			meta(http-equiv="x-ua-compatible", content="ie=edge")
+
+			// Facebook meta
+			// meta(property="fb:app_id" content="123456789")
+			// meta(property="og:url" content="https://example.com/page.html")
+			meta(property="og:type" content="website")
+			meta(property="og:title" content="The Open Brain Project")
+			// meta(property="og:image" content="https://example.com/image.jpg")
+			meta(property="og:image:alt" content="A description of what is in the image (not a caption)")
+			meta(property="og:description" content=defaultDescription)
+			meta(property="og:site_name" content="The Open Brain Project")
+			meta(property="og:locale" content="en_US")
+			meta(property="article:author" content="Brad Mahon")
+
+			// Twitter meta
+			meta(name="twitter:card" content="summary")
+			// meta(name="twitter:site" content="@site_account")
+			// meta(name="twitter:creator" content="@individual_account")
+			// meta(name="twitter:url" content="https://example.com/page.html")
+			meta(name="twitter:title" content="The Open Brain Project")
+			meta(name="twitter:description" content=defaultDescription)
+			// meta(name="twitter:image" content="https://example.com/image.jpg")
+			// meta(name="twitter:image:alt" content="A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.")

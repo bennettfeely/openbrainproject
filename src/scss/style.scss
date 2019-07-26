@@ -115,27 +115,31 @@ body {
 	color: $black;
 	min-height: 100vh;
 	background: $white;
-	// background-image: radial-gradient(
-	// 		circle at top left,
-	// 		transparent 0,
-	// 		transparent 40%,
-	// 		rgba($light_gray, 0.06) 0,
-	// 		transparent 50%,
-	// 		transparent 0
-	// 	),
-	// 	radial-gradient(
-	// 		circle at bottom right,
-	// 		transparent 0,
-	// 		transparent 40%,
-	// 		rgba($light_gray, 0.06) 0,
-	// 		transparent 50%,
-	// 		transparent 0
-	// 	);
+	background-image: radial-gradient(
+			circle at top left,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		),
+		radial-gradient(
+			circle at bottom right,
+			transparent 0,
+			transparent 40%,
+			rgba($light_gray, 0.06) 0,
+			transparent 50%,
+			transparent 0
+		);
 }
 
 section {
 	padding: var(--large) 0;
 	border-bottom: thin solid $light_gray;
+
+	.page-content &:last-child {
+		padding: var(--large) 0 0;
+	}
 }
 
 .page-title {
@@ -342,6 +346,7 @@ header {
 		font-size: 0.8em;
 		font-style: italic;
 		font-weight: normal;
+		opacity: 0.75;
 	}
 }
 
@@ -588,6 +593,7 @@ header {
 	justify-content: center;
 	width: 50%;
 	padding: var(--large);
+	cursor: default;
 
 	@media (min-width: $tablet) {
 		width: 33.33%;
@@ -615,6 +621,7 @@ header {
 // }
 
 .cycle-block {
+	@extend %no-select;
 	flex-direction: column;
 	text-align: center;
 	border-radius: var(--radius-large);
@@ -677,7 +684,6 @@ header {
 // Partners ==============================================================================
 .partners-grid {
 	overflow: hidden;
-	margin-top: var(--extra-large);
 }
 
 .partner-wrapper {
