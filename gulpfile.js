@@ -53,7 +53,8 @@ gulp.task("jade-subfolder", function() {
       jade({
         pretty: true,
         data: {
-          datasets: datasets_obj
+          datasets: datasets_obj,
+          videos: videos_arr
         }
       })
     )
@@ -80,7 +81,8 @@ gulp.task("jade-sub-subfolder", function() {
       jade({
         pretty: true,
         data: {
-          datasets: datasets_obj
+          datasets: datasets_obj,
+          videos: videos_arr
         }
       })
     )

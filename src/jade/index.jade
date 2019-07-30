@@ -11,45 +11,20 @@ body.home
 		section.mission-section
 			.wrapper
 				.container.mission-container
-					p The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.
-				.container.cycle-container
-					.cycle
-						.pulse-block.pulse-1.cycle-block.discover-cycle-block
-							h1 Discover
-							p Insights about brain <br>structure and function
-						.pulse-block.pulse-2.arrow-block.arrow-block-1
-							+icon("cycle-darr")
-						.pulse-block.pulse-6.arrow-block.arrow-block-2
-							+icon("cycle-uarr")
-						.pulse-block.pulse-3.cycle-block.translate-cycle-block
-							h1 Translate
-							p  Personalized cognitive <br>brain mapping
-						.pulse-block.pulse-5.cycle-block.care-cycle-block
-							h1 Care
-							p  Improve recovery and outcome <br>after brain injury
-						.pulse-block.pulse-4.arrow-block.arrow-block-3
-							+icon("cycle-darr")
+					p The Open Brain Project is a:
+					p Consortium of scientists and clinicians dedicated to advancing knowledge about brain injury
+					p Meta-analytic engine to understand how focal brain lesions cause sensory, cognitive and motor function
+					p A hub to connect patients and their families with resources to manage their condition
+					p A forum for scientists to share research papers, data, and experimental protocols related to neuropsychological research
 		section.featured-content-section
 			.container
-				h1 Featured Content from The Open Brain Project
+				h1 Mapping language ability during awake brain surgery
 				.wrapper.videos-list
 					a.video-block(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
 						.video-thumbnail(style="background-image:url(_img/mapping_language_thumb.png)")
 							.icon-youtube-wrapper
 								+icon("youtube")
-						.video-meta
-							h4.video-title Mapping language ability during awake brain surgery
-		// section.videos-section
-		// 	.container
-		// 		h1 Featured Videos
-		// 		p Translating the latest discoveries in human neuroscience into the best care for patients.
-		// 	.wrapper.videos-list
-		// 		for video in videos
-		// 			a.video-block(href="https://www.youtube.com/watch?v=" + video.video_url)
-		// 				.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
-		// 					.icon-youtube-wrapper
-		// 						+icon("youtube")
-		// 				.video-meta
-		// 					h4.video-title= video.title
-		// 					p.video-description= video.description
+						//- .video-meta
+						//- 	h4.video-title Mapping language ability during awake brain surgery
+		
 	+footer()

@@ -6,6 +6,18 @@ mixin nav()
 			.container
 				.nav-list
 					ul.primary-nav-items
+						li.nav-item.nav-group.learn-group(tabindex=0)
+							.nav-link.main-nav-link
+								span Learn
+								+icon("rarr")
+								+icon("dchev")
+							ul.nav-subgroup
+								li.nav-item
+									a.nav-link(href="/resources-for-patients")
+										span Resources for Patients
+								li.nav-item
+									a.nav-link(href="/video-archive")
+										span Video Archive
 						li.nav-item.nav-group.discover-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Discover
@@ -16,8 +28,8 @@ mixin nav()
 									a.nav-link(href="/brainsurvey") 
 										span Brain Survey
 								li.nav-item
-									a.nav-link(href="/open-data-sets") 
-										span Open Data Sets
+									a.nav-link(href="/data-exchange") 
+										span Data Exchange
 								li.nav-item
 									a.nav-link(href="/experiment-exchange") 
 										span Experiment Exchange
@@ -33,15 +45,6 @@ mixin nav()
 								li.nav-item
 									a.nav-link(href="/brain-mapping-during-neurosurgery")
 										span Brain Mapping during Neurosurgery
-						li.nav-item.nav-group.care-group(tabindex=0)
-							.nav-link.main-nav-link
-								span Care
-								+icon("rarr")
-								+icon("dchev")
-							ul.nav-subgroup
-								li.nav-item
-									a.nav-link(href="/resources-for-patients")
-										span Resources for Patients
 								li.nav-item
 									a.nav-link(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx", target="_blank")
 										span University of Rochester Neurosurgery
@@ -51,15 +54,18 @@ mixin nav()
 										span University of Pittsburgh Neurosurgery
 										+icon("external")
 					ul.secondary-nav-items
+						li.nav-item.nav-group.about-group
+							a.nav-link.main-nav-link(href="/about") 
+								span About
 						li.nav-item.nav-group.publications-group
 							a.nav-link.main-nav-link(href="/publications") 
 								span Publications
 						li.nav-item.nav-group.consortium-group
 							a.nav-link.main-nav-link(href="/consortium") 
 								span Consortium
-						li.nav-item.nav-group.in-the-news-group
-							a.nav-link.main-nav-link(href="/in-the-news") 
-								span In the News
+						li.nav-item.nav-group.media-group
+							a.nav-link.main-nav-link(href="/media") 
+								span Media
 						li.nav-item.nav-group.join-group(tabindex=0)
 							.nav-link.main-nav-link
 								span Join

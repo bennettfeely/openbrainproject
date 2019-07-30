@@ -1,11 +1,11 @@
 videos_arr = [
-	{
-		title: "Preserving the Mind Through Personalized Brain Mapping",
-		video_url: "https://www.youtube.com/watch?v=XXXXXXXXXXXXXXXXXXXX",
-		thumbnail_src: "https://i.ytimg.com/vi/95NMmqaFAKE/sddefault.jpg",
-		description:
-			"Mahon, Mead, Chernoff, Sims, Garcea, Prentiss, Belkhir, Haber, Gannon, Erickson, Wright, Schmidt, Paulzak, Milano, Paul, Foxx, Tivarus, Nadler, Behr, Smith, Li, Walter and Pilcher (2019).  Translational Brain Mapping at the University of Rochester Medical Center: Preserving the Mind Through Personalized Brain Mapping. Journal of Visualized Experiments."
-	},
+	// {
+	// 	title: "Preserving the Mind Through Personalized Brain Mapping",
+	// 	video_url: "https://www.youtube.com/watch?v=XXXXXXXXXXXXXXXXXXXX",
+	// 	thumbnail_src: "https://i.ytimg.com/vi/95NMmqaFAKE/sddefault.jpg",
+	// 	description:
+	// 		"Mahon, Mead, Chernoff, Sims, Garcea, Prentiss, Belkhir, Haber, Gannon, Erickson, Wright, Schmidt, Paulzak, Milano, Paul, Foxx, Tivarus, Nadler, Behr, Smith, Li, Walter and Pilcher (2019).  Translational Brain Mapping at the University of Rochester Medical Center: Preserving the Mind Through Personalized Brain Mapping. Journal of Visualized Experiments."
+	// },
 	{
 		title: "Saxophone Serenades Surgeons",
 		video_url: "https://www.youtube.com/watch?v=95NMmqaFAKE",

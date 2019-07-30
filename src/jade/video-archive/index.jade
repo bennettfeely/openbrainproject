@@ -1,0 +1,25 @@
+include ../_partials/_head
+include ../_partials/_header
+include ../_partials/_svg
+include ../_partials/_icon
+include ../_partials/_footer
+
++head("Video Archive")
+body.learn-page.video-archive-page
+	+header()
+	section.page-hero
+			.container
+				h1 Video Archive
+				p The Open Brain Project is gathering informative videos that illustrate neuropsychological phenomena. Join the Open Brain Project to receive information about how to post your content here.
+	main.page-content
+		section.videos-section
+			.container.videos-list
+				for video in videos
+					a.video-block(href="https://www.youtube.com/watch?v=" + video.video_url)
+						.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
+							.icon-youtube-wrapper
+								+icon("youtube")
+						.video-meta
+							h4.video-title= video.title
+							p.video-description= video.description
+	+footer()

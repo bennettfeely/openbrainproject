@@ -460,12 +460,13 @@ header {
 	box-shadow: inset 0 var(--small) $orange;
 	background: $black;
 }
-.care-page .care-group .main-nav-link {
+.learn-page .learn-group .main-nav-link {
 	box-shadow: inset 0 var(--small) $blue;
 	background: $black;
 }
 .publications-page .publications-group .main-nav-link,
-.in-the-news-page .in-the-news-group .main-nav-link,
+.media-page .media-group .main-nav-link,
+.about-page .about-group .main-nav-link,
 .join-page .join-group .main-nav-link,
 .consortium-page .consortium-group .main-nav-link {
 	background: $black;
@@ -489,7 +490,7 @@ header {
 	.translate-page & {
 		@extend .orange-gradient;
 	}
-	.care-page & {
+	.learn-page & {
 		@extend .blue-gradient;
 	}
 
@@ -542,10 +543,6 @@ header {
 				}
 			}
 		}
-
-		.container {
-			padding: var(--extra-large);
-		}
 	}
 }
 
@@ -559,126 +556,14 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
-	@media (min-width: $tablet) {
-		.wrapper {
-			display: flex;
-			align-items: center;
-		}
-		.mission-container {
-			flex: 1;
-		}
-		.cycle-container {
-			flex: 2;
-		}
-	}
-
 	p {
 		font-size: 1.3em;
-		margin: 0;
-		flex: 1;
+		max-width: $tablet;
+
+		&:first-child {
+			font-size: 1.1em;
+		}
 	}
-}
-
-.cycle {
-	display: flex;
-	flex-wrap: wrap;
-	position: relative;
-	max-width: 35rem;
-}
-
-.cycle-block,
-.arrow-block {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 50%;
-	padding: var(--large);
-	cursor: default;
-
-	@media (min-width: $tablet) {
-		width: 33.33%;
-	}
-}
-
-// .pulse-block {
-// 	animation: pulse 6s ease-in-out infinite;
-
-// 	@for $i from 1 through 6 {
-// 		&.pulse-#{$i} {
-// 			animation-delay: $i * 1s;
-// 		}
-// 	}
-// }
-
-// @keyframes pulse {
-// 	16.6% {
-// 		opacity: 0.5;
-// 	}
-// 	0%,
-// 	33% {
-// 		opacity: 1;
-// 	}
-// }
-
-.cycle-block {
-	@extend %no-select;
-	flex-direction: column;
-	text-align: center;
-	border-radius: var(--radius-large);
-	color: $white;
-
-	p {
-		font-size: 0.9em;
-		line-height: 1.3;
-		margin: 0;
-	}
-}
-
-.arrow-block {
-	opacity: 0.5;
-
-	.icon {
-		width: 4rem;
-		height: 4rem;
-	}
-}
-
-.arrow-block-3 {
-	transform: rotate(90deg);
-}
-
-@media (min-width: $tablet) {
-	.arrow-block-1 {
-		order: 1;
-		transform: rotate(-90deg);
-	}
-	.discover-cycle-block {
-		order: 2;
-	}
-	.arrow-block-3 {
-		order: 3;
-		transform: none;
-	}
-	.care-cycle-block {
-		order: 4;
-	}
-	.arrow-block-2 {
-		order: 5;
-		transform: rotate(-90deg);
-	}
-	.translate-cycle-block {
-		order: 6;
-	}
-}
-
-.discover-cycle-block {
-	@extend .light-blue-gradient;
-}
-.translate-cycle-block {
-	@extend .orange-gradient;
-}
-.care-cycle-block {
-	@extend .blue-gradient;
 }
 
 // Partners ==============================================================================
@@ -747,28 +632,22 @@ header {
 	overflow: hidden;
 }
 
-.videos-section {
-	h1 + p {
-		font-size: 1.2em;
-	}
-}
+// .videos-section {
+// 	overflow: hidden;
+// }
 
 .videos-list {
-	// padding: 0 var(--large);
-	// overflow: hidden;
+	overflow: hidden;
+	padding: 0 var(--large);
 }
 
 .video-block {
 	display: inline-block;
 	float: left;
 	width: 33.33%;
-	padding: var(--large) 0;
+	padding: var(--medium);
 	vertical-align: top;
 	text-decoration: none;
-
-	@media (min-width: $tablet) {
-		width: 16.666%;
-	}
 
 	&:hover,
 	&:active,
@@ -778,45 +657,45 @@ header {
 		}
 	}
 
-	&:first-child {
-		width: 100%;
+	// &:first-child {
+	// 	width: 100%;
 
-		.video-title {
-			font-weight: bold;
-			font-size: 1.2em;
-			line-height: 1.4;
-			color: $blue_link;
-			margin: var(--large) 0 var(--small);
-		}
-		.video-description {
-			font-size: 0.9em;
-			color: $black;
-		}
+	// 	.video-title {
+	// 		font-weight: bold;
+	// 		font-size: 1.2em;
+	// 		line-height: 1.4;
+	// 		color: $blue_link;
+	// 		margin: var(--large) 0 var(--small);
+	// 	}
+	// 	.video-description {
+	// 		font-size: 0.9em;
+	// 		color: $black;
+	// 	}
 
-		.icon-youtube {
-			opacity: 1;
-		}
+	// 	.icon-youtube {
+	// 		opacity: 1;
+	// 	}
 
-		@media (min-width: $tablet) {
-			display: flex;
-			align-items: center;
+	// 	@media (min-width: $tablet) {
+	// 		display: flex;
+	// 		align-items: center;
 
-			.video-thumbnail {
-				padding: 0;
-				min-height: 15em;
-			}
+	// 		.video-thumbnail {
+	// 			padding: 0;
+	// 			min-height: 15em;
+	// 		}
 
-			.video-thumbnail,
-			.video-meta {
-				display: inline-block;
-				flex: 1;
-			}
+	// 		.video-thumbnail,
+	// 		.video-meta {
+	// 			display: inline-block;
+	// 			flex: 1;
+	// 		}
 
-			.video-meta {
-				padding-left: var(--extra-large);
-			}
-		}
-	}
+	// 		.video-meta {
+	// 			padding-left: var(--extra-large);
+	// 		}
+	// 	}
+	// }
 }
 
 .video-thumbnail {
@@ -877,13 +756,15 @@ header {
 	.page-hero p {
 		max-width: initial;
 	}
-	li p:after {
-		font-size: 0.8rem;
-		padding: 0.1rem var(--small);
-		margin: 0 0 0 var(--small);
-		border-radius: var(--radius);
-		pointer-events: none;
-		background: $light_gray;
+	li {
+		p:after {
+			font-size: 0.8rem;
+			padding: 0.1rem var(--small);
+			margin: 0 0 0 var(--small);
+			border-radius: var(--radius);
+			pointer-events: none;
+			background: $light_gray;
+		}
 	}
 }
 
@@ -934,36 +815,15 @@ header {
 	}
 }
 
-.show-brain-tumor-pub .brain-tumor-pub {
-	display: block;
-}
-
-.show-stroke-pub .stroke-pub {
-	display: block;
-}
-
-.show-tbi-pub .tbi-pub {
-	display: block;
-}
-
-.show-craniotomy-pub .craniotomy-pub {
-	display: block;
-}
-
-.show-tdcs-pub .tdcs-pub {
-	display: block;
-}
-
-.show-vision-pub .vision-pub {
-	display: block;
-}
-
-.show-language-pub .language-pub {
-	display: block;
-}
-
+.show-brain-tumor-pub .brain-tumor-pub,
+.show-stroke-pub .stroke-pub,
+.show-tbi-pub .tbi-pub,
+.show-craniotomy-pub .craniotomy-pub,
+.show-tdcs-pub .tdcs-pub,
+.show-vision-pub .vision-pub,
+.show-language-pub .language-pub,
 .show-action-pub.action-pub {
-	display: block;
+	display: list-item;
 }
 
 .stroke-publication p:after {
@@ -1038,11 +898,111 @@ header {
 	}
 }
 
-// Brain Survey ============================================================================
+// Brain Survey ==========================================================================
 .bs-iframe {
 	width: 100%;
 	height: 100vh;
 	border: 0;
+}
+
+// About =================================================================================
+.about-content {
+	overflow: hidden;
+
+	.intro {
+		font-size: 1.2em;
+	}
+}
+
+.cycle-container {
+	margin: 0 0 var(--extra-large);
+
+	@media (min-width: $desktop) {
+		float: right;
+		max-width: 50%;
+		margin: 0 0 var(--extra-large) var(--extra-large);
+	}
+}
+
+.cycle {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.cycle-block,
+.arrow-block {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	padding: var(--large);
+	cursor: default;
+
+	@media (min-width: $tablet) {
+		width: 33.33%;
+	}
+}
+
+.cycle-block {
+	@extend %no-select;
+	flex-direction: column;
+	text-align: center;
+	border-radius: var(--radius-large);
+	color: $white;
+
+	p {
+		font-size: 0.9em;
+		line-height: 1.3;
+		margin: 0;
+	}
+}
+
+.arrow-block {
+	opacity: 0.5;
+
+	.icon {
+		width: 4rem;
+		height: 4rem;
+	}
+}
+
+.arrow-block-3 {
+	transform: rotate(90deg);
+}
+
+@media (min-width: $tablet) {
+	.arrow-block-1 {
+		order: 1;
+		transform: rotate(-90deg);
+	}
+	.discover-cycle-block {
+		order: 2;
+	}
+	.arrow-block-3 {
+		order: 3;
+		transform: none;
+	}
+	.learn-cycle-block {
+		order: 4;
+	}
+	.arrow-block-2 {
+		order: 5;
+		transform: rotate(-90deg);
+	}
+	.translate-cycle-block {
+		order: 6;
+	}
+}
+
+.discover-cycle-block {
+	@extend .light-blue-gradient;
+}
+.translate-cycle-block {
+	@extend .orange-gradient;
+}
+.learn-cycle-block {
+	@extend .blue-gradient;
 }
 
 // TBI ===================================================================================
