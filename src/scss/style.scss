@@ -415,8 +415,9 @@ header {
 	}
 }
 
-.primary-nav-items {
-	.main-nav-link {
+.main-nav-link {
+	.primary-nav-items &,
+	.join-group & {
 		font-weight: bold;
 	}
 }
@@ -464,10 +465,14 @@ header {
 	box-shadow: inset 0 var(--small) $blue;
 	background: $black;
 }
+.join-page .join-group .main-nav-link {
+	box-shadow: inset 0 var(--small) $green;
+	background: $black;
+}
+
 .publications-page .publications-group .main-nav-link,
 .media-page .media-group .main-nav-link,
 .about-page .about-group .main-nav-link,
-.join-page .join-group .main-nav-link,
 .consortium-page .consortium-group .main-nav-link {
 	background: $black;
 
@@ -492,6 +497,9 @@ header {
 	}
 	.learn-page & {
 		@extend .blue-gradient;
+	}
+	.join-page & {
+		@extend .green-gradient;
 	}
 
 	h1 {
@@ -849,7 +857,7 @@ header {
 	flex: 1;
 
 	p {
-		font-size: 0.9em;
+		font-size: 1em;
 	}
 }
 
@@ -865,25 +873,60 @@ header {
 
 	section {
 		margin: 0;
-		padding: var(--large);
+		padding: var(--small);
+
+		&.split {
+			display: flex;
+			flex-wrap: wrap;
+
+			label {
+				flex: 1 0 12em;
+
+				&.collapse {
+					display: flex;
+					justify-content: flex-end;
+					align-content: flex-end;
+					align-items: flex-end;
+					flex: 0;
+				}
+			}
+		}
+
+		&.i-am,
+		&.i-want-to {
+			padding: var(--large);
+		}
 
 		&:last-child {
 			border: 0;
 		}
 	}
 	label {
+		display: block;
+		padding: var(--medium);
 		cursor: pointer;
 	}
 
 	input[type="text"],
 	input[type="email"],
-	textarea {
+	textarea,
+	.checkbox-wrapper {
 		display: block;
 		width: 100%;
-		border: thin solid $light_gray;
+		border: 0;
 		background: $white;
+		border-radius: var(--radius);
 	}
-	input[type="radio"] {
+	.checkbox-wrapper {
+		margin-bottom: var(--small);
+		padding: var(--small) var(--medium);
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+	input[type="radio"],
+	input[type="checkbox"] {
 		display: inline-block;
 		margin-right: var(--medium);
 	}

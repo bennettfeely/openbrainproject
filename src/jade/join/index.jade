@@ -1,0 +1,77 @@
+include ../_partials/_head
+include ../_partials/_header
+include ../_partials/_svg
+include ../_partials/_icon
+include ../_partials/_footer
+
++head("Join", "Join the Open Brain Project to contribute data or receive updates")
+body.join-page
+	+header()
+	section.page-hero
+		.container
+			h1 Join
+			p Join the Open Brain Project to contribute data or receive updates
+	main.page-content
+		section
+			.container.flex-form-container
+				aside.form-aside
+					p The Open Brain Project is a resource for patients, clinicians, scientists and students. 
+					p It is designed to serve as a hub to facilitate research into how brain injury affects cognitive, sensory and motor function. 
+					p If you have data, publications, news releases, patient videos, or experimental resources to contribute, or if you would like to sign up to receive our newsletter, please enter your email address. 
+					p We do not share email addresses with any third party, and will contact you with additional information according to the options you select. 
+				form.form(name="join", method="POST", data-netlify="true", action="/contribute-data-or-publications/success")
+					section.split
+						label
+							| First Name:
+							input(type="text", name="first_name")
+						label
+							| Last Name:
+							input(type="text", name="last_name")
+					section
+						label
+							| Your Email:
+							input(type="email", name="email")
+					section.i-am
+						| I am a:
+						label.checkbox-wrapper
+							input(type="checkbox", id="scientist", name="i_am_a")
+							| Scientist
+						label.checkbox-wrapper
+							input(type="checkbox", id="clinician", name="i_am_a")
+							| Clinician
+						label.checkbox-wrapper
+							input(type="checkbox", id="patient_or_family", name="i_am_a")
+							| A patient or a family member or a patient
+						label.checkbox-wrapper
+							input(type="checkbox", id="just_interested", name="i_am_a")
+							| Simply interested to learn more
+					section.split
+						label
+							| Institutional Affiliation:
+							input(type="text", name="institutional_affiliation")
+						label
+							| Country:
+							input(type="text", name="country")
+					section.i-want-to
+						| I would like to:
+						label.checkbox-wrapper
+							input(type="checkbox", id="sign_up_for_email_newsletter", name="i_am_a")
+							| Sign up for email newsletter
+						label.checkbox-wrapper
+							input(type="checkbox", id="contribute_mri", name="i_am_a")
+							| Contribute MRI data
+						label.checkbox-wrapper
+							input(type="checkbox", id="contribute_behavioral", name="i_am_a")
+							| Contribute behavioral data
+						label.checkbox-wrapper
+							input(type="checkbox", id="share_experimental_protocols", name="i_am_a")
+							| Share experimental protocols or materials
+						label.checkbox-wrapper
+							input(type="checkbox", id="post_videos", name="i_am_a")
+							| Post videos of neuropsychological studies of patients
+						label.checkbox-wrapper
+							input(type="checkbox", id="upload_data", name="i_am_a")
+							| Upload data from my helmet-worn accelerometer
+					section
+						button.button.blue-gradient(type="submit") Send
+	+footer()

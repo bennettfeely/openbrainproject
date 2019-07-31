@@ -40,12 +40,6 @@ mixin nav()
 								+icon("dchev")
 							ul.nav-subgroup
 								li.nav-item
-									a.nav-link(href="/brain-mapping-with-mri")
-										span Brain Mapping with MRI
-								li.nav-item
-									a.nav-link(href="/brain-mapping-during-neurosurgery")
-										span Brain Mapping during Neurosurgery
-								li.nav-item
 									a.nav-link(href="https://www.urmc.rochester.edu/del-monte-neuroscience/translational-brain-mapping.aspx", target="_blank")
 										span University of Rochester Neurosurgery
 										+icon("external")
@@ -66,15 +60,6 @@ mixin nav()
 						li.nav-item.nav-group.media-group
 							a.nav-link.main-nav-link(href="/media") 
 								span Media
-						li.nav-item.nav-group.join-group(tabindex=0)
-							.nav-link.main-nav-link
+						li.nav-item.nav-group.join-group
+							a.nav-link.main-nav-link(href="/join") 
 								span Join
-								+icon("rarr")
-								+icon("dchev") 
-							ul.nav-subgroup
-								li.nav-item
-									a.nav-link(href="/contribute-data-or-publications") 
-										span Contribute Data or Publications
-								li.nav-item
-									a.nav-link(href="/join-as-a-patient") 
-										span For Patients
