@@ -118,17 +118,17 @@ body {
 	background-image: radial-gradient(
 			circle at top left,
 			transparent 0,
-			transparent 40%,
+			transparent 40em,
 			rgba($light_gray, 0.06) 0,
-			transparent 50%,
+			transparent 50em,
 			transparent 0
 		),
 		radial-gradient(
 			circle at bottom right,
 			transparent 0,
-			transparent 40%,
+			transparent 40em,
 			rgba($light_gray, 0.06) 0,
-			transparent 50%,
+			transparent 50em,
 			transparent 0
 		);
 }
@@ -189,6 +189,14 @@ a {
 
 	&:visited {
 		color: $purple_link;
+	}
+
+	&[href="/join"] {
+		.icon-join {
+			width: 1.25em;
+			height: 1.25em;
+			vertical-align: middle;
+		}
 	}
 }
 
@@ -415,11 +423,8 @@ header {
 	}
 }
 
-.main-nav-link {
-	.primary-nav-items &,
-	.join-group & {
-		font-weight: bold;
-	}
+.primary-nav-items .main-nav-link {
+	font-weight: bold;
 }
 
 .nav-link {
@@ -450,6 +455,12 @@ header {
 
 	.icon-rarr {
 		display: none;
+	}
+}
+
+.join-group {
+	.main-nav-link {
+		font-weight: bold;
 	}
 }
 
@@ -514,6 +525,13 @@ header {
 
 		@media (min-width: $desktop) {
 			max-width: 70%;
+		}
+	}
+
+	a {
+		&,
+		&:visited {
+			color: $white;
 		}
 	}
 
@@ -929,11 +947,13 @@ header {
 	input[type="checkbox"] {
 		display: inline-block;
 		margin-right: var(--medium);
+		cursor: pointer;
 	}
 
 	button[type="submit"] {
 		color: $white;
 		padding: var(--medium) var(--large);
+		margin: var(--medium);
 	}
 
 	textarea {
