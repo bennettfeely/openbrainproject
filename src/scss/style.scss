@@ -56,7 +56,7 @@ $desktop: 60rem;
 	background-color: $turquoise;
 	background-image: linear-gradient(
 		transparent,
-		tint(adjust-hue($turquoise, -15deg), 10%)
+		tint(adjust-hue($turquoise, -5deg), 5%)
 	);
 }
 
