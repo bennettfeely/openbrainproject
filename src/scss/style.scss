@@ -846,6 +846,28 @@ header {
 	}
 }
 
+// Media-page============================================================
+.media-page {
+	details {
+		margin: 0 0 var(--large);
+	}
+
+	summary {
+		@extend %no-select;
+		cursor: pointer;
+		opacity: 0.75;
+		display: inline-block;
+		background: $light_gray;
+		border-radius: var(--radius);
+		padding: var(--small) var(--medium);
+		margin: 0 var(--large) var(--large);
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
 // Publications page =====================================================================
 .filter-publications {
 	border-radius: var(--radius);
