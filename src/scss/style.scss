@@ -415,8 +415,10 @@ header {
 	}
 
 	&:hover,
+	&:focus,
 	&:focus-within {
 		background: $light_black;
+		outline: 0;
 	}
 }
 
@@ -450,6 +452,10 @@ header {
 
 .primary-nav-items .main-nav-link {
 	font-weight: bold;
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .nav-link {
@@ -461,16 +467,21 @@ header {
 	&[href] {
 		text-decoration: none;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			cursor: pointer;
+			outline: 0;
 
 			span {
 				text-decoration: underline;
 			}
 		}
 
-		&:not(.main-nav-link):hover {
-			background: $black;
+		&:not(.main-nav-link) {
+			&:hover,
+			&:focus {
+				background: $black;
+			}
 		}
 	}
 
@@ -623,21 +634,26 @@ header {
 
 .brain-graphic {
 	position: absolute;
-	top: -15%;
-	right: 0;
+	top: 0;
 	bottom: 0;
-	width: auto;
-	height: 150%;
+	width: 100%;
+	height: 100%;
 	transform: scaleX(-1);
 	opacity: 0.2;
-}
 
-.brain-graphic circle {
-	transform-origin: center center;
+	@media (min-width: $tablet) {
+		top: -15%;
+		right: 0;
+		bottom: 0;
+		width: auto;
+		height: 150%;
+	}
 
-	@keyframes pulse {
-		50% {
-			fill: white;
+	circle {
+		@keyframes pulse {
+			20% {
+				fill: white;
+			}
 		}
 	}
 }
@@ -655,8 +671,6 @@ header {
 	margin-top: -8rem;
 
 	.wrapper {
-		display: flex;
-		align-items: flex-start;
 		padding: var(--large);
 	}
 }
