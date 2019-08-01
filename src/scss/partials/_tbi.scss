@@ -120,7 +120,7 @@ $color-array: $inferno-array;
 	.is-running & {
 		&,
 		&:hover {
-			@include gradient(#222);
+			@extend .black-gradient;
 			color: rgba($white, 0.5);
 			pointer-events: none;
 		}

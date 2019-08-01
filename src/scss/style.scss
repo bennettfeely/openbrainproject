@@ -15,7 +15,7 @@ $lighter_black: tint($black, 10%);
 $light_gray: rgba(mix($black, $white), 0.25);
 $light_white: rgba($white, 0.1);
 
-$blue_link: #147ace;
+$blue_link: #0c65ad;
 $purple_link: #9d13c1;
 
 $blue: #0670c4;
@@ -30,24 +30,12 @@ $tablet: 40rem;
 $desktop: 60rem;
 
 // Mixins ================================================================================
-@mixin shadow($color, $size) {
-	box-shadow: 0 $size/4 $size $color;
-}
-
-@mixin gradient($color) {
-	background-color: $color;
-	background-image: linear-gradient(
-		to bottom right,
-		rgba($color, 0),
-		adjust-hue(shade($color, 25%), -25%)
-	);
-}
 
 .blue-gradient {
 	background-color: $blue;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($blue, 0),
 		tint(adjust-hue($blue, 20deg), 40deg)
 	);
 }
@@ -55,7 +43,7 @@ $desktop: 60rem;
 .turquoise-gradient {
 	background-color: $turquoise;
 	background-image: linear-gradient(
-		transparent,
+		rgba($turquoise, 0),
 		tint(adjust-hue($turquoise, -5deg), 5%)
 	);
 }
@@ -64,7 +52,7 @@ $desktop: 60rem;
 	background-color: $orange;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($orange, 0),
 		adjust-hue($orange, 8deg)
 	);
 }
@@ -73,7 +61,7 @@ $desktop: 60rem;
 	background-color: $green;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($green, 0),
 		shade(adjust-hue($green, -40deg), 10%)
 	);
 }
@@ -82,7 +70,7 @@ $desktop: 60rem;
 	background-color: $purple;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($purple, 0),
 		adjust-hue($purple, 15deg)
 	);
 }
@@ -91,7 +79,7 @@ $desktop: 60rem;
 	background-color: $gray;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($gray, 0),
 		tint(adjust-hue($gray, 30deg), 10%)
 	);
 }
@@ -100,7 +88,7 @@ $desktop: 60rem;
 	background-color: $black;
 	background-image: linear-gradient(
 		to bottom right,
-		transparent,
+		rgba($black, 0),
 		lighten($black, 8%)
 	);
 }
@@ -149,17 +137,17 @@ body {
 	background-image: radial-gradient(
 			circle at top left,
 			transparent 0,
-			transparent 40em,
+			transparent 60vw,
 			rgba($light_gray, 0.06) 0,
-			transparent 50em,
+			transparent 70vw,
 			transparent 0
 		),
 		radial-gradient(
 			circle at bottom right,
 			transparent 0,
-			transparent 40em,
+			transparent 60vw,
 			rgba($light_gray, 0.06) 0,
-			transparent 50em,
+			transparent 70vw,
 			transparent 0
 		);
 }
@@ -702,6 +690,13 @@ header {
 		height: auto;
 		vertical-align: top;
 	}
+
+	&:hover {
+		h2 {
+			color: $blue;
+			text-decoration: underline;
+		}
+	}
 }
 
 .featured-meta {
@@ -791,6 +786,8 @@ header {
 	.featured-content & {
 		padding: 0;
 		width: 100%;
+		float: none;
+		display: block;
 	}
 
 	&:hover,
@@ -812,30 +809,29 @@ header {
 	border-radius: var(--radius);
 
 	.featured-content & {
-		box-shadow: 0;
+		box-shadow: none;
 		padding-bottom: 75%;
-	}
-
-	.icon-youtube-wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-
-	.icon-youtube {
-		max-width: 5rem;
-		width: 40%;
-		height: auto;
-		opacity: 0;
-		transition: opacity var(--transition);
 	}
 }
 
+.icon-youtube-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.icon-youtube {
+	max-width: 5rem;
+	width: 40%;
+	height: auto;
+	opacity: 0;
+	transition: opacity var(--transition);
+}
 .video-title {
 	color: $black;
 	hyphens: auto;
@@ -1204,11 +1200,10 @@ footer {
 	opacity: 0.7;
 	border-top: thin solid $light_gray;
 	background: linear-gradient($white, rgba($white, 0));
-	text-align: right;
 
 	a {
 		color: $black;
-		text-decoration: none;
+		text-decoration: underline;
 
 		svg {
 			margin-right: 3px;
@@ -1216,6 +1211,13 @@ footer {
 
 		&:hover {
 			text-decoration: underline;
+			color: $blue_link;
+		}
+	}
+
+	@media (min-width: $tablet) {
+		.right {
+			float: right;
 		}
 	}
 }
