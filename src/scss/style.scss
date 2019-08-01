@@ -74,7 +74,7 @@ $desktop: 60rem;
 	background-image: linear-gradient(
 		to bottom right,
 		transparent,
-		shade(adjust-hue($green, 30deg), 20%)
+		shade(adjust-hue($green, -40deg), 10%)
 	);
 }
 
@@ -367,30 +367,20 @@ header {
 	}
 }
 
-.site-logo-text {
-	h1,
-	h2 {
-		margin: 0;
-	}
-	h1 {
-		font-size: 1em;
-	}
+.site-title,
+.site-tagline {
+	margin: 0;
 }
 
-.tagline {
-	position: relative;
+.site-title {
+	font-size: 1em;
+}
+
+.site-tagline {
 	font-size: 0.8em;
 	font-style: italic;
 	font-weight: normal;
 	opacity: 0.75;
-	height: 1.5em;
-	overflow: hidden;
-}
-
-.tagline-cycle {
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 // Navigation ============================================================================
@@ -610,6 +600,16 @@ header {
 
 // Mission ===============================================================================
 .mission-section {
+	position: relative;
+	@extend .gray-gradient;
+	color: $white;
+	padding: var(--extra-large) 0 6rem;
+	overflow: hidden;
+
+	.wrapper {
+		position: relative;
+	}
+
 	p {
 		font-size: 1.3em;
 		max-width: $tablet;
@@ -617,6 +617,88 @@ header {
 		&:first-child {
 			font-size: 1.1em;
 		}
+	}
+}
+
+.brain-graphic {
+	position: absolute;
+	top: -15%;
+	right: 0;
+	bottom: 0;
+	width: auto;
+	height: 150%;
+	transform: scaleX(-1);
+	opacity: 0.15;
+}
+
+.brain-graphic circle {
+	transform-origin: center center;
+
+	@keyframes pulse {
+		50% {
+			fill: white;
+		}
+	}
+}
+
+@for $i from 1 through 30 {
+	.brain-graphic circle:nth-of-type(#{$i}) {
+		animation: pulse 5s ease-in-out infinite;
+		animation-delay: 0.3s * $i;
+	}
+}
+
+// Featured Content ======================================================================
+.featured-content-section {
+	overflow: hidden;
+	margin-top: -8rem;
+
+	.wrapper {
+		display: flex;
+		align-items: flex-start;
+		padding: var(--large);
+	}
+}
+
+.featured-content-wrapper {
+	display: inline-block;
+	padding: var(--large);
+	vertical-align: top;
+	width: 100%;
+
+	@media (min-width: $tablet) {
+		width: 50%;
+		// max-width: 25em;
+	}
+}
+
+.featured-content {
+	display: block;
+	background: $white;
+	color: $black;
+	width: 100%;
+	position: relative;
+	text-decoration: none;
+	box-shadow: 0 1rem 3rem $light_gray;
+	border-radius: var(--radius);
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+		vertical-align: top;
+	}
+}
+
+.featured-meta {
+	padding: var(--large);
+	border-top: thin solid $light_gray;
+
+	h2 {
+		font-size: 1.25em;
+	}
+	p {
+		margin: 0;
 	}
 }
 
@@ -679,14 +761,6 @@ header {
 }
 
 // Videos ================================================================================
-.featured-content-section {
-	overflow: hidden;
-}
-
-// .videos-section {
-// 	overflow: hidden;
-// }
-
 .videos-list {
 	overflow: hidden;
 	padding: 0 var(--large);
@@ -700,6 +774,11 @@ header {
 	vertical-align: top;
 	text-decoration: none;
 
+	.featured-content & {
+		padding: 0;
+		width: 100%;
+	}
+
 	&:hover,
 	&:active,
 	&:focus {
@@ -707,46 +786,6 @@ header {
 			opacity: 1;
 		}
 	}
-
-	// &:first-child {
-	// 	width: 100%;
-
-	// 	.video-title {
-	// 		font-weight: bold;
-	// 		font-size: 1.2em;
-	// 		line-height: 1.4;
-	// 		color: $blue_link;
-	// 		margin: var(--large) 0 var(--small);
-	// 	}
-	// 	.video-description {
-	// 		font-size: 0.9em;
-	// 		color: $black;
-	// 	}
-
-	// 	.icon-youtube {
-	// 		opacity: 1;
-	// 	}
-
-	// 	@media (min-width: $tablet) {
-	// 		display: flex;
-	// 		align-items: center;
-
-	// 		.video-thumbnail {
-	// 			padding: 0;
-	// 			min-height: 15em;
-	// 		}
-
-	// 		.video-thumbnail,
-	// 		.video-meta {
-	// 			display: inline-block;
-	// 			flex: 1;
-	// 		}
-
-	// 		.video-meta {
-	// 			padding-left: var(--extra-large);
-	// 		}
-	// 	}
-	// }
 }
 
 .video-thumbnail {
@@ -757,6 +796,11 @@ header {
 	background-size: cover;
 	background-position: center center;
 	border-radius: var(--radius);
+
+	.featured-content & {
+		box-shadow: 0;
+		padding-bottom: 75%;
+	}
 
 	.icon-youtube-wrapper {
 		display: flex;
@@ -1123,8 +1167,19 @@ header {
 footer {
 	opacity: 0.7;
 	border-top: thin solid $light_gray;
+	background: linear-gradient($white, rgba($white, 0));
+	text-align: right;
 
-	@media (min-width: $tablet) {
-		text-align: left;
+	a {
+		color: $black;
+		text-decoration: none;
+
+		svg {
+			margin-right: 3px;
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }

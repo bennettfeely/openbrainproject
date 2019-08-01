@@ -3,7 +3,6 @@ include ./_svg
 mixin footer()
 	footer
 		.container
-			// .copyright &copy; 2019 Brad Mahon of BrainSurvey, LLC
-			| Join The Open Brain Project
+			| <a href="/join"><svg class="icon icon-join"><use xlink:href="#join"></use></svg>Join the Open Brain Project</a>
 	script(src="../_js/openbrainproject.js")
 	+svg()

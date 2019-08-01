@@ -1,6 +1,7 @@
 include ./_partials/_head
 include ./_partials/_header
 include ./_partials/_icon
+include ./_partials/_brain_graphic
 include ./_partials/_footer
 include ./_partials/_signup
 
@@ -10,22 +11,29 @@ body.home
 	main
 		section.mission-section
 			.wrapper
-				.container.mission-container
-					p The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about brain injury. 
-					//- p The Open Brain Project is a:
-					//- p Consortium of scientists and clinicians dedicated to advancing knowledge about brain injury
-					//- p Meta-analytic engine to understand how focal brain lesions cause sensory, cognitive and motor function
-					//- p A hub to connect patients and their families with resources to manage their condition
-					//- p A forum for scientists to share research papers, data, and experimental protocols related to neuropsychological research
+				+brain_graphic()
+				.container
+					p The Open Brain Project is a:
+					p.mission-point Consortium of scientists and clinicians dedicated to advancing knowledge about brain injury
+					p.mission-point Meta-analytic engine to understand how focal brain lesions cause sensory, cognitive and motor function
+					p.mission-point A hub to connect patients and their families with resources to manage their condition
+					p.mission-point A forum for scientists to share research papers, data, and experimental protocols related to neuropsychological research
 		section.featured-content-section
-			.container
-				h1 Mapping language ability during awake brain surgery
-				.wrapper.videos-list
-					a.video-block(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
-						.video-thumbnail(style="background-image:url(_img/mapping_language_thumb.png)")
-							.icon-youtube-wrapper
-								+icon("youtube")
-						//- .video-meta
-						//- 	h4.video-title Mapping language ability during awake brain surgery
-		
+			.wrapper
+				.featured-content-wrapper 
+					a.featured-content(href="/brainsurvey")
+						img(src="_img/brain_survey.jpg", width="800", height="600", alt="Screenshot of Brain Survey website")
+						.featured-meta
+							h2 
+								| Brain Survey
+								+icon("rarr")
+							p Explore the human brain
+				.featured-content-wrapper 
+					a.featured-content(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
+						img(src="_img/mapping_language_thumbnail.jpg", width="800", height="600", alt="Screenshot of Mapping Language video")
+						.featured-meta
+							h2 
+								| Mapping language ability during awake brain surgery
+								+icon("rarr")
+							p Watch
 	+footer()
