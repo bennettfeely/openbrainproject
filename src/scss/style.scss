@@ -74,7 +74,7 @@ $desktop: 60rem;
 	background-image: linear-gradient(
 		to bottom right,
 		transparent,
-		shade(adjust-hue($green, -40deg), 20%)
+		shade(adjust-hue($green, 30deg), 20%)
 	);
 }
 
@@ -375,12 +375,22 @@ header {
 	h1 {
 		font-size: 1em;
 	}
-	h2 {
-		font-size: 0.8em;
-		font-style: italic;
-		font-weight: normal;
-		opacity: 0.75;
-	}
+}
+
+.tagline {
+	position: relative;
+	font-size: 0.8em;
+	font-style: italic;
+	font-weight: normal;
+	opacity: 0.75;
+	height: 1.5em;
+	overflow: hidden;
+}
+
+.tagline-cycle {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 // Navigation ============================================================================
@@ -900,6 +910,7 @@ header {
 	border-radius: var(--radius);
 	margin: var(--extra-large) 0 0;
 	background: $light_gray;
+	background: gainsboro;
 
 	@media (min-width: $tablet) {
 		margin: 0 0 0 var(--extra-large);
@@ -990,6 +1001,7 @@ header {
 
 	.intro {
 		font-size: 1.2em;
+		margin-bottom: var(--large);
 	}
 }
 
@@ -1095,6 +1107,7 @@ header {
 		display: inline-block;
 		font-size: 80%;
 		margin: var(--large) 0 0;
+		background: orange;
 
 		.container {
 			padding: var(--small) var(--extra-large);
@@ -1103,7 +1116,7 @@ header {
 }
 
 .four-oh-four-title {
-	font-size: 4em;
+	font-size: 5em;
 }
 
 // Footer ================================================================================
