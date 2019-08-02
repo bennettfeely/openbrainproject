@@ -413,7 +413,13 @@ header {
 	}
 
 	&:hover,
-	&:focus,
+	&:focus {
+		background: $light_black;
+		outline: 0;
+	}
+}
+
+.nav-group {
 	&:focus-within {
 		background: $light_black;
 		outline: 0;
@@ -431,7 +437,7 @@ header {
 	border-radius: 0 0 var(--radius) var(--radius);
 
 	.nav-group:hover &,
-	.nav-group:focus-within & {
+	.nav-group:focus & {
 		display: block;
 		box-shadow: 0 0.5em 1em $light_gray;
 	}
@@ -445,6 +451,13 @@ header {
 			right: 0;
 			left: initial;
 		}
+	}
+}
+
+.nav-subgroup {
+	.nav-group:focus-within & {
+		display: block;
+		box-shadow: 0 0.5em 1em $light_gray;
 	}
 }
 
