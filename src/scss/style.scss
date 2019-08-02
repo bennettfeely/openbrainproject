@@ -634,12 +634,9 @@ header {
 	}
 
 	p {
-		font-size: 1.3em;
+		padding: var(--extra-large) 0;
+		font-size: 1.5em;
 		max-width: $tablet;
-
-		&:first-child {
-			font-size: 1.1em;
-		}
 	}
 }
 
@@ -653,11 +650,12 @@ header {
 	opacity: 0.2;
 
 	@media (min-width: $tablet) {
-		top: -15%;
+		top: 0;
 		right: 0;
 		bottom: 0;
-		width: auto;
-		height: 150%;
+		width: 50%;
+		height: auto;
+		transform: translateY(-20%) scaleX(-1);
 	}
 
 	circle {
