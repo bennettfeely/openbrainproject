@@ -1215,8 +1215,9 @@ footer {
 		}
 	}
 
-	@media (min-width: $tablet) {
-		.right {
+	.right {
+		padding-left: var(--large);
+		@media (min-width: $tablet) {
 			float: right;
 		}
 	}
