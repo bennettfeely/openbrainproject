@@ -134,27 +134,27 @@ body {
 	color: $black;
 	min-height: 100vh;
 	background: $white;
-	background-image: radial-gradient(
-			circle at top left,
-			transparent 0,
-			transparent 60vw,
-			rgba($light_gray, 0.06) 0,
-			transparent 70vw,
-			transparent 0
-		),
-		radial-gradient(
-			circle at bottom right,
-			transparent 0,
-			transparent 60vw,
-			rgba($light_gray, 0.06) 0,
-			transparent 70vw,
-			transparent 0
-		);
+	// background-image: radial-gradient(
+	// 		circle at top left,
+	// 		transparent 0,
+	// 		transparent 60vw,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 70vw,
+	// 		transparent 0
+	// 	),
+	// 	radial-gradient(
+	// 		circle at bottom right,
+	// 		transparent 0,
+	// 		transparent 60vw,
+	// 		rgba($light_gray, 0.06) 0,
+	// 		transparent 70vw,
+	// 		transparent 0
+	// 	);
+	background: linear-gradient($white, shade($white, 5%));
 }
 
 section {
 	padding: var(--large) 0;
-	border-bottom: thin solid $light_gray;
 
 	.page-content > &:last-child {
 		padding: var(--large) 0 0;
@@ -206,13 +206,20 @@ p {
 
 a {
 	color: $blue_link;
+	text-decoration: none;
 
 	&[href="/join"] {
+		text-decoration: underline;
+
 		.icon-join {
 			width: 1.25em;
 			height: 1.25em;
 			vertical-align: middle;
 		}
+	}
+
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
@@ -336,7 +343,10 @@ header {
 // Logo ==================================================================================
 .site-logo-link {
 	display: inline-block;
-	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 .site-logo {
@@ -659,7 +669,7 @@ header {
 	margin-top: -8rem;
 
 	.wrapper {
-		padding: var(--large);
+		padding: var(--large) var(--large) 0;
 	}
 }
 
@@ -680,10 +690,8 @@ header {
 	color: $black;
 	width: 100%;
 	position: relative;
-	text-decoration: none;
-	box-shadow: 0 1rem 3rem $light_gray;
 	border-radius: var(--radius);
-	overflow: hidden;
+	padding: var(--large);
 
 	img {
 		width: 100%;
@@ -692,19 +700,42 @@ header {
 	}
 
 	&:hover {
+		text-decoration: none;
+
 		h2 {
 			color: $blue;
 			text-decoration: underline;
 		}
+		p {
+			text-decoration: none;
+		}
+	}
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 5rem;
+		bottom: 0;
+		width: 1px;
+		background: linear-gradient($light_gray, rgba($light_gray, 0));
+		content: "";
+	}
+
+	&:before {
+		left: -1px;
+	}
+
+	&:after {
+		right: -1px;
 	}
 }
 
 .featured-meta {
 	padding: var(--large);
-	border-top: thin solid $light_gray;
 
 	h2 {
 		font-size: 1.25em;
+		margin: 0;
 	}
 	p {
 		margin: 0;
@@ -770,9 +801,11 @@ header {
 }
 
 // Videos ================================================================================
+.videos-container {
+	padding: 0 var(--large);
+}
 .videos-list {
 	overflow: hidden;
-	padding: 0 var(--large);
 }
 
 .video-block {
@@ -800,7 +833,6 @@ header {
 }
 
 .video-thumbnail {
-	box-shadow: 0 0 2rem $light_gray;
 	position: relative;
 	padding-bottom: 56%;
 	background-color: $black;
@@ -809,7 +841,6 @@ header {
 	border-radius: var(--radius);
 
 	.featured-content & {
-		box-shadow: none;
 		padding-bottom: 75%;
 	}
 }
@@ -1197,9 +1228,17 @@ header {
 
 // Footer ================================================================================
 footer {
-	opacity: 0.7;
+	background: $white;
 	border-top: thin solid $light_gray;
-	background: linear-gradient($white, rgba($white, 0));
+
+	.container {
+		opacity: 0.5;
+		transition: opacity var(--transition);
+
+		&:hover {
+			opacity: 1;
+		}
+	}
 
 	a {
 		color: $black;
@@ -1217,6 +1256,7 @@ footer {
 
 	.right {
 		padding-left: var(--large);
+
 		@media (min-width: $tablet) {
 			float: right;
 		}
