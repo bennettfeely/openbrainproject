@@ -11,7 +11,7 @@ $color-array: $inferno-array;
 .canvas-wrapper {
 	position: relative;
 	padding-bottom: 100%;
-	background: linear-gradient($light_black, $black);
+	background: linear-gradient($gray-900, $black);
 	cursor: move;
 	cursor: grab;
 
@@ -72,16 +72,16 @@ $color-array: $inferno-array;
 .data-set {
 	display: flex;
 	align-items: center;
-	border-top: thin solid $light_gray;
+	border-top: thin solid $gray-300;
 	background: $white;
 	overflow: hidden;
 
 	&.is-running {
-		background: $light_gray;
+		background: $gray-300;
 	}
 
 	&:last-child {
-		border-bottom: thin solid $light_gray;
+		border-bottom: thin solid $gray-300;
 	}
 
 	@media (min-width: $tablet) {
@@ -90,7 +90,7 @@ $color-array: $inferno-array;
 		width: 15em;
 		margin: var(--medium) var(--medium) 0 0;
 		padding: var(--large);
-		border: thin solid $light_gray;
+		border: thin solid $gray-300;
 		border-radius: var(--radius);
 	}
 }
@@ -120,7 +120,7 @@ $color-array: $inferno-array;
 	.is-running & {
 		&,
 		&:hover {
-			@extend .black-gradient;
+			background: $gray-900;
 			color: rgba($white, 0.5);
 			pointer-events: none;
 		}
