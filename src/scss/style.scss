@@ -112,6 +112,19 @@ main {
 	padding: var(--large) var(--extra-large);
 }
 
+.split-container,
+.split-wrapper {
+	@media (min-width: $tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+}
+
+.split-aside {
+	flex: 1;
+}
+
 // Typography ============================================================================
 h1 {
 	font-size: 1.5em;
@@ -135,6 +148,10 @@ h4 {
 
 p {
 	margin-bottom: var(--medium);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 a {
@@ -153,6 +170,7 @@ a {
 
 	&:hover {
 		text-decoration: underline;
+		color: shade($blue-link, 25%);
 	}
 }
 
@@ -204,33 +222,6 @@ button {
 	vertical-align: baseline;
 	width: 0.7em;
 	height: 0.7em;
-}
-
-// Spinner ===============================================================================
-.spinner-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-
-.spinner {
-	width: 50px;
-	height: 50px;
-	border: 2px solid;
-	border-color: $white $white transparent transparent;
-	border-radius: 50%;
-	animation: spin 0.6s linear infinite;
-
-	@keyframes spin {
-		to {
-			transform: rotate(1turn);
-		}
-	}
 }
 
 // Header ================================================================================
@@ -435,6 +426,7 @@ header {
 		&:hover,
 		&:focus {
 			outline: 0;
+			color: $white;
 
 			span {
 				text-decoration: underline;
@@ -488,7 +480,7 @@ header {
 	}
 }
 
-// Elements ==============================================================================
+// Page Hero element =====================================================================
 .page-hero {
 	position: relative;
 	padding: var(--large) 0 var(--overhang);
@@ -538,16 +530,17 @@ header {
 
 	& + .page-content {
 		margin: var(--negative-overhang) 0 0;
+		padding: 0 var(--large);
 
-		& > section > .container {
-			background: $white;
-			min-height: 20em;
-			padding-top: var(--extra-large);
-
-			&:first-child {
+		& > section {
+			& > .container {
 				position: relative;
 				border-radius: var(--radius);
+				min-height: 15rem;
+				background: $white;
+				border-radius: var(--radius);
 				box-shadow: 0 1rem 2rem $gray-100a;
+				padding: var(--extra-large);
 			}
 		}
 	}
@@ -561,6 +554,7 @@ header {
 	}
 }
 
+// =======================================================================================
 // Mission ===============================================================================
 .mission-section {
 	color: $white;
@@ -611,6 +605,7 @@ header {
 	}
 }
 
+// =======================================================================================
 // Featured Content ======================================================================
 .featured-content-section {
 	overflow: hidden;
@@ -672,85 +667,35 @@ header {
 	}
 }
 
-// Partners ==============================================================================
-.partners-grid {
-	overflow: hidden;
-}
-
-.partner-wrapper {
-	display: flex;
-	align-items: flex-start;
-	margin: 0 0 var(--large);
-
-	&:last-child {
-		margin: 0;
-	}
-
+// Resouces for Patients  ================================================================
+.resources-for-patients-list {
 	@media (min-width: $desktop) {
-		width: 50%;
-		float: left;
+		.column {
+			display: inline-block;
+			vertical-align: top;
+			width: 33.33%;
+		}
 	}
 }
 
-.partner-img {
-	width: 6em;
-	height: auto;
-	margin-right: var(--large);
-
-	@media (min-width: $tablet) {
-		width: 8em;
-	}
-}
-.partner-meta {
-	flex: 1;
-	border-left: thin solid $gray-200;
-	padding: 0 var(--medium);
-}
-
-.partner {
-	margin: var(--large) var(--medium);
-}
-
-.partner-name,
-.partner-title {
-	display: block;
-	text-decoration: none;
-
-	color: $black;
-}
-
-.partner-name {
-	font-weight: bold;
-
-	&:hover {
-		text-decoration: underline;
-	}
-}
-.partner-title {
-	font-size: 0.9em;
-}
-
-// Videos ================================================================================
+// Video Archive =========================================================================
 .videos-container {
-	padding: 0 var(--large);
+	padding: var(--medium) !important;
 }
 .videos-list {
 	overflow: hidden;
 }
 
 .video-block {
-	display: inline-block;
-	float: left;
-	width: 33.33%;
-	padding: var(--medium);
-	vertical-align: top;
+	display: block;
 	text-decoration: none;
 
-	.featured-content & {
-		padding: 0;
-		width: 100%;
-		float: none;
-		display: block;
+	.videos-list & {
+		display: inline-block;
+		float: left;
+		vertical-align: top;
+		width: 33.33%;
+		padding: var(--medium);
 	}
 
 	&:hover,
@@ -790,8 +735,12 @@ header {
 	max-width: 5rem;
 	width: 40%;
 	height: auto;
-	opacity: 0;
+	opacity: 0.5;
 	transition: opacity var(--transition);
+
+	.videos-list & {
+		opacity: 0;
+	}
 }
 .video-title {
 	color: $black;
@@ -806,236 +755,16 @@ header {
 	}
 }
 
-// Resouces for patients page ============================================================
-.resources-for-patients-list {
-	@media (min-width: $desktop) {
-		.column {
-			display: inline-block;
-			vertical-align: top;
-			width: 33.33%;
-		}
-	}
-}
-
-// Media-page============================================================
-.media-page {
-	details {
-		margin: 0 0 var(--large);
-	}
-
-	summary {
-		@extend %no-select;
-		cursor: pointer;
-		opacity: 0.75;
-		display: inline-block;
-		background: $gray-100;
-		border-radius: var(--radius);
-		padding: var(--small) var(--medium);
-		margin: 0 var(--large) var(--large);
-		transition: opacity var(--transition);
-
-		&:hover {
-			opacity: 1;
-			transition: opacity var(--transition-hover);
-		}
-	}
-}
-
-// Publications page =====================================================================
-.filter-publications {
-	border-radius: var(--radius);
-	padding: var(--large);
-	margin-top: var(--large);
-	margin-bottom: calc(var(--extra-large) * -1);
-	background: $gray-800;
-	color: $white;
-}
-.filters-list {
-	margin: var(--medium) 0 0;
-}
-.filter-button {
-	font-size: 0.8em;
-	font-weight: bold;
-	border: 0;
-	color: $white;
-	border: 1px solid $gray;
-	border-radius: var(--radius);
-	cursor: pointer;
-	padding: var(--small) var(--medium);
-
-	&:hover {
-		border-color: $white;
-	}
-
-	.icon-close {
-		display: none;
-	}
-
-	&.is-filtering {
-		background: $white;
-		border-color: $white;
-		color: $black;
-
-		.icon-close {
-			display: inline-block;
-		}
-	}
-}
-
-.show-brain-tumor-pub,
-.show-stroke-pub,
-.show-tbi-pub,
-.show-craniotomy-pub,
-.show-tdcs-pub,
-.show-vision-pub,
-.show-language-pub,
-.show-action-pub {
-	li {
-		display: none;
-	}
-}
-
-.show-brain-tumor-pub .brain-tumor-pub,
-.show-stroke-pub .stroke-pub,
-.show-tbi-pub .tbi-pub,
-.show-craniotomy-pub .craniotomy-pub,
-.show-tdcs-pub .tdcs-pub,
-.show-vision-pub .vision-pub,
-.show-language-pub .language-pub,
-.show-action-pub.action-pub {
-	display: list-item;
-}
-
-// .brain-tumor-pub:after {
-// 	content: "Brain Tumor";
-// }
-// .stroke-pub:after {
-// 	content: "Stroke";
-// }
-// .tbi-pub:after {
-// 	content: "TBI";
-// }
-// .craniotomy-pub:after {
-// 	content: "Craniotomy";
-// }
-// .tdcs-pub:after {
-// 	content: "tDCS";
-// }
-// .vision-pub:after {
-// 	content: "Vision";
-// }
-// .language-pub:after {
-// 	content: "Language";
-// }
-// .action-pub:after {
-// 	content: "Action";
-// }
-
-// Form ==================================================================================
-.flex-form-container {
-	@media (min-width: $tablet) {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-	}
-}
-
-.form-aside {
-	flex: 1;
-}
-
-.form {
-	flex: 2;
-	border-radius: var(--radius);
-	margin: var(--extra-large) 0 0;
-	background: $gray-50;
-	border: thin solid $gray-100;
-
-	@media (min-width: $tablet) {
-		margin: 0 0 0 var(--extra-large);
-	}
-
-	section {
-		margin: 0;
-		border-bottom: thin solid $gray-100;
-
-		.container {
-			padding: var(--large);
-		}
-
-		&.split {
-			display: flex;
-			flex-wrap: wrap;
-			padding: 0 calc(var(--large) / 2);
-
-			.container {
-				padding: var(--large) calc(var(--large) / 2);
-				flex: 1 0 12em;
-			}
-		}
-
-		&:last-child {
-			border: 0;
-		}
-	}
-	label {
-		display: block;
-		cursor: pointer;
-	}
-
-	input[type="text"],
-	input[type="email"],
-	textarea,
-	.checkbox-wrapper {
-		display: block;
-		width: 100%;
-		border: 0;
-		background: $white;
-		border-radius: var(--radius);
-		border: thin solid $gray-100;
-		border-bottom-color: $gray-200;
-	}
-	.checkbox-wrapper {
-		display: inline-block;
-		width: initial;
-		margin-bottom: var(--small);
-		padding: var(--small) var(--medium);
-
-		&:last-child {
-			margin: 0;
-		}
-	}
-	input[type="radio"],
-	input[type="checkbox"] {
-		display: inline-block;
-		margin-right: var(--medium);
-		cursor: pointer;
-	}
-
-	button[type="submit"] {
-		background: $green;
-		color: $white;
-		padding: var(--large) var(--extra-large);
-		min-width: 33%;
-		transition: background-color var(--transition);
-
-		&:hover {
-			background: shade($green, 25%);
-			transition-duration: var(--transition-hover);
-		}
-	}
-
-	textarea {
-		resize: vertical;
-	}
-}
-
 // Brain Survey ==========================================================================
 .bs-iframe {
 	width: 100%;
 	height: 100vh;
 	border: 0;
 }
+
+// Data Exchange =========================================================================
+
+// Experiments Exchange ==================================================================
 
 // About =================================================================================
 .about-content {
@@ -1138,8 +867,461 @@ header {
 	background: $blue;
 }
 
+// Consortium ============================================================================
+.partners-grid {
+	overflow: hidden;
+}
+
+.partner-wrapper {
+	display: flex;
+	align-items: flex-start;
+	margin: 0 0 var(--large);
+
+	&:last-child {
+		margin: 0;
+	}
+
+	@media (min-width: $desktop) {
+		width: 50%;
+		float: left;
+	}
+}
+
+.partner-img {
+	width: 6em;
+	height: auto;
+	margin-right: var(--large);
+
+	@media (min-width: $tablet) {
+		width: 8em;
+	}
+}
+.partner-meta {
+	flex: 1;
+	border-left: thin solid $gray-200;
+	padding: 0 var(--medium);
+}
+
+.partner {
+	margin: var(--large) var(--medium);
+}
+
+.partner-name,
+.partner-title {
+	display: block;
+	text-decoration: none;
+
+	color: $black;
+}
+
+.partner-name {
+	font-weight: bold;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+.partner-title {
+	font-size: 0.9em;
+}
+
+// Media  ================================================================================
+.media-page {
+	details {
+		margin: 0 0 var(--large);
+	}
+
+	summary {
+		@extend %no-select;
+		cursor: pointer;
+		opacity: 0.75;
+		display: inline-block;
+		background: $gray-100;
+		border-radius: var(--radius);
+		padding: var(--small) var(--medium);
+		margin: 0 var(--large) var(--large);
+		transition: opacity var(--transition);
+
+		&:hover {
+			opacity: 1;
+			transition: opacity var(--transition-hover);
+		}
+	}
+}
+
+// Publications  =========================================================================
+.filter-publications {
+	border-radius: var(--radius);
+	padding: var(--large);
+	margin-top: var(--large);
+	margin-bottom: calc(var(--extra-large) * -1);
+	background: $gray-800;
+	color: $white;
+}
+
+.filters-list {
+	margin: var(--medium) 0 0;
+}
+
+.filter-button {
+	font-size: 0.8em;
+	font-weight: bold;
+	border: 0;
+	color: $white;
+	border: 1px solid $gray;
+	border-radius: var(--radius);
+	cursor: pointer;
+	padding: var(--small) var(--medium);
+
+	&:hover {
+		border-color: $white;
+	}
+
+	.icon-close {
+		display: none;
+	}
+
+	&.is-filtering {
+		background: $white;
+		border-color: $white;
+		color: $black;
+
+		.icon-close {
+			display: inline-block;
+		}
+	}
+}
+
+.show-brain-tumor-pub,
+.show-stroke-pub,
+.show-tbi-pub,
+.show-craniotomy-pub,
+.show-tdcs-pub,
+.show-vision-pub,
+.show-language-pub,
+.show-action-pub {
+	li {
+		display: none;
+	}
+}
+
+.show-brain-tumor-pub .brain-tumor-pub,
+.show-stroke-pub .stroke-pub,
+.show-tbi-pub .tbi-pub,
+.show-craniotomy-pub .craniotomy-pub,
+.show-tdcs-pub .tdcs-pub,
+.show-vision-pub .vision-pub,
+.show-language-pub .language-pub,
+.show-action-pub.action-pub {
+	display: list-item;
+}
+
+// Join ==================================================================================
+.form {
+	flex: 2;
+	border-radius: var(--radius);
+	margin: var(--extra-large) 0 0;
+	background: $gray-50;
+	border: thin solid $gray-100;
+
+	@media (min-width: $tablet) {
+		margin: 0 0 0 var(--extra-large);
+	}
+
+	section {
+		margin: 0;
+		border-bottom: thin solid $gray-100;
+
+		.container {
+			padding: var(--large);
+		}
+
+		&.split {
+			display: flex;
+			flex-wrap: wrap;
+			padding: 0 calc(var(--large) / 2);
+
+			.container {
+				padding: var(--large) calc(var(--large) / 2);
+				flex: 1 0 12em;
+			}
+		}
+
+		&:last-child {
+			border: 0;
+		}
+	}
+	label {
+		display: block;
+		cursor: pointer;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	textarea,
+	.checkbox-wrapper {
+		display: block;
+		width: 100%;
+		border: 0;
+		background: $white;
+		border-radius: var(--radius);
+		border: thin solid $gray-100;
+		border-bottom-color: $gray-200;
+	}
+	.checkbox-wrapper {
+		display: inline-block;
+		width: initial;
+		margin-bottom: var(--small);
+		padding: var(--small) var(--medium);
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+	input[type="radio"],
+	input[type="checkbox"] {
+		display: inline-block;
+		margin-right: var(--medium);
+		cursor: pointer;
+	}
+
+	button[type="submit"] {
+		background: $green;
+		color: $white;
+		padding: var(--large) var(--extra-large);
+		min-width: 33%;
+		transition: background-color var(--transition);
+
+		&:hover {
+			background: shade($green, 25%);
+			transition-duration: var(--transition-hover);
+		}
+	}
+
+	textarea {
+		resize: vertical;
+	}
+}
+
 // TBI ===================================================================================
-@import "partials/tbi";
+$inferno-array: #000004, #160b39, #420a68, #6a176e, #932667, #ba3655, #dd513a,
+	#f3761b, #fca50a, #f6d746, #f6d746;
+$rainbow-array: #6e40aa, #be3caf, #fe4b83, #ff7747, #e3b62f, #b0ef5a, #53f666,
+	#1edfa2, #23acd8, #4c6fdc, #4c6fdc;
+$spectral-array: #9e0142, #d13b4b, #f0704a, #fcab63, #fedc8c, #fbf8b0, #e0f3a1,
+	#aadda2, #69bda9, #4288b5, #4288b5;
+
+$color-array: $inferno-array;
+
+.tbi-intro {
+	flex: 1.5;
+
+	@media (min-width: $tablet) {
+		margin-right: var(--extra-large);
+	}
+}
+
+.tbi-aside {
+	flex: 1;
+	margin: var(--large) 0 0;
+
+	@media (min-width: $tablet) {
+		margin: 0;
+	}
+
+	p {
+		margin: var(--large) 0 0;
+		font-size: 0.9em;
+		border-left: thin solid $gray-100;
+		padding-left: var(--large);
+		color: $gray-800;
+	}
+}
+
+.tbi-pdf {
+	border-radius: var(--radius);
+	overflow: hidden;
+	background: $gray-100;
+	margin: var(--extra-large) 0 0;
+	box-shadow: 0 0.25rem 0.5rem $gray-100a;
+}
+
+.tbi-interactive {
+	padding-bottom: var(--extra-large);
+}
+
+.tbi-page .split-wrapper {
+	padding: var(--medium);
+	background: $gray-900;
+	border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.tbi-model-wrapper {
+	flex: 1;
+	padding: var(--medium);
+}
+
+.canvas-wrapper-a,
+.canvas-wrapper-b {
+	position: relative;
+	padding-bottom: 100%;
+	background: linear-gradient(rgba($gray-900, 0), $black);
+	cursor: move;
+	cursor: grab;
+	margin-bottom: var(--medium);
+	border-radius: var(--radius);
+
+	&:active {
+		cursor: grabbing;
+	}
+
+	@media (min-width: $tablet) {
+		padding-bottom: 50%;
+	}
+
+	@media (min-width: $desktop) {
+		padding-bottom: 0;
+		height: 70vh;
+	}
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.tbi-model-meta {
+	color: $gray-100;
+	font-size: 0.9em;
+	padding: 0 var(--large);
+}
+
+.intensity-container {
+	@extend %no-select;
+
+	display: inline-block;
+	font-size: 0.8em;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+	color: $white;
+}
+
+.intensity-bar {
+	height: 0.25em;
+	width: 7em;
+	background: red;
+	background-image: linear-gradient(90deg, $inferno-array);
+}
+
+.intensity-label {
+	display: flex;
+	justify-content: space-between;
+}
+
+.data-sets {
+	list-style: none;
+	margin: 0;
+}
+
+.data-set {
+	border-radius: var(--radius);
+	margin-bottom: var(--small);
+	margin: 0 0 var(--small);
+	border: thin solid $gray-200;
+
+	.container {
+		display: flex;
+		align-items: center;
+		padding: var(--medium) var(--large) var(--medium) var(--large);
+	}
+
+	&.is-running {
+		background: $gray-100;
+	}
+
+	@media (min-width: $tablet) {
+		display: inline-block;
+		vertical-align: top;
+		width: 15em;
+		margin: 0 var(--medium) 0 0;
+
+		.container {
+			display: block;
+			overflow: hidden;
+		}
+	}
+}
+
+.data-set-title {
+	font-size: 1rem;
+	flex: 1;
+}
+
+.data-set-run {
+	@extend %no-select;
+	padding: var(--medium) var(--large);
+	border: 0;
+	border-radius: var(--radius);
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color var(--transition);
+	background: $turquoise;
+	color: $white;
+
+	&:hover {
+		transition-duration: var(--transition-hover);
+		background: shade($turquoise, 25%);
+	}
+
+	.is-running & {
+		&,
+		&:hover {
+			background: $black;
+			color: $gray-400;
+			pointer-events: none;
+		}
+		&:after {
+			content: "ning";
+		}
+	}
+
+	@media (min-width: $tablet) {
+		padding: var(--small) var(--medium);
+		float: right;
+	}
+}
+
+// Spinner ===============================================================================
+.spinner-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.spinner {
+	width: 2rem;
+	height: 2rem;
+	border: 2px solid;
+	border-color: $white $white transparent transparent;
+	border-radius: 50%;
+	animation: spin 0.6s linear infinite;
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+}
 
 // 404 Page ==============================================================================
 .four-oh-four-section {

@@ -6,7 +6,7 @@ var azLength = 0;
 var elLength = 0;
 arrows = [];
 
-var canvas_wrapper = document.querySelector(".canvas-wrapper");
+var canvas_wrapper = document.querySelector(".canvas-wrapper-a");
 
 settings = {
     autoRotate: true,
@@ -114,7 +114,7 @@ function loadHelmet() {
 
     // Load a glTF resource
     loader.load(
-        "../models/helmet/scene.gltf",
+        "../_models/helmet/scene.gltf",
         function(gltf) {
             console.log(gltf);
             // Adjust helmet y position

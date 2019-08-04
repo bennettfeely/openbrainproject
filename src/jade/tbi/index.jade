@@ -1,0 +1,61 @@
+include ../_partials/_head
+include ../_partials/_header
+include ../_partials/_svg
+include ../_partials/_icon
+include ../_partials/_footer
+
++head("Traumatic Brain Injury Explorer")
+body.discover-page.tbi-page
+	+header("tbi")
+	.page-hero
+		.container
+			h1 Traumatic Brain Injury Explorer
+	main.page-content
+		section
+			.container
+				.split-container
+					.tbi-intro
+						p.citation A new study documents a type of brain damage that occurs in collegiate football players in a typical season and in the absence of concussion. 
+						p Hirad and colleagues (2019) used MRI to measure the structural changes that occur in an athlete’s brain from a single season of football. The critical finding is that there are stereotyped patterns of brain injury that are asymptomatic—meaning no signs or symptoms of concussion.
+						p The tools below provide a visualization of how force loading during football affects brain structure.
+						p If you or your child play contact sports and use an accelerometers, please <a href="/join"><svg class="icon icon-join"><use xlink:href="#join"></use></svg>Join the Open Brain Project</a> to learn how you can upload data from your device to our consortium.
+					aside.split-aside.tbi-aside
+						a.video-block(href="https://www.youtube.com/watch?v=jfzwj3ruKKE", target="_blank")
+							.video-thumbnail(style="background-image:url(../_img/football.jpg)")
+								.icon-youtube-wrapper
+									+icon("youtube")
+						p Hirad, Bazarian, Merchant-Borna, Garcea, Heilbronner, Paul, Hintz, van Wijngaarden, Schifitto, Wright, Espinoza, and Mahon. (2019). A common neural signature of brain injury in concussion and sub-concussion. Science Advances.
+				object.tbi-pdf(data="../_materials/example.pdf", type="application/pdf", width="100%" height="500")
+					p It appears you don't have a PDF plugin for this browser. You can <a href="resume.pdf">click here to download the PDF file.
+			.tbi-interactive
+				.wrapper.split-wrapper
+					.tbi-model-wrapper
+						.canvas-wrapper-a
+							canvas
+							.intensity-container.container
+								.intensity-bar
+								.intensity-label
+									span Min
+									span Max
+							.spinner-wrapper
+								.spinner
+						p.tbi-model-meta Interactive model of data from Figure 1 in Hirad and colleagues (2019). Visualization of spatial distribution of head hits in 38 collegiate football players in a season of play. The color and length of each line is scaled by the log of the count of hits at that location.
+					.tbi-model-wrapper
+						.canvas-wrapper-b
+							canvas
+							.intensity-container.container
+								.intensity-bar
+								.intensity-label
+									span Min
+									span Max
+							.spinner-wrapper
+								.spinner
+						p.tbi-model-meta Interactive model of data from Figure 6 in Hirad and colleagues (2019). The 3D model shown here is a graphical representation of how force loading from head hits during football (practice and games) is related to differences between damage to the left and right hemispheres of the brain.
+
+	+footer()
+
+script(src="../_js/three.min.js")
+script(src="../_js/OrbitControls.min.js")
+script(src="../_js/GLTFLoader.min.js")
+script(src="../_js/WebGL.min.js")
+script(src="../_js/tbi.js")
