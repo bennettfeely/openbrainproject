@@ -21,58 +21,73 @@ body.join-page
 					p We do not share email addresses with any third party, and will contact you with additional information according to the options you select. 
 				form.form(name="join", method="POST", data-netlify="true", action="/join/success")
 					section.split
-						label
+						label.container
 							| First Name:
 							input(type="text", name="first_name", required)
-						label
+						label.container
 							| Last Name:
 							input(type="text", name="last_name", required)
 					section
-						label
+						label.container
 							| Your Email:
 							input(type="email", name="email", required)
-					section.i-am
-						| I am a:
-						label.checkbox-wrapper
-							input(type="checkbox", id="scientist", value="true" name="i_am_a_scientist")
-							| Scientist
-						label.checkbox-wrapper
-							input(type="checkbox", id="clinician", value="true" name="i_am_a_clinician")
-							| Clinician
-						label.checkbox-wrapper
-							input(type="checkbox", id="true", value="true" name="i_am_a_patient_or_family")
-							| A patient or a family member of a patient
-						label.checkbox-wrapper
-							input(type="checkbox", id="just_interested", value="true" name="i_am_a_just_interested")
-							| Simply interested to learn more
 					section
-						label
+						.container
+							| I am a:
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="scientist", value="true" name="i_am_a_scientist")
+								| Scientist
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="clinician", value="true" name="i_am_a_clinician")
+								| Clinician
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="true", value="true" name="i_am_a_patient_or_family")
+								| A patient or a family member of a patient
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="just_interested", value="true" name="i_am_a_just_interested")
+								| Simply interested to learn more
+					section
+						label.container
 							| Institutional Affiliation (if applicable):
 							input(type="text", name="institutional_affiliation")
 					section
-						label
+						label.container
 							| Country:
 							input(type="text", name="country")
-					section.i-want-to
-						| I would like to:
-						label.checkbox-wrapper
-							input(type="checkbox", id="sign_up_for_email_newsletter", value="true", name="i_would_like_to_sign_up_for_email_newsletter")
-							| Sign up for email newsletter
-						label.checkbox-wrapper
-							input(type="checkbox", id="contribute_mri", value="true", name="i_would_like_to_contribute_mri")
-							| Contribute MRI data
-						label.checkbox-wrapper
-							input(type="checkbox", id="contribute_behavioral", value="true", name="i_would_like_to_contribute_behavioral")
-							| Contribute behavioral data
-						label.checkbox-wrapper
-							input(type="checkbox", id="share_experimental_protocols", value="true", name="i_would_like_to_share_experimental_protocols")
-							| Share experimental protocols or materials
-						label.checkbox-wrapper
-							input(type="checkbox", id="post_videos", value="true", name="i_would_like_to_post_videos")
-							| Post videos of neuropsychological studies of patients
-						label.checkbox-wrapper
-							input(type="checkbox", id="upload_data", value="true", name="i_would_like_to_upload_data")
-							| Upload data from my helmet-worn accelerometer
 					section
-						button.button.green-gradient(type="submit") Join
+						.container
+							| I would like to:
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="sign_up_for_email_newsletter", value="true", name="i_would_like_to_sign_up_for_email_newsletter")
+								| Sign up for email newsletter
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="contribute_mri", value="true", name="i_would_like_to_contribute_mri")
+								| Contribute MRI data
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="contribute_behavioral", value="true", name="i_would_like_to_contribute_behavioral")
+								| Contribute behavioral data
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="share_experimental_protocols", value="true", name="i_would_like_to_share_experimental_protocols")
+								| Share experimental protocols or materials
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="post_videos", value="true", name="i_would_like_to_post_videos")
+								| Post videos of neuropsychological studies of patients
+							br
+							label.checkbox-wrapper
+								input(type="checkbox", id="upload_data", value="true", name="i_would_like_to_upload_data")
+								| Upload data from my helmet-worn accelerometer
+					section
+						.container
+							button.button(type="submit") 
+								| Join Now
+								+icon("rarr")
 	+footer()

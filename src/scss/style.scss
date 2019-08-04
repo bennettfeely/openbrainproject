@@ -539,7 +539,7 @@ header {
 	& + .page-content {
 		margin: var(--negative-overhang) 0 0;
 
-		.container {
+		& > section > .container {
 			background: $white;
 			min-height: 20em;
 			padding-top: var(--extra-large);
@@ -948,7 +948,8 @@ header {
 	flex: 2;
 	border-radius: var(--radius);
 	margin: var(--extra-large) 0 0;
-	background: $gray-200;
+	background: $gray-50;
+	border: thin solid $gray-100;
 
 	@media (min-width: $tablet) {
 		margin: 0 0 0 var(--extra-large);
@@ -956,28 +957,21 @@ header {
 
 	section {
 		margin: 0;
-		padding: var(--small);
+		border-bottom: thin solid $gray-100;
+
+		.container {
+			padding: var(--large);
+		}
 
 		&.split {
 			display: flex;
 			flex-wrap: wrap;
+			padding: 0 calc(var(--large) / 2);
 
-			label {
+			.container {
+				padding: var(--large) calc(var(--large) / 2);
 				flex: 1 0 12em;
-
-				&.collapse {
-					display: flex;
-					justify-content: flex-end;
-					align-content: flex-end;
-					align-items: flex-end;
-					flex: 0;
-				}
 			}
-		}
-
-		&.i-am,
-		&.i-want-to {
-			padding: var(--large);
 		}
 
 		&:last-child {
@@ -986,7 +980,6 @@ header {
 	}
 	label {
 		display: block;
-		padding: var(--medium);
 		cursor: pointer;
 	}
 
@@ -999,8 +992,12 @@ header {
 		border: 0;
 		background: $white;
 		border-radius: var(--radius);
+		border: thin solid $gray-100;
+		border-bottom-color: $gray-200;
 	}
 	.checkbox-wrapper {
+		display: inline-block;
+		width: initial;
 		margin-bottom: var(--small);
 		padding: var(--small) var(--medium);
 
@@ -1016,9 +1013,16 @@ header {
 	}
 
 	button[type="submit"] {
+		background: $green;
 		color: $white;
-		padding: var(--medium) var(--large);
-		margin: var(--medium);
+		padding: var(--large) var(--extra-large);
+		min-width: 33%;
+		transition: background-color var(--transition);
+
+		&:hover {
+			background: shade($green, 25%);
+			transition-duration: var(--transition-hover);
+		}
 	}
 
 	textarea {
