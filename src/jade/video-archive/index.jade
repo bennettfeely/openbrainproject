@@ -16,8 +16,8 @@ body.learn-page.video-archive-page
 			.container.videos-container
 				.videos-list
 					for video in videos
-						a.video-block(href="https://www.youtube.com/watch?v=" + video.video_url)
-							.video-thumbnail(style="background-image: url(" + video.thumbnail_src + ")")
+						a.video-block(href=video.video_url)
+							.video-thumbnail(style="background-image:url(" + video.thumbnail_src + ")")
 								.icon-youtube-wrapper
 									+icon("youtube")
 							.video-meta

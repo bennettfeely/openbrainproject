@@ -93,7 +93,6 @@ body {
 
 main {
 	background: $gray-50;
-	padding-bottom: var(--extra-large);
 }
 
 .page-title {
@@ -536,7 +535,7 @@ header {
 
 	& + .page-content {
 		margin: var(--negative-overhang) 0 0;
-		padding: 0 var(--large);
+		padding: 0 var(--large) var(--extra-large);
 
 		& > section {
 			& > .container {
@@ -567,7 +566,7 @@ header {
 
 	.wrapper {
 		position: relative;
-		padding-bottom: 2rem;
+		padding-bottom: 7rem;
 	}
 
 	p {
@@ -612,7 +611,7 @@ header {
 
 // Featured Content ======================================================================
 .featured-content-section {
-	margin: -10rem 0 0;
+	margin: -15rem 0 0;
 }
 
 .featured-grid-wrapper {
@@ -623,7 +622,14 @@ header {
 .featured-grid-column {
 	@media (min-width: $tablet) {
 		float: left;
-		width: 50%;
+
+		&:first-child {
+			width: 55%;
+		}
+		&:last-child {
+			width: 45%;
+			padding-top: 4rem;
+		}
 	}
 }
 
@@ -665,28 +671,30 @@ header {
 		display: inline-block;
 		text-transform: uppercase;
 		font-size: 0.75rem;
-		padding: var(--small) var(--medium);
+		padding: 0 var(--medium);
+		line-height: 1.5rem;
 		border-radius: var(--radius);
-		box-shadow: 0 0.25rem 0.5rem $gray-100a;
-		background: $red;
+		background: $blue;
 		color: $white;
 		animation: new-pulse 4s ease-in-out infinite;
+		vertical-align: top;
+		margin-right: var(--medium);
 
 		@keyframes new-pulse {
 			0%,
 			50%,
 			100% {
-				background: $red;
+				opacity: 1;
 			}
 			25% {
-				background: tint($red, 33%);
+				opacity: 0.75;
 			}
 		}
 	}
 
 	h2 {
 		font-size: 1.25em;
-		margin: var(--small) 0 var(--medium);
+		margin: 0 0 var(--medium);
 	}
 	p {
 		margin: 0;
@@ -698,6 +706,7 @@ header {
 		}
 		h2 {
 			text-decoration: underline;
+			color: $blue;
 		}
 		p {
 			text-decoration: none;
@@ -1189,10 +1198,6 @@ header {
 	background: $gray-100;
 	padding: var(--large);
 	border-radius: var(--radius);
-}
-
-.tbi-interactive {
-	padding-bottom: var(--extra-large);
 }
 
 .tbi-page .split-wrapper {
