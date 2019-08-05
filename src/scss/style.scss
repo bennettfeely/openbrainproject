@@ -286,8 +286,10 @@ header {
 // Logo ==================================================================================
 .site-logo-link {
 	display: inline-block;
+	transition: color var(--transition);
 
 	&:hover {
+		transition-duration: var(--transition-hover);
 		text-decoration: none;
 	}
 }
