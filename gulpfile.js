@@ -142,6 +142,14 @@ gulp.task("js", function() {
     );
 });
 
+gulp.task("js-tbi", function() {
+  return gulp.src("dist/_js/tbi.js").pipe(
+    browserSync.reload({
+      stream: true
+    })
+  );
+});
+
 // Move _redirects =======================================================================
 gulp.task("redirects", function() {
   return gulp
@@ -189,8 +197,8 @@ gulp.task("default", function() {
   });
 
   // TBI
-  gulp.watch(["src/js/_datasets.js", "src/js/tbi.js"], function() {
-    return gulp.run("jade", "jade-subfolder");
+  gulp.watch(["dist/_js/tbi.js"], function() {
+    return gulp.run("js-tbi");
   });
 
   // CSS
