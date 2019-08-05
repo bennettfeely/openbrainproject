@@ -18,23 +18,50 @@ body.home
 					//- p.mission-point A hub to connect patients and their families with resources to manage their condition
 					//- p.mission-point A forum for scientists to share research papers, data, and experimental protocols related to neuropsychological research
 		section.featured-content-section
-			.wrapper
-				.featured-content-wrapper 
+			.wrapper.featured-grid-wrapper
+				.featured-grid-column
+				.featured-grid-column
+				//- .featured-grid-item
+				//- 	a.featured-content(href="/tbi")
+				//- 		.featured-thumbnail-wrapper
+				//- 			img(src="_img/tbi_1.png", width="800", height="600", alt="Screenshot of interactive model of traumatic brain injury in football players")
+				//- 		.featured-meta
+				//- 			h3.new-featured-content New
+				//- 			h2 
+				//- 				| How playing football affects the brain
+				//- 				+icon("rarr")
+				//- 			p New research indicates that brain damage can occur in football players in the absence of concussion.
+				.featured-grid-item 
+					a.featured-content(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
+						.featured-thumbnail-wrapper
+							.video-block
+								.video-thumbnail(style="background-image:url(_img/mapping_language_ability.jpg)")
+									.icon-youtube-wrapper
+										+icon("youtube")
+						.featured-meta
+							h2 
+								| Mapping language ability during awake brain surgery
+								+icon("rarr")
+				.featured-grid-item 
 					a.featured-content(href="/brainsurvey")
-						img(src="_img/brain_survey.jpg", width="800", height="600", alt="Screenshot of Brain Survey website")
+						.featured-thumbnail-wrapper
+							img(src="_img/brain_survey.jpg", width="800", height="600", alt="Screenshot of Brain Survey website")
 						.featured-meta
 							h2 
 								| Brain Survey
 								+icon("rarr")
 							p Explore the human brain
-				.featured-content-wrapper 
-					a.featured-content(href="https://www.youtube.com/watch?v=5K66gj5e4Mk")
-						.video-block
-							.video-thumbnail(style="background-image:url(_img/mapping_language_thumbnail.jpg)")
-								.icon-youtube-wrapper
-									+icon("youtube")
+				.featured-grid-item 
+					a.featured-content(href="https://www.youtube.com/watch?v=95NMmqaFAKE")
+						.featured-thumbnail-wrapper
+							.video-block
+								.video-thumbnail(style="background-image:url(_img/brain_mapping_for_music.jpg)")
+									.icon-youtube-wrapper
+										+icon("youtube")
 						.featured-meta
 							h2 
-								| Mapping language ability during awake brain surgery
+								| Brain mapping for music
 								+icon("rarr")
+							p Music is not only a major part of Dan Fabbio’s life, as a music teacher it is his livelihood. So when doctors discovered a tumor located in the part of his brain responsible for music function, he began a long journey that involved a team of University of Rochester physicians, scientists, and a music professor and culminated with him awake and playing a saxophone as surgeons operated on his brain.  
+
 	+footer()

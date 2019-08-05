@@ -7,6 +7,13 @@ if (window.location.hostname == "brainsurvey.org") {
 	window.location.href = "https://www.openbrainproject.org/brainsurvey";
 }
 
+if (body.classList.contains("home")) {
+	var colc = new Colcade(".featured-grid-wrapper", {
+		columns: ".featured-grid-column",
+		items: ".featured-grid-item"
+	});
+}
+
 // Publications filtering
 if (body.classList.contains("publications-page")) {
 	var filter_buttons = document.querySelectorAll(".filter-button");

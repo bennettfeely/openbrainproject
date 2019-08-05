@@ -16,7 +16,13 @@ del = require("del");
 
 // Import data
 videos = require("./src/js/_videos.js");
-datasets = require("./src/js/_datasets.js");
+
+// Browser sync ==========================================================================
+gulp.task("sync", function() {
+  return browserSync({
+    server: "dist"
+  });
+});
 
 // Compile Jade to HTML ==================================================================
 gulp.task("jade", function() {
@@ -24,10 +30,7 @@ gulp.task("jade", function() {
     .src("src/jade/*.jade")
     .pipe(
       jade({
-        pretty: true,
-        data: {
-          videos: videos_arr
-        }
+        pretty: true
       })
     )
     .pipe(
@@ -53,7 +56,6 @@ gulp.task("jade-subfolder", function() {
       jade({
         pretty: true,
         data: {
-          datasets: datasets_obj,
           videos: videos_arr
         }
       })
@@ -79,11 +81,7 @@ gulp.task("jade-sub-subfolder", function() {
     .src("src/jade/*/*/index.jade")
     .pipe(
       jade({
-        pretty: true,
-        data: {
-          datasets: datasets_obj,
-          videos: videos_arr
-        }
+        pretty: true
       })
     )
     .pipe(
@@ -142,31 +140,13 @@ gulp.task("js", function() {
     );
 });
 
+// TBI Script ============================================================================
 gulp.task("js-tbi", function() {
   return gulp.src("dist/_js/tbi.js").pipe(
     browserSync.reload({
       stream: true
     })
   );
-});
-
-// Move _redirects =======================================================================
-gulp.task("redirects", function() {
-  return gulp
-    .src("src/_redirects")
-    .pipe(gulp.dest("./dist"))
-    .pipe(
-      browserSync.reload({
-        stream: true
-      })
-    );
-});
-
-// Browser sync ==========================================================================
-gulp.task("sync", function() {
-  return browserSync({
-    server: "dist"
-  });
 });
 
 // Init ==================================================================================
@@ -178,25 +158,22 @@ gulp.task("default", function() {
     return gulp.run("jade");
   });
 
-  // Subfolders and Partials
-  gulp.watch(
-    ["src/jade/*/index.jade", "src/jade/_partials/*.jade"],
-    function() {
-      return gulp.run("jade", "jade-subfolder");
-    }
-  );
-
-  // Subsubfolders
-  gulp.watch(["src/jade/*/*/index.jade"], function() {
+  // Partials
+  gulp.watch(["src/jade/_partials/*.jade"], function() {
     return gulp.run("jade", "jade-subfolder", "jade-sub-subfolder");
   });
 
-  // Videos
-  gulp.watch(["src/js/_videos.js"], function() {
-    return gulp.run("jade");
+  // Subfolders
+  gulp.watch(["src/jade/*/index.jade"], function() {
+    return gulp.run("jade-subfolder");
   });
 
-  // TBI
+  // Subsubfolders
+  gulp.watch(["src/jade/*/*/index.jade"], function() {
+    return gulp.run("jade-sub-subfolder");
+  });
+
+  // TBI scripts
   gulp.watch(["dist/_js/tbi.js"], function() {
     return gulp.run("js-tbi");
   });
@@ -204,10 +181,5 @@ gulp.task("default", function() {
   // CSS
   gulp.watch(["src/scss/*", "src/scss/partials/*"], function() {
     return gulp.run("scss");
-  });
-
-  // Redirects
-  gulp.watch("src/_redirects", function() {
-    return gulp.run("redirects");
   });
 });
