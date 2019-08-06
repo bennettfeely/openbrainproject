@@ -586,7 +586,7 @@ header {
 }
 
 .mission-point {
-	$duration: 30s;
+	$duration: 24s;
 	position: absolute;
 	top: 0;
 	max-width: $tablet;
@@ -1295,6 +1295,13 @@ header {
 	}
 }
 
+.canvas-figure-label {
+	position: absolute;
+	top: var(--large);
+	left: var(--large);
+	color: $white;
+}
+
 .intensity-container {
 	@extend %no-select;
 
@@ -1406,7 +1413,7 @@ header {
 .data-set-run {
 	@extend %no-select;
 	display: inline-block;
-	margin-top: var(--medium);
+	margin-left: var(--medium);
 	background: $gray-700;
 	padding: var(--small) var(--medium);
 	border-radius: var(--radius);
