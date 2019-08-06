@@ -334,6 +334,8 @@ header {
 .nav {
 	position: relative;
 	background: $gray-900;
+	box-shadow: 0 0.5rem 1rem $gray-100a;
+	z-index: 100;
 
 	.container {
 		padding: 0 var(--large);
@@ -387,6 +389,7 @@ header {
 	overflow: hidden;
 	background: $black;
 	border-radius: 0 0 var(--radius) var(--radius);
+	box-shadow: 0 0.5rem 1rem $gray-100a;
 
 	.nav-group:hover &,
 	.nav-group:focus & {
