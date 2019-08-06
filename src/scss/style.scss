@@ -334,7 +334,6 @@ header {
 .nav {
 	position: relative;
 	background: $gray-900;
-	box-shadow: 0 0.5rem 1rem $gray-100a;
 	z-index: 100;
 
 	.container {
@@ -498,10 +497,6 @@ header {
 	background-color: $gray;
 	overflow: hidden;
 
-	.home-page & {
-		background-color: $red;
-	}
-
 	.discover-page & {
 		background-color: $turquoise;
 	}
@@ -569,7 +564,7 @@ header {
 
 	.wrapper {
 		position: relative;
-		padding-bottom: 7rem;
+		padding-bottom: 10rem;
 	}
 }
 
@@ -667,7 +662,7 @@ header {
 
 // Featured Content ======================================================================
 .featured-content-section {
-	margin: -15rem 0 0;
+	margin: -18rem 0 0;
 }
 
 .featured-grid-wrapper {
