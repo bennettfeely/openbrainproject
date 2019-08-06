@@ -6,17 +6,20 @@ include ./_partials/_footer
 include ./_partials/_signup
 
 +head("")
-body.home
+body.home-page
 	+header("")
 	main
 		section.mission-section.page-hero
 			.wrapper
-				+brain_graphic()
+				.brain-graphic-wrapper
+					+brain_graphic()
 				.container
-					p.mission-point The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about brain injury
-					//- p.mission-point Meta-analytic engine to understand how focal brain lesions cause sensory, cognitive and motor function
-					//- p.mission-point A hub to connect patients and their families with resources to manage their condition
-					//- p.mission-point A forum for scientists to share research papers, data, and experimental protocols related to neuropsychological research
+					.mission-points
+						p.mission-point The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about brain injury
+						p.mission-point The Open Brain Project is a meta-analytic engine to understand how focal brain lesions cause sensory, cognitive and motor function
+						p.mission-point The Open Brain Project is a hub to connect patients and their families with resources to manage their condition
+						p.mission-point The Open Brain Project is a forum to share research papers, data, and experimental protocols related to neuropsychological research
+						p.mission-point.spacer The Open Brain Project is a forum to share research papers, data, and experimental protocols related to neuropsychological research
 		section.featured-content-section
 			.wrapper.featured-grid-wrapper
 				.featured-grid-column

@@ -7,7 +7,7 @@ if (window.location.hostname == "brainsurvey.org") {
 	window.location.href = "https://www.openbrainproject.org/brainsurvey";
 }
 
-if (body.classList.contains("home")) {
+if (body.classList.contains("home-page")) {
 	var colc = new Colcade(".featured-grid-wrapper", {
 		columns: ".featured-grid-column",
 		items: ".featured-grid-item"
