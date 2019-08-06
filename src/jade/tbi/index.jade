@@ -41,19 +41,21 @@ body.discover-page.tbi-page
 							.spinner-wrapper
 								.spinner
 						.meta-wrapper
-							.data-set.figure_1(onclick="run(datasets_obj.figure_1)", tabindex="-1")
-								h3 
+							.data-set.is-running.figure_1(onclick="run(datasets_obj.figure_1)", tabindex="-1")
+								h3.data-set-title
 									| Fig. 1
 									.data-set-run
-										| Run model
-										+icon('rarr')
+										+icon('running')
+										span Running
+										+icon('run')
 								p Interactive model of data from Figure 1 in Hirad and colleagues (2019). Visualization of spatial distribution of head hits in 38 collegiate football players in a season of play. The color and length of each line is scaled by the log of the count of hits at that location.
 							.data-set.figure_6(onclick="run(datasets_obj.figure_6)", tabindex="-1")
-								h3 
+								h3.data-set-title
 									| Fig. 6
 									.data-set-run
-										| Run model
-										+icon('rarr')
+										+icon('running')
+										span Run model
+										+icon('run')
 								p Interactive model of data from Figure 6 in Hirad and colleagues (2019). The 3D model shown here is a graphical representation of how force loading from head hits during football (practice and games) is related to differences between damage to the left and right hemispheres of the brain.
 								
 

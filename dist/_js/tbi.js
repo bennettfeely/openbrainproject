@@ -66,6 +66,18 @@ function run(data_set) {
 
       document.querySelector(".canvas-figure-label").innerHTML = data_set.name;
 
+      if (data_set.class_name == "figure_1") {
+            document.querySelector(".figure_1 .data-set-run span").innerHTML =
+                  "Running";
+            document.querySelector(".figure_6 .data-set-run span").innerHTML =
+                  "Run model";
+      } else {
+            document.querySelector(".figure_1 .data-set-run span").innerHTML =
+                  "Run model";
+            document.querySelector(".figure_6 .data-set-run span").innerHTML =
+                  "Running";
+      }
+
       document.querySelector(".intensity-bar").classList.add(data_set.scale);
 
       data = data_set.data_values;
