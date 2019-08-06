@@ -1,0 +1,7 @@
+# Custom 404
+/* /404.html 404
+
+/jhj /tbi
+
+# Redirect default Netlify subdomain to primary domain
+https://openbrainproject.netlify.com/ https://openbrainproject.org/ 301!
