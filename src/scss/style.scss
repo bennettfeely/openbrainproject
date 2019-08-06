@@ -522,7 +522,7 @@ header {
 		margin: var(--medium) 0 0;
 
 		@media (min-width: $desktop) {
-			max-width: $tablet;
+			max-width: 80%;
 		}
 	}
 
@@ -672,12 +672,9 @@ header {
 .featured-grid-column {
 	@media (min-width: $tablet) {
 		float: left;
+		width: 50%;
 
-		&:first-child {
-			width: 55%;
-		}
-		&:last-child {
-			width: 45%;
+		&:nth-child(2) {
 			padding-top: 4rem;
 		}
 	}
@@ -696,10 +693,13 @@ header {
 	width: 100%;
 	position: relative;
 	border-radius: var(--radius);
-	box-shadow: 0 1rem 2rem $gray-100a;
+	box-shadow: 0 0.5rem 1rem $gray-100a;
+	transition: box-shadow var(--transition);
 
 	&:hover {
 		text-decoration: none;
+		box-shadow: 0 1rem 2rem $gray-100a;
+		transition-duration: var(--transition-hover);
 	}
 }
 
@@ -1339,6 +1339,8 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 }
 
 .meta-wrapper {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
 	padding: var(--large);
 }
@@ -1350,10 +1352,8 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 	border-radius: var(--radius);
 	cursor: pointer;
 	background: $white;
-
-	&:first-child {
-		margin-bottom: var(--medium);
-	}
+	margin-bottom: var(--medium);
+	order: 1;
 
 	&:hover,
 	&:focus {
@@ -1372,6 +1372,11 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 
 	&.is-running {
 		cursor: default;
+		order: 0;
+
+		@media (min-width: $tablet) {
+			order: 1;
+		}
 
 		p {
 			display: block;
@@ -1399,8 +1404,6 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 	}
 
 	.is-running & {
-		// background: $gray-100;
-		// color: $blue;
 		box-shadow: none;
 		color: $white;
 
@@ -1427,20 +1430,11 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 
 	.data-set-run {
 		color: nth($cool-array, 3);
-
-		&:hover {
-			background: rgba($color, 0.1);
-		}
 	}
 
 	&.is-running {
 		.data-set-run {
-			background: linear-gradient(
-				to bottom right,
-				nth($cool-array, 3),
-				nth($cool-array, 5)
-			);
-
+			background: $color;
 			color: $white;
 		}
 	}
@@ -1451,20 +1445,11 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 
 	.data-set-run {
 		color: nth($warm-array, 1);
-
-		&:hover {
-			background: rgba($color, 0.1);
-		}
 	}
 
 	&.is-running {
 		.data-set-run {
-			background: linear-gradient(
-				to bottom right,
-				nth($warm-array, 4),
-				nth($warm-array, 6)
-			);
-
+			background: $color;
 			color: $white;
 		}
 	}
