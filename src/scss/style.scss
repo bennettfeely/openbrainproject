@@ -241,6 +241,11 @@ header {
 	.container {
 		display: flex;
 		justify-content: space-between;
+		padding: var(--large);
+
+		@media (min-width: $tablet) {
+			padding: var(--large) var(--extra-large);
+		}
 	}
 }
 
@@ -249,13 +254,13 @@ header {
 	align-items: center;
 	justify-content: center;
 	vertical-align: middle;
-	width: 2.5em;
-	height: 2.5em;
 	cursor: pointer;
 	border-radius: var(--radius);
 	background: $gray-50;
 	margin-left: var(--small);
 	transition: background-color var(--transition), color var(--transition);
+	width: 2.5em;
+	height: 2.5em;
 
 	&:hover,
 	&:focus {
@@ -290,6 +295,7 @@ header {
 // Logo ==================================================================================
 .site-logo-link {
 	display: inline-block;
+	flex: 1;
 	transition: color var(--transition);
 
 	&:hover {
@@ -315,7 +321,7 @@ header {
 }
 
 .site-title,
-.site-tagline {
+.site-taglines {
 	margin: 0;
 }
 
@@ -323,11 +329,56 @@ header {
 	font-size: 1em;
 }
 
-.site-tagline {
+.site-taglines {
 	font-size: 0.8em;
+	position: relative;
+	opacity: 0.75;
+}
+
+.site-tagline {
+	$duration: 24s;
 	font-style: italic;
 	font-weight: normal;
-	opacity: 0.75;
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	animation: mission $duration ease-in-out infinite both;
+
+	&.spacer {
+		pointer-events: none;
+		position: relative;
+		opacity: 0;
+		animation: none;
+	}
+
+	&.long {
+		font-size: 0.8em;
+
+		@media (min-width: $tablet) {
+			font-size: 1em;
+		}
+	}
+
+	@keyframes mission {
+		0%,
+		65% {
+			opacity: 0;
+		}
+		70%,
+		90% {
+			opacity: 1;
+		}
+		95%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@for $i from 1 through 4 {
+		&:nth-child(#{$i}) {
+			animation-delay: ($i/4 * $duration) - $duration * 1.125;
+		}
+	}
 }
 
 // Navigation ============================================================================
@@ -674,7 +725,12 @@ header {
 		float: left;
 		width: 50%;
 
+		&:nth-child(1) {
+			// width: 55%;
+		}
+
 		&:nth-child(2) {
+			// width: 45%;
 			padding-top: 4rem;
 		}
 	}
@@ -744,10 +800,10 @@ header {
 
 	h2 {
 		font-size: 1.25em;
-		margin: 0 0 var(--medium);
+		margin: 0;
 	}
 	p {
-		margin: 0;
+		margin: var(--medium) 0 0;
 	}
 
 	.featured-content:hover & {
