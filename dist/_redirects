@@ -1,5 +1,5 @@
 # Redirect domain aliases to primary domain
-https://brainsurvey.org/* https://openbrainproject.org/ 301!
+https://brainsurvey.org/* https://openbrainproject.org/brainsurvey 301!
 https://openbrainproject.com/* https://openbrainproject.org/:splat 301!
 https://theopenbrainproject.org/* https://openbrainproject.org/:splat 301!
 
