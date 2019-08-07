@@ -1,5 +1,10 @@
 # Redirect default Netlify subdomain to primary domain
 https://openbrainproject.netlify.com/* https://openbrainproject.org/:splat 301!
 
+# Redirect domain aliases to primary domain
+https://openbrainproject.com/* https://openbrainproject.org/:splat 301!
+https://brainsurvey.org/* https://openbrainproject.org/:splat 301!
+https://theopenbrainproject.org/* https://openbrainproject.org/:splat 301!
+
 # Custom 404, this must go last
 /* /404.html 404
