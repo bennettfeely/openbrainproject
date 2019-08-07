@@ -156,6 +156,11 @@ p {
 	&:last-child {
 		margin-bottom: 0;
 	}
+
+	&.lead {
+		font-size: 1.2em;
+		margin-bottom: var(--large);
+	}
 }
 
 a {
@@ -927,11 +932,6 @@ header {
 // About =================================================================================
 .about-content {
 	overflow: hidden;
-
-	.intro {
-		font-size: 1.2em;
-		margin-bottom: var(--large);
-	}
 }
 
 .cycle-container {
@@ -1264,10 +1264,6 @@ header {
 // TBI ===================================================================================
 .tbi-intro {
 	flex: 1.5;
-
-	p:first-child {
-		font-size: 1.2em;
-	}
 
 	@media (min-width: $tablet) {
 		margin-right: var(--extra-large);
