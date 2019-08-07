@@ -1539,22 +1539,34 @@ $warm-array: #eb272d, #ec372e, #ed472e, #ed582f, #ee682f, #ef7830, #f08830,
 }
 
 // 404 Page ==============================================================================
-.four-oh-four-section {
-	text-align: center;
+.page-404 {
+	main {
+		section {
+			text-align: center;
+			min-height: 60vh;
+		}
 
-	.link-block {
-		display: inline-block;
-		font-size: 80%;
-		margin: var(--large) 0 0;
+		h1 {
+			line-height: 16rem;
+			text-align: center;
+			color: $white;
+			background-image: url("../_img/404_brain.png");
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			font-size: 5rem;
+			text-align: center;
+			margin: 0 0 var(--large);
+		}
 
-		.container {
-			padding: var(--small) var(--extra-large);
+		a {
+			font-size: 1.5em;
+
+			span {
+				text-decoration: underline;
+			}
 		}
 	}
-}
-
-.four-oh-four-title {
-	font-size: 5em;
 }
 
 // Footer ================================================================================

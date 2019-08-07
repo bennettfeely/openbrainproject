@@ -4,15 +4,14 @@ include ./_partials/_icon
 include ./_partials/_footer
 
 +head("The Open Brain Project | 404 Page Not Found")
-body.home
+body.page-404
 	+header("")
 	main
-		section.four-oh-four-section
+		section
 			.container
-				h1.four-oh-four-title 404
+				h1.four-oh-four-title 404.
 				h2 Sorry, this page isn't available.
-				a(href="/")
-					h1 
-						| Go home
-						+icon("rarr")
+				a(href="/") 
+					span Go home
+					+icon("rarr")
 	+footer()
