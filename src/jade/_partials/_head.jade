@@ -1,17 +1,19 @@
-mixin head(pageTitle, pageDescription)
+mixin head(pageTitle, pageDescription, pageImage)
 	doctype html
 	html(lang="en")
 		head
 			meta(charset="utf-8")
 			meta(name="viewport", content="width=device-width, initial-scale=1")
-			
 			- if (pageTitle === "")
 				title= "The Open Brain Project | Translating discovery into care"
 			- else
 				title=pageTitle + " | The Open Brain Project"
 
 			// Page description
-			meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			- if (pageDescription === "")
+				meta(name="description", content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			- else
+				meta(name="description", content=pageDescription)
 			
 			// Styles
 			link(href="../../_css/style.min.css", rel="stylesheet")
@@ -36,18 +38,39 @@ mixin head(pageTitle, pageDescription)
 			meta(property="og:url" content="https://openbrainproject.org")
 			meta(property="og:type" content="website")
 			meta(property="og:title" content="The Open Brain Project")
-			meta(property="og:image" content="https://openbrainproject.org/_img/screenshot_1080x864.png")
-			meta(property="og:image:alt" content="Screenshot of The Open Brain Project website")
-			meta(property="og:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
 			meta(property="og:site_name" content="The Open Brain Project")
 			meta(property="og:locale" content="en_US")
 			meta(property="article:author" content="Brad Mahon")
+			- if (pageTitle === "")
+				meta(property="og:title" content="The Open Brain Project")
+			- else
+				meta(property="og:title" content=pageTitle + " | The Open Brain Project")
+			- if (pageImage === "")
+				meta(property="og:image" content="https://openbrainproject.org/_img/screenshot_1080x864.png")
+			- else
+				meta(property="og:image" content=pageImage)
+			- if (pageDescription === "")
+				meta(property="og:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			- else
+				meta(property="og:description" content=pageDescription)
 
 			// Twitter meta
 			meta(name="twitter:card" content="summary")
 			meta(name="twitter:site" content="@OpenBrainPro")
 			meta(name="twitter:url" content="https://openbrainproject.org")
-			meta(name="twitter:title" content="The Open Brain Project")
-			meta(name="twitter:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
-			meta(name="twitter:image" content="https://openbrainproject.org/_img/screenshot_1080x864.png")
-			meta(name="twitter:image:alt" content="Screenshot of The Open Brain Project website")
+			- if (pageTitle === "")
+				meta(name="twitter:title" content="The Open Brain Project")
+			- else
+				meta(name="twitter:title" content=pageTitle + " | The Open Brain Project")
+
+			// Page description
+			- if (pageDescription === "")
+				meta(name="twitter:description" content="The Open Brain Project is a consortium of scientists and clinicians dedicated to advancing knowledge about how the human brain responds to and recovers from injury.")
+			- else
+				meta(name="twitter:description" content=pageDescription)
+			
+			// Page description
+			- if (pageImage === "")
+				meta(name="twitter:image" content="https://openbrainproject.org/_img/screenshot_1080x864.png")
+			- else
+				meta(name="twitter:image" content=pageImage)
