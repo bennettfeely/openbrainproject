@@ -5,7 +5,7 @@ https://theopenbrainproject.org/* https://openbrainproject.org/:splat 301!
 
 # Redirect TBI site
 /tbi /how-football-affects-the-brain
-/how-football-affects-the-brain /how-football-effects-the-brain
+/how-football-effects-the-brain /how-football-affects-the-brain
 
 # Redirect default Netlify subdomain to primary domain
 https://openbrainproject.netlify.com/* https://openbrainproject.org/:splat 301!
