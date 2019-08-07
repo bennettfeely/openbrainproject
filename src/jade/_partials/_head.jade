@@ -36,11 +36,9 @@ mixin head(pageTitle, pageDescription, pageImage)
 
 			// Facebook meta
 			meta(property="og:url" content="https://openbrainproject.org")
-			meta(property="og:type" content="website")
 			meta(property="og:title" content="The Open Brain Project")
 			meta(property="og:site_name" content="The Open Brain Project")
 			meta(property="og:locale" content="en_US")
-			meta(property="article:author" content="Brad Mahon")
 			- if (pageTitle === "")
 				meta(property="og:title" content="The Open Brain Project")
 			- else

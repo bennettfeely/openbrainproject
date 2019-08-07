@@ -249,6 +249,101 @@ header {
 	}
 }
 
+// Logo ==================================================================================
+.site-logo-link {
+	display: inline-block;
+	flex: 1;
+	transition: color var(--transition);
+
+	&:hover {
+		text-decoration: none;
+		color: $gray-800;
+	}
+}
+
+.site-logo {
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+
+	.icon-brain {
+		width: 2em;
+		height: 2em;
+		margin-right: 0.5em;
+
+		@media (min-width: $tablet) {
+			width: 2.5em;
+			height: 2.5em;
+		}
+	}
+}
+
+.site-title,
+.site-taglines {
+	margin: 0;
+}
+
+.site-title {
+	font-size: 1em;
+}
+
+.site-taglines {
+	font-size: 0.75em;
+	position: relative;
+	opacity: 0.75;
+}
+
+.site-tagline {
+	$duration: 24s;
+	font-style: italic;
+	font-weight: normal;
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	animation: tagline $duration ease-in-out infinite both;
+
+	&.spacer {
+		position: relative;
+	}
+
+	@keyframes tagline {
+		0%,
+		32% {
+			opacity: 0;
+		}
+		33%,
+		66% {
+			opacity: 1;
+		}
+		67%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes mission {
+		0%,
+		65% {
+			opacity: 0;
+		}
+		70%,
+		90% {
+			opacity: 1;
+		}
+		95%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@for $i from 1 through 3 {
+		&:nth-child(#{$i}) {
+			animation-delay: ($i/3 * $duration) - $duration;
+		}
+	}
+}
+
+// Social links ==========================================================================
 .header-social-link {
 	display: inline-flex;
 	align-items: center;
@@ -289,95 +384,6 @@ header {
 
 	&:hover {
 		background: $gray-200;
-	}
-}
-
-// Logo ==================================================================================
-.site-logo-link {
-	display: inline-block;
-	flex: 1;
-	transition: color var(--transition);
-
-	&:hover {
-		text-decoration: none;
-		color: $gray-800;
-	}
-}
-
-.site-logo {
-	display: flex;
-	align-items: center;
-
-	.icon-brain {
-		width: 2em;
-		height: 2em;
-		margin-right: 0.5em;
-
-		@media (min-width: $tablet) {
-			width: 2.5em;
-			height: 2.5em;
-		}
-	}
-}
-
-.site-title,
-.site-taglines {
-	margin: 0;
-}
-
-.site-title {
-	font-size: 1em;
-}
-
-.site-taglines {
-	font-size: 0.8em;
-	position: relative;
-	opacity: 0.75;
-}
-
-.site-tagline {
-	$duration: 24s;
-	font-style: italic;
-	font-weight: normal;
-	position: absolute;
-	top: 0;
-	opacity: 0;
-	animation: mission $duration ease-in-out infinite both;
-
-	&.spacer {
-		pointer-events: none;
-		position: relative;
-		opacity: 0;
-		animation: none;
-	}
-
-	&.long {
-		font-size: 0.8em;
-
-		@media (min-width: $tablet) {
-			font-size: 1em;
-		}
-	}
-
-	@keyframes mission {
-		0%,
-		65% {
-			opacity: 0;
-		}
-		70%,
-		90% {
-			opacity: 1;
-		}
-		95%,
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@for $i from 1 through 4 {
-		&:nth-child(#{$i}) {
-			animation-delay: ($i/4 * $duration) - $duration * 1.125;
-		}
 	}
 }
 
@@ -641,10 +647,7 @@ header {
 	word-break: break-word;
 
 	&.spacer {
-		pointer-events: none;
 		position: relative;
-		opacity: 0;
-		animation: none;
 	}
 
 	@keyframes mission {
