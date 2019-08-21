@@ -139,7 +139,7 @@ h2 {
 
 h3 {
 	font-size: 1.2em;
-	margin-bottom: var(--small);
+	margin-bottom: var(--medium);
 	line-height: 1.3;
 }
 
@@ -189,16 +189,16 @@ label {
 
 ul,
 li {
-	margin-left: var(--large);
 	list-style-type: square;
 }
 
 ul {
-	margin-bottom: var(--large);
+	margin: var(--medium) var(--large);
 }
 
 li {
-	margin-bottom: var(--small);
+	margin-left: var(--large);
+	margin-bottom: var(--medium);
 }
 
 input {
@@ -1085,25 +1085,33 @@ header {
 
 // Media  ================================================================================
 .media-page {
-	details {
-		margin: 0 0 var(--large);
+	li a {
+		display: block;
+	}
+}
+
+details {
+	margin: 0 0 var(--large);
+}
+
+summary {
+	@extend %no-select;
+	cursor: pointer;
+	opacity: 0.75;
+	display: inline-block;
+	background: $gray-100;
+	border-radius: var(--radius);
+	padding: var(--small) var(--medium);
+	margin: 0 var(--large) var(--large);
+	transition: opacity var(--transition);
+
+	details[open] & {
+		display: none;
 	}
 
-	summary {
-		@extend %no-select;
-		cursor: pointer;
-		opacity: 0.75;
-		display: inline-block;
-		background: $gray-100;
-		border-radius: var(--radius);
-		padding: var(--small) var(--medium);
-		margin: 0 var(--large) var(--large);
-		transition: opacity var(--transition);
-
-		&:hover {
-			opacity: 1;
-			transition: opacity var(--transition-hover);
-		}
+	&:hover {
+		opacity: 1;
+		transition: opacity var(--transition-hover);
 	}
 }
 
