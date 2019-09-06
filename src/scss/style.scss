@@ -863,7 +863,8 @@ header {
 	&:hover,
 	&:active,
 	&:focus {
-		.icon-youtube {
+		.icon-youtube,
+		.icon-video {
 			opacity: 1;
 		}
 	}
@@ -894,7 +895,8 @@ header {
 	bottom: 0;
 }
 
-.icon-youtube {
+.icon-youtube,
+.icon-video {
 	max-width: 5rem;
 	width: 40%;
 	height: auto;
@@ -905,6 +907,7 @@ header {
 		opacity: 0;
 	}
 }
+
 .video-title {
 	color: $black;
 	hyphens: auto;
