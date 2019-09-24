@@ -225,6 +225,20 @@ button {
 	cursor: pointer;
 }
 
+table,
+tr,
+td {
+	border: thin solid $gray-200;
+	border-collapse: collapse;
+}
+thead {
+	font-weight: bold;
+}
+
+td {
+	padding: var(--small);
+}
+
 // Icons =================================================================================
 .icon {
 	display: inline-block;

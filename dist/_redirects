@@ -5,7 +5,14 @@ https://theopenbrainproject.org/* https://openbrainproject.org/:splat 301!
 
 # Redirect TBI site
 /tbi /how-football-affects-the-brain
+
+# Redirect common typos
+/experiments-exchange /experiment-exchange
+/experiment-exchanges /experiment-exchange
 /how-football-effects-the-brain /how-football-affects-the-brain
+
+# Redirect url to box link (23 Sep 2019)
+https://openbrainproject.org/experiment-exchange/ChernoffColleagues_Cortex2019 https://rochester.app.box.com/s/ce0m21jqqftqhlg44iyadyq7tq9nmvi8
 
 # Redirect default Netlify subdomain to primary domain
 https://openbrainproject.netlify.com/* https://openbrainproject.org/:splat 301!
