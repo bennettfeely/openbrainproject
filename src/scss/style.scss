@@ -10,6 +10,7 @@
 // Variables =============================================================================
 $black: #16161d;
 $white: #fff;
+$gray-950: mix($black, $white, 95%);
 $gray-900: mix($black, $white, 90%);
 $gray-800: mix($black, $white, 80%);
 $gray-700: mix($black, $white, 70%);
@@ -36,6 +37,18 @@ $purple: #673ab7;
 $red: #9a3434;
 $turquoise: #0ba2b5;
 
+$blue-950: mix($white, $turquoise, 5%);
+$blue-900: mix($white, $turquoise, 10%);
+$blue-800: mix($white, $turquoise, 20%);
+$blue-700: mix($white, $turquoise, 30%);
+$blue-600: mix($white, $turquoise, 40%);
+$blue-500: mix($white, $turquoise, 50%);
+$blue-400: mix($white, $turquoise, 60%);
+$blue-300: mix($white, $turquoise, 70%);
+$blue-200: mix($white, $turquoise, 80%);
+$blue-100: mix($white, $turquoise, 90%);
+$blue-50: mix($white, $turquoise, 95%);
+
 $twitter: #38a1f3;
 $facebook: #4267b2;
 
@@ -44,7 +57,6 @@ $tablet: 40rem;
 $desktop: 60rem;
 
 // Mixins ================================================================================
-
 :root {
 	--root-size: 90%;
 
@@ -62,8 +74,6 @@ $desktop: 60rem;
 
 	--radius: 0.25rem;
 	--radius-large: 1rem;
-
-	--sidebar-width: 20rem;
 
 	@media (min-width: $tablet) {
 		--root-size: 100%;
@@ -319,7 +329,12 @@ header {
 	position: absolute;
 	top: 0;
 	opacity: 0;
-	animation: tagline $duration ease-in-out infinite both;
+	// animation: tagline $duration ease-in-out infinite both;
+
+	&:nth-child(1) {
+		opacity: 1;
+		position: relative;
+	}
 
 	&.spacer {
 		position: relative;
@@ -936,10 +951,85 @@ header {
 }
 
 // Brain Survey ==========================================================================
-.bs-iframe {
-	width: 100%;
-	height: 100vh;
-	border: 0;
+.bs-page-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.bs-wrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+
+	@media (min-width: $tablet) {
+		flex-direction: row-reverse;
+	}
+}
+
+.bs-brain-wrapper {
+	min-height: 100vw;
+	flex: 1;
+	background: linear-gradient($black, $gray-900);
+
+	@media (min-width: $tablet) {
+		min-height: initial;
+	}
+}
+
+.bs-side-wrapper {
+	min-height: 10em;
+	background: $white;
+	color: $black;
+	border-bottom: thin solid $gray-100a;
+
+	@media (min-width: $tablet) {
+		width: 20em;
+	}
+
+	.container {
+		padding: var(--medium);
+	}
+
+	h2,
+	h3 {
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 1.3em;
+	}
+
+	h3 {
+		@extend %no-select;
+
+		display: inline-block;
+		font-size: 1.1em;
+		font-weight: normal;
+	}
+
+	summary {
+		cursor: pointer;
+
+		&:hover h3 {
+			text-decoration: underline;
+		}
+
+		&:focus {
+			outline: 0;
+
+			&,
+			& ~ * {
+				background: $turquoise;
+			}
+		}
+	}
+}
+
+.bs-title,
+.bs-tools,
+.bs-settings {
+	border-bottom: thin solid $gray-100a;
 }
 
 // Data Exchange =========================================================================
@@ -1105,30 +1195,30 @@ header {
 	li a {
 		display: block;
 	}
-}
 
-details {
-	margin: 0 0 var(--large);
-}
-
-summary {
-	@extend %no-select;
-	cursor: pointer;
-	opacity: 0.75;
-	display: inline-block;
-	background: $gray-100;
-	border-radius: var(--radius);
-	padding: var(--small) var(--medium);
-	margin: 0 var(--large) var(--large);
-	transition: opacity var(--transition);
-
-	details[open] & {
-		display: none;
+	details {
+		margin: 0 0 var(--large);
 	}
 
-	&:hover {
-		opacity: 1;
-		transition: opacity var(--transition-hover);
+	summary {
+		@extend %no-select;
+		cursor: pointer;
+		opacity: 0.75;
+		display: inline-block;
+		background: $gray-100;
+		border-radius: var(--radius);
+		padding: var(--small) var(--medium);
+		margin: 0 var(--large) var(--large);
+		transition: opacity var(--transition);
+
+		&:hover {
+			opacity: 1;
+			transition: opacity var(--transition-hover);
+		}
+	}
+
+	details[open] summary {
+		display: none;
 	}
 }
 

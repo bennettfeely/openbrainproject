@@ -6,7 +6,23 @@ include ../_partials/_footer
 
 +head("Brain Survey")
 body.discover-page.brainsurvey-page
-	+header()
-	main
-		iframe.bs-iframe(src="https://brainsurvey.netlify.com/")
+	.bs-page-wrapper
+		+header()
+		main.bs-wrapper
+			.bs-brain-wrapper
+			.bs-side-wrapper
+				.container.bs-title
+						h2 Brain Survey
+				.bs-tools
+					details
+						summary.container
+							h3 Tools
+						.container
+							p Hello there
+				.bs-settings
+					details
+						summary.container
+							h3 Settings
+						.container
+							p Hello there
 	+footer()
