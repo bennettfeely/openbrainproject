@@ -11,18 +11,82 @@ body.discover-page.brainsurvey-page
 		main.bs-wrapper
 			.bs-brain-wrapper
 			.bs-side-wrapper
-				.container.bs-title
+				.bs-box
+					.container
 						h2 Brain Survey
-				.bs-tools
-					details
+				.bs-box
+					details(open)
+						summary.container
+							h3 Regions
+						.bs-box-content.container
+							h4 Search
+							label.bs-search-wrapper
+								input.bs-search-input(type="text", placeholder="Search brain regions...", spellcheck="false")
+								+icon("search")
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+				.bs-box
+					details(open)
 						summary.container
 							h3 Tools
-						.container
-							p Hello there
-				.bs-settings
-					details
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+						.bs-box-content.container
+							h4 Display
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Left Hemisphere
+							label.bs-toggle
+								input(type="checkbox")
+								| Display Right Hemisphere
+				.bs-box
+					details(open)
 						summary.container
 							h3 Settings
-						.container
-							p Hello there
+						.bs-box-content.container
+							label.bs-toggle
+								input(type="checkbox")
+								| Orbit
+							label.bs-toggle
+								input(type="checkbox")
+								| Fullscreen
+				.bs-box.bs-copyright
+					.container
+						small &copy; 2019 Brad Mahon of BrainSurvey, LLC &bull; <a href="https://github.com/bennettfeely/openbrainproject">GitHub</a>
 	+footer()
