@@ -10,6 +10,7 @@
 // Variables =============================================================================
 $black: #16161d;
 $white: #fff;
+$gray-950: mix($black, $white, 95%);
 $gray-900: mix($black, $white, 90%);
 $gray-800: mix($black, $white, 80%);
 $gray-700: mix($black, $white, 70%);
@@ -36,6 +37,31 @@ $purple: #673ab7;
 $red: #9a3434;
 $turquoise: #0ba2b5;
 
+$light-gray-100: #e1f5fe;
+$light-gray-150: #b3e5fc;
+$light-gray-200: #81d4fa;
+$light-gray-250: #4fc3f7;
+$light-gray-300: #29b6f6;
+$light-gray-350: #03a9f4;
+$light-gray-400: #039be5;
+$light-gray-450: #0288d1;
+$light-gray-500: #0277bd;
+$light-gray-550: #01579b;
+$light-gray-600: #80d8ff;
+$light-gray-650: #40c4ff;
+$light-gray-700: #00b0ff;
+$light-gray-900: #0091ea;
+
+$light-blue-100: #cfd8dc;
+$light-blue-200: #b0bec5;
+$light-blue-300: #90a4ae;
+$light-blue-400: #78909c;
+$light-blue-500: red;
+$light-blue-600: red;
+$light-blue-700: red;
+$light-blue-800: red;
+$light-blue-900: red;
+
 $twitter: #38a1f3;
 $facebook: #4267b2;
 
@@ -44,7 +70,6 @@ $tablet: 40rem;
 $desktop: 60rem;
 
 // Mixins ================================================================================
-
 :root {
 	--root-size: 90%;
 
@@ -62,8 +87,6 @@ $desktop: 60rem;
 
 	--radius: 0.25rem;
 	--radius-large: 1rem;
-
-	--sidebar-width: 20rem;
 
 	@media (min-width: $tablet) {
 		--root-size: 100%;
@@ -319,7 +342,12 @@ header {
 	position: absolute;
 	top: 0;
 	opacity: 0;
-	animation: tagline $duration ease-in-out infinite both;
+	// animation: tagline $duration ease-in-out infinite both;
+
+	&:nth-child(1) {
+		opacity: 1;
+		position: relative;
+	}
 
 	&.spacer {
 		position: relative;
@@ -938,8 +966,172 @@ header {
 // Brain Survey ==========================================================================
 .bs-iframe {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	border: 0;
+}
+
+.bs-page-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	scroll-snap-type: y proximity;
+}
+
+.bs-wrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	scroll-snap-align: start;
+
+	@media (min-width: $tablet) {
+		flex-direction: row-reverse;
+		max-height: 100vh;
+	}
+}
+
+.bs-brain-wrapper {
+	min-height: 100vw;
+	flex: 1;
+	background: linear-gradient($black, $gray-900);
+
+	@media (min-width: $tablet) {
+		min-height: initial;
+	}
+}
+
+.bs-side-wrapper {
+	background-color: $white;
+	min-height: 10em;
+	color: $black;
+
+	@media (min-width: $tablet) {
+		width: 20em;
+		max-height: 100vh;
+		overflow-y: auto;
+	}
+
+	h2,
+	h3,
+	h4 {
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 1.3em;
+	}
+
+	h3 {
+		@extend %no-select;
+
+		display: inline-block;
+		font-size: 1.1em;
+		font-weight: normal;
+	}
+
+	h4 {
+		@extend %no-select;
+
+		font-size: 1em;
+		margin-bottom: var(--small);
+		opacity: 0.75;
+	}
+
+	summary {
+		cursor: pointer;
+
+		&:hover h3 {
+			text-decoration: underline;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.bs-box {
+	@for $i from 1 through 5 {
+		&:nth-child(#{$i}) {
+			background: mix($light-blue-400, $white, ($i - 1) * 20%);
+		}
+	}
+
+	.container {
+		padding: var(--medium);
+	}
+}
+
+.bs-box-content {
+	border-top: thin solid $gray-100a;
+}
+
+.bs-search-wrapper {
+	display: flex;
+	align-items: center;
+	background: $white;
+	cursor: text;
+	border: 0;
+	border: thin solid $gray-200;
+
+	.bs-search-input {
+		font: inherit;
+		flex: 1;
+
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.icon-search {
+		width: var(--large);
+		height: var(--large);
+		margin: 0 var(--medium);
+		color: inherit;
+	}
+}
+
+.bs-title,
+.bs-copyright {
+	@extend %no-select;
+}
+
+.bs-toggle {
+	@extend %no-select;
+	display: block;
+	padding: var(--small) var(--medium);
+	cursor: pointer;
+	background: $white;
+	border: thin solid $gray-200;
+	border-bottom: 0;
+	font-size: 0.9em;
+	transition: background-color var(--transition);
+
+	&:active {
+		background-color: highlight;
+		transition-duration: 0s;
+	}
+
+	input[type="checkbox"] {
+		display: inline-block;
+		margin-right: var(--medium);
+		vertical-align: baseline;
+		cursor: pointer;
+	}
+
+	&:first-of-type {
+		border-top-left-radius: var(--radius);
+		border-top-right-radius: var(--radius);
+	}
+
+	&:last-of-type {
+		border-bottom-left-radius: var(--radius);
+		border-bottom-right-radius: var(--radius);
+		border-bottom: thin solid $gray-200;
+	}
+}
+
+.bs-copyright {
+	@extend %no-select;
 }
 
 // Data Exchange =========================================================================
@@ -1105,30 +1297,30 @@ header {
 	li a {
 		display: block;
 	}
-}
 
-details {
-	margin: 0 0 var(--large);
-}
-
-summary {
-	@extend %no-select;
-	cursor: pointer;
-	opacity: 0.75;
-	display: inline-block;
-	background: $gray-100;
-	border-radius: var(--radius);
-	padding: var(--small) var(--medium);
-	margin: 0 var(--large) var(--large);
-	transition: opacity var(--transition);
-
-	details[open] & {
-		display: none;
+	details {
+		margin: 0 0 var(--large);
 	}
 
-	&:hover {
-		opacity: 1;
-		transition: opacity var(--transition-hover);
+	summary {
+		@extend %no-select;
+		cursor: pointer;
+		opacity: 0.75;
+		display: inline-block;
+		background: $gray-100;
+		border-radius: var(--radius);
+		padding: var(--small) var(--medium);
+		margin: 0 var(--large) var(--large);
+		transition: opacity var(--transition);
+
+		&:hover {
+			opacity: 1;
+			transition: opacity var(--transition-hover);
+		}
+	}
+
+	details[open] summary {
+		display: none;
 	}
 }
 
