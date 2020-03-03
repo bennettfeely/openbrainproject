@@ -1,0 +1,27 @@
+include ../_partials/_head
+include ../_partials/_header
+include ../_partials/_svg
+include ../_partials/_icon
+include ../_partials/_footer
+
++head("Upload Audio")
+body.discover-page
+	+header()
+	section.page-hero
+		.container
+			h1 Upload Audio
+	main.page-content
+		section
+			.container.split-container
+				aside.split-aside
+					p Upload an audio file exported from Strong View for transcription.
+					p We do not share email addresses with any third party, and will contact you with additional information according to the options you select.
+				form.form(name="upload_audio", method="POST", data-netlify="true", action="/upload-audio/success")
+					section
+						.container
+							input(type="file", id="file", name="file", accept="audio/*")
+					section
+						.container
+							button.button(type="submit") Upload File
+							button.button(type="reset", value="Reset") Reset
+	+footer()

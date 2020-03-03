@@ -231,6 +231,11 @@ input {
 	border-radius: var(--radius);
 	border: 0;
 	transition: color var(--transition), background-color var(--transition);
+
+	&[type="file"] {
+		padding: 0;
+		border-radius: 0;
+	}
 }
 
 button {
